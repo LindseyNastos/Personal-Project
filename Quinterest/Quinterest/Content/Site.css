@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.pinPageButtons {
+    font-size:2em; 
+    font-family:cursive;
+}
+
+#stats {
+    list-style:none;
+}
+
+#stats li {
+    font-size: 2em;
+}
+
+#pinImage {
+    height:400px;
+}
