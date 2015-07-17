@@ -9,10 +9,13 @@ namespace Quinterest.Controllers
 {
     public class PinsController : Controller
     {
+        private PinsDB _db = new PinsDB();
+
         // GET: Pins
         public ActionResult Index()
         {
-            return View();
+            var pins = from p in _db.Pins select p;
+            return View(pins.ToList());
         }
 
         // GET: Pins/Details/5

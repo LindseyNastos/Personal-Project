@@ -6,27 +6,27 @@ using System.Web.Mvc;
 
 namespace Quinterest.Controllers
 {
-    public class ProfileEditsController : Controller
+    public class ExpandedPinsController : Controller
     {
-        // GET: ProfileEdits
+        // GET: ExpandedPins
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: ProfileEdits/Details/5
+        // GET: ExpandedPins/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: ProfileEdits/Create
+        // GET: ExpandedPins/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ProfileEdits/Create
+        // POST: ExpandedPins/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace Quinterest.Controllers
             }
         }
 
-        // GET: ProfileEdits/Edit/5
+        // GET: ExpandedPins/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: ProfileEdits/Edit/5
+        // POST: ExpandedPins/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace Quinterest.Controllers
             }
         }
 
-        // GET: ProfileEdits/Delete/5
+        // GET: ExpandedPins/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ProfileEdits/Delete/5
+        // POST: ExpandedPins/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

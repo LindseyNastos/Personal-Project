@@ -9,7 +9,7 @@ namespace Quinterest.Models
     {
         public string Title { get; set; }
 
-        public Subcategory Subcategories { get; set; }
+        //public Subcategory Subcategories { get; set; }
 
         public List<Pin> PinsInCategory { get; set; }
     }

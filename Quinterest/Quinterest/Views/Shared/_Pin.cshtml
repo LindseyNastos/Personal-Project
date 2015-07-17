@@ -1,9 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-<br />
+﻿@model Quinterest.Models.Pin
 
 <div class="row">
 
@@ -57,11 +52,14 @@
                     Long Description
                 </li>
             </ul>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NewComment, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NewComment, new { @class = "form-control" } )
+                    @Html.ValidationMessageFor(model => model.NewComment, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
     </div>
-
-
-
-
 </div>
 

@@ -7,18 +7,22 @@ namespace Quinterest.Models
 {
     public class Board
     {
+        public int Id { get; set; }
+
         public string BoardName { get; set; }
 
         public string Description { get; set; }
 
-        public int Category { get; set; }
+        public int CategoryId { get; set; }
 
+        //drop down menu of categories to choose from on "create" board view
         public Category Categories { get; set; }
 
         public bool Secret { get; set; }
 
         public string NumPinsInBoard { get; set; }
 
+        //holds list of pins to be displayed on board on "index" view
         public List<Pin> PinsOnBoard { get; set; }
 
     }

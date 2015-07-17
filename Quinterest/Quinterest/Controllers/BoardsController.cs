@@ -9,10 +9,12 @@ namespace Quinterest.Controllers
 {
     public class BoardsController : Controller
     {
+        private BoardsDB _db = new BoardsDB();
         // GET: Boards
         public ActionResult Index()
         {
-            return View();
+            var boards = from b in _db.Boards select b;
+            return View(boards.ToList());
         }
 
         // GET: Boards/Details/5
@@ -30,62 +32,55 @@ namespace Quinterest.Controllers
 
         // POST: Boards/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Board board)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                _db.Boards.Add(board);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Boards/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var board = _db.Boards.Find(id);
+            return View(board);
         }
 
         // POST: Boards/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Board board)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                var original = _db.Boards.Find(board.Id);
+                original.BoardName = board.BoardName;
+                original.Description = board.Description;
+                original.Secret = board.Secret;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Boards/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var board = _db.Boards.Find(id);
+            return View(board);
         }
 
         // POST: Boards/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var original = _db.Boards.Find(id);
+            _db.Boards.Remove(original);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

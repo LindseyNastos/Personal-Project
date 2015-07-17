@@ -7,16 +7,27 @@ namespace Quinterest.Models
 {
     public class Profile
     {
+        public string Picture { get; set; }
+
+        public string Name { get; set; }
+
+        public int NumBoards { get; set; }
+
+        public int NumPins { get; set; }
+
+        public int NumLikes { get; set; }
+
+        public int NumFollowers { get; set; }
+
+        public int NumFollowing { get; set; }
+
+        public List<Board> Boards { get; set; }
+
+        //maybe later?
+        //public List<Board> SecretBoards { get; set; }
+
     }
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -56,14 +67,4 @@ PROFILE
                     -delete board
         -secret boards in different section at the bottom of the others
         -first board in secret section is a blank template to create secret board
-    -when you click a specific pin:
-        -same as expanded version
-        -also has an edit button:
-            -can change:
-                -board
-                -description
-                -website
-                -place
-            -button to cancel
-            -button to delete pin
 */
