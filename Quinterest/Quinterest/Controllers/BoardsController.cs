@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using Quinterest.Views.Boards;
 
 namespace Quinterest.Controllers
 {
     public class BoardsController : Controller
     {
-        private BoardsDB _db = new BoardsDB();
+        private DataContext _db = new DataContext();
         // GET: Boards
         public ActionResult Index()
         {
-            var boards = from b in _db.Boards select b;
+            var boards = from b in _db.Boards.Include(b => b.Category) select b;
             return View(boards.ToList());
         }
 
@@ -26,8 +28,13 @@ namespace Quinterest.Controllers
         // GET: Boards/Create
         public ActionResult Create()
         {
+            var vm = new CreateVM
+            {
+                Categories = new SelectList(_db.Categories.ToList(), "Id", "Name")
 
-            return View();
+            };
+
+            return View(vm);
         }
 
         // POST: Boards/Create
@@ -46,8 +53,14 @@ namespace Quinterest.Controllers
         // GET: Boards/Edit/5
         public ActionResult Edit(int id)
         {
-            var board = _db.Boards.Find(id);
-            return View(board);
+            var vm = new EditVM
+            {
+                Board = _db.Boards.Find(id),
+                Categories = new SelectList(_db.Categories.ToList(), "Id", "Name")
+
+            };
+         
+            return View(vm);
         }
 
         // POST: Boards/Edit/5
@@ -60,6 +73,7 @@ namespace Quinterest.Controllers
                 original.BoardName = board.BoardName;
                 original.Description = board.Description;
                 original.Secret = board.Secret;
+                original.CategoryId = board.CategoryId;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -75,7 +89,8 @@ namespace Quinterest.Controllers
 
         // POST: Boards/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        public ActionResult DeleteReally(int id)
         {
             var original = _db.Boards.Find(id);
             _db.Boards.Remove(original);

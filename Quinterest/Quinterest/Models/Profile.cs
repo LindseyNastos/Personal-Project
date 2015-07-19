@@ -7,6 +7,7 @@ namespace Quinterest.Models
 {
     public class Profile
     {
+        public int Id { get; set; }
         public string Picture { get; set; }
 
         public string Name { get; set; }
@@ -15,13 +16,18 @@ namespace Quinterest.Models
 
         public int NumPins { get; set; }
 
-        public int NumLikes { get; set; }
+        //public int NumLikes { get; set; }
 
-        public int NumFollowers { get; set; }
+        //public int NumFollowers { get; set; }
 
         public int NumFollowing { get; set; }
 
         public List<Board> Boards { get; set; }
+
+        public Profile()
+        {
+            this.Boards = new List<Board>();
+        }
 
         //maybe later?
         //public List<Board> SecretBoards { get; set; }

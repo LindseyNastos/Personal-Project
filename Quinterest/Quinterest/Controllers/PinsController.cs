@@ -3,18 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
+using Quinterest.Views.Pins;
+
 
 namespace Quinterest.Controllers
 {
     public class PinsController : Controller
     {
-        private PinsDB _db = new PinsDB();
+        private DataContext _db = new DataContext();
 
         // GET: Pins
         public ActionResult Index()
         {
-            var pins = from p in _db.Pins select p;
+            var pins = from p in _db.Pins.Include(p => p.PinCategory) select p;
             return View(pins.ToList());
         }
 
@@ -27,7 +30,13 @@ namespace Quinterest.Controllers
         // GET: Pins/Create
         public ActionResult Create()
         {
-            return View();
+            var vm = new CreateVM
+            {
+                PinCategories = new SelectList(_db.PinCategories.ToList(), "Id", "Name")
+
+            };
+
+            return View(vm);
         }
 
         // POST: Pins/Create
@@ -36,53 +45,61 @@ namespace Quinterest.Controllers
         {
             if (ModelState.IsValid)
             {
+                _db.Pins.Add(pin);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-                return View();
+            return View();
         }
 
         // GET: Pins/Edit/5
         public ActionResult Edit(int id)
-        {
-            return View();
+        { 
+            var vm = new EditVM
+            {
+                Pin = _db.Pins.Find(id),
+                PinCategories = new SelectList(_db.PinCategories.ToList(), "Id", "Name")
+
+            };
+
+            return View(vm);
         }
 
         // POST: Pins/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Pin pin)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                var original = _db.Pins.Find(pin.Id);
+                original.Title = pin.Title;
+                original.ImageUrl = pin.ImageUrl;
+                original.Website = pin.Website;
+                original.PinCategoryId = pin.PinCategoryId;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
+            
         }
 
         // GET: Pins/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var pin = _db.Pins.Find(id);
+            return View(pin);
         }
 
         // POST: Pins/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        public ActionResult DeleteReally(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var original = _db.Pins.Find(id);
+            _db.Pins.Remove(original);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+            
         }
     }
 }

@@ -23,9 +23,27 @@ textarea {
     max-width: 280px;
 }
 
+
+
+
+
+
+#editProfileBtn {
+    border: solid black 0.5px;
+}
+
+#profileIcon {
+    height: 10px;
+    border-radius: 4px;
+    position: relative;
+    top: 10px;
+    margin: 4px;
+    z-index: 1;
+}
+
 .pinPageButtons {
-    font-size:2em; 
-    font-family:cursive;
+    font-size: 2em; 
+    font-family: cursive;
 }
 
 #stats {

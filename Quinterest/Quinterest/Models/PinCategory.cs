@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 
 namespace Quinterest.Models
 {
-    public class Comment
+    public class PinCategory
     {
         public int Id { get; set; }
-
-        public DateTime PostTimeStamp { get; set; }
-
-        public string NewComment { get; set; }
-
+        public string Name { get; set; }
     }
 }

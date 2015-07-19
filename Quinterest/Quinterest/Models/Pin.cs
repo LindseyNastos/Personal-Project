@@ -23,16 +23,19 @@ namespace Quinterest.Models
         [Required(ErrorMessage = "*required")]
         public string Title { get; set; }
 
+
         //Holds the chosen board
-        public string Board { get; set; }
+        public Board Board { get; set; }
 
-        public List<Board> Boards { get; set; }
 
-        //Holds the chosen category
-        public int CategoryId { get; set; }
+
+        //public List<Board> Boards { get; set; }
+
+        
+        public int PinCategoryId { get; set; }
 
         //To choose which category it belongs to in "create" view
-        public Category Category { get; set; }
+        public PinCategory PinCategory { get; set; }
 
 
         public string UserWhoPinned { get; set; }
@@ -55,10 +58,10 @@ namespace Quinterest.Models
         public string NewComment { get; set; }
 
 
-        //public List<Comment> CommentList { get; set; }
+        public List<Comment> CommentList { get; set; }
 
 
-        public List<Pin> RelatedPins { get; set; }
+        //public List<Pin> RelatedPins { get; set; }
 
 
     }
