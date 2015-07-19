@@ -24,10 +24,10 @@ namespace Quinterest.Models
 
         public List<Board> Boards { get; set; }
 
-        public Profile()
-        {
-            this.Boards = new List<Board>();
-        }
+        //public Profile()
+        //{
+        //    this.Boards = new List<Board>();
+        //}
 
         //maybe later?
         //public List<Board> SecretBoards { get; set; }

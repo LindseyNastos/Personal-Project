@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +21,8 @@ namespace Quinterest.Models
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+        public Profile Profile { get; set; }
 
         //drop down menu of categories to choose from on "create" board view
 

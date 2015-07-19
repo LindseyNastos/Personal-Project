@@ -161,61 +161,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoardsController.cs" />
     <Compile Include="Controllers\CategoryPagesController.cs" />
-    <Compile Include="Controllers\ExpandedPinsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PinsController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171711421_son.cs" />
-    <Compile Include="Migrations\201507171711421_son.Designer.cs">
-      <DependentUpon>201507171711421_son.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171715371_dude.cs" />
-    <Compile Include="Migrations\201507171715371_dude.Designer.cs">
-      <DependentUpon>201507171715371_dude.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171722407_buddy.cs" />
-    <Compile Include="Migrations\201507171722407_buddy.Designer.cs">
-      <DependentUpon>201507171722407_buddy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171740261_addedBoardValidation.cs" />
-    <Compile Include="Migrations\201507171740261_addedBoardValidation.Designer.cs">
-      <DependentUpon>201507171740261_addedBoardValidation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171845535_noMoreRemoteValidation.cs" />
-    <Compile Include="Migrations\201507171845535_noMoreRemoteValidation.Designer.cs">
-      <DependentUpon>201507171845535_noMoreRemoteValidation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171848252_ugh.cs" />
-    <Compile Include="Migrations\201507171848252_ugh.Designer.cs">
-      <DependentUpon>201507171848252_ugh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507172334335_createBoardDropDown.cs" />
-    <Compile Include="Migrations\201507172334335_createBoardDropDown.Designer.cs">
-      <DependentUpon>201507172334335_createBoardDropDown.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507180022563_addedPinCategories.cs" />
-    <Compile Include="Migrations\201507180022563_addedPinCategories.Designer.cs">
-      <DependentUpon>201507180022563_addedPinCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507180123251_addedVMs.cs" />
-    <Compile Include="Migrations\201507180123251_addedVMs.Designer.cs">
-      <DependentUpon>201507180123251_addedVMs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507182310129_pinViewsCreated.cs" />
-    <Compile Include="Migrations\201507182310129_pinViewsCreated.Designer.cs">
-      <DependentUpon>201507182310129_pinViewsCreated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507190019297_fixing....cs" />
-    <Compile Include="Migrations\201507190019297_fixing....Designer.cs">
-      <DependentUpon>201507190019297_fixing....cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507190353015_new1.cs" />
-    <Compile Include="Migrations\201507190353015_new1.Designer.cs">
-      <DependentUpon>201507190353015_new1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -315,44 +266,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507171711421_son.resx">
-      <DependentUpon>201507171711421_son.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507171715371_dude.resx">
-      <DependentUpon>201507171715371_dude.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507171722407_buddy.resx">
-      <DependentUpon>201507171722407_buddy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507171740261_addedBoardValidation.resx">
-      <DependentUpon>201507171740261_addedBoardValidation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507171845535_noMoreRemoteValidation.resx">
-      <DependentUpon>201507171845535_noMoreRemoteValidation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507171848252_ugh.resx">
-      <DependentUpon>201507171848252_ugh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507172334335_createBoardDropDown.resx">
-      <DependentUpon>201507172334335_createBoardDropDown.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507180022563_addedPinCategories.resx">
-      <DependentUpon>201507180022563_addedPinCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507180123251_addedVMs.resx">
-      <DependentUpon>201507180123251_addedVMs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507182310129_pinViewsCreated.resx">
-      <DependentUpon>201507182310129_pinViewsCreated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507190019297_fixing....resx">
-      <DependentUpon>201507190019297_fixing....cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507190353015_new1.resx">
-      <DependentUpon>201507190353015_new1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

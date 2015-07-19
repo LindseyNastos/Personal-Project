@@ -9,5 +9,7 @@ namespace Quinterest.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public Pin Pin { get; set; }
+
     }
 }

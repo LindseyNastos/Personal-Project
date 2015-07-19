@@ -13,5 +13,7 @@ namespace Quinterest.Models
 
         public string NewComment { get; set; }
 
+        public Pin Pin { get; set; }
+
     }
 }

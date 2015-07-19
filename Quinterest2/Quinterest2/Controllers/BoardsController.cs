@@ -4,29 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Quinterest.Controllers
+namespace Quinterest2.Controllers
 {
-    public class ExpandedPinsController : Controller
+    public class BoardsController : Controller
     {
-        // GET: ExpandedPins
+        // GET: Boards
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: ExpandedPins/Details/5
+        // GET: Boards/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: ExpandedPins/Create
+        // GET: Boards/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ExpandedPins/Create
+        // POST: Boards/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace Quinterest.Controllers
             }
         }
 
-        // GET: ExpandedPins/Edit/5
+        // GET: Boards/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: ExpandedPins/Edit/5
+        // POST: Boards/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace Quinterest.Controllers
             }
         }
 
-        // GET: ExpandedPins/Delete/5
+        // GET: Boards/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ExpandedPins/Delete/5
+        // POST: Boards/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

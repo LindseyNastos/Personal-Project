@@ -11,7 +11,7 @@ namespace Quinterest.Models
 
         //public Subcategory Subcategories { get; set; }
 
-        public List<Pin> PinsInCategory { get; set; }
+        //public List<Pin> PinsInCategory { get; set; }
     }
 }
 
