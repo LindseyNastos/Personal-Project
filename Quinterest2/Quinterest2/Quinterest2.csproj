@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201507210147423_jonathanRonald.Designer.cs">
       <DependentUpon>201507210147423_jonathanRonald.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507210320083_controllerAdded.cs" />
+    <Compile Include="Migrations\201507210320083_controllerAdded.Designer.cs">
+      <DependentUpon>201507210320083_controllerAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
@@ -195,6 +199,8 @@
     <Compile Include="Models\Pin.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IPinServices.cs" />
+    <Compile Include="Services\PinServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,11 +260,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Pins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Boards\" />
-    <Folder Include="Views\Pins\" />
     <Folder Include="Views\Profiles\" />
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +277,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201507210147423_jonathanRonald.resx">
       <DependentUpon>201507210147423_jonathanRonald.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507210320083_controllerAdded.resx">
+      <DependentUpon>201507210320083_controllerAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,8 @@ namespace Quinterest2.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using CoderCamps;
+    using Quinterest2.Services;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +63,9 @@ namespace Quinterest2.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IGenericRepository>().To<GenericRepository>();
+
+            kernel.Bind<IPinServices>().To<PinServices>();
         }        
     }
 }
