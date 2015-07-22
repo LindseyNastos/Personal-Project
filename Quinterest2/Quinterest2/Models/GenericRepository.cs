@@ -13,7 +13,7 @@ namespace CoderCamps
     public class GenericRepository : IGenericRepository
     {
 
-        private DataContext _dataContext = new DataContext();
+        private ApplicationDbContext _dataContext = new ApplicationDbContext();
 
         /// <summary>
         /// Generic query method

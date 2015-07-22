@@ -9,7 +9,7 @@ namespace Quinterest2.Controllers
 {
     public class ProfilesController : Controller
     {
-        private DataContext _db = new DataContext();
+        
         // GET: Profiles
         public ActionResult Index()
         {

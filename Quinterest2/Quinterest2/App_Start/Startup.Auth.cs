@@ -50,9 +50,9 @@ namespace Quinterest2
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+               consumerKey: "YyfMzbfy2IbeE2oAVq4eng5s4",
+               consumerSecret: "myutZNa2rXHTCv3CKoZKca76w04jssFyod925g1gXgEq4VfRNB");
 
             //app.UseFacebookAuthentication(
             //   appId: "",

@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -188,11 +188,26 @@
     <Compile Include="Migrations\201507210320083_controllerAdded.Designer.cs">
       <DependentUpon>201507210320083_controllerAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507210355172_pins.cs" />
+    <Compile Include="Migrations\201507210355172_pins.Designer.cs">
+      <DependentUpon>201507210355172_pins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507220002556_whatever.cs" />
+    <Compile Include="Migrations\201507220002556_whatever.Designer.cs">
+      <DependentUpon>201507220002556_whatever.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507220048062_twitter.cs" />
+    <Compile Include="Migrations\201507220048062_twitter.Designer.cs">
+      <DependentUpon>201507220048062_twitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507220129020_deleteAction.cs" />
+    <Compile Include="Migrations\201507220129020_deleteAction.Designer.cs">
+      <DependentUpon>201507220129020_deleteAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -202,6 +217,8 @@
     <Compile Include="Services\IPinServices.cs" />
     <Compile Include="Services\PinServices.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\Pins\CreateVM.cs" />
+    <Compile Include="Views\Pins\EditVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -261,6 +278,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Pins\Index.cshtml" />
+    <Content Include="Views\Pins\Create.cshtml" />
+    <Content Include="Views\Pins\Edit.cshtml" />
+    <Content Include="Views\Pins\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,7 +292,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201507210147423_jonathanRonald.resx">
@@ -280,6 +299,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507210320083_controllerAdded.resx">
       <DependentUpon>201507210320083_controllerAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507210355172_pins.resx">
+      <DependentUpon>201507210355172_pins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507220002556_whatever.resx">
+      <DependentUpon>201507220002556_whatever.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507220048062_twitter.resx">
+      <DependentUpon>201507220048062_twitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507220129020_deleteAction.resx">
+      <DependentUpon>201507220129020_deleteAction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
