@@ -66,6 +66,10 @@ namespace Quinterest2.App_Start
             kernel.Bind<IGenericRepository>().To<GenericRepository>();
 
             kernel.Bind<IPinServices>().To<PinServices>();
+
+            kernel.Bind<IApplicationUserServices>().To<ApplicationUserServices>();
+
+            kernel.Bind<IBoardServices>().To<BoardServices>();
         }        
     }
 }

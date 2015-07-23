@@ -7,13 +7,13 @@ namespace Quinterest2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class jonathanRonald : IMigrationMetadata
+    public sealed partial class SendGridTwilioForgotPw : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(jonathanRonald));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SendGridTwilioForgotPw));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507210147423_jonathanRonald"; }
+            get { return "201507221930179_SendGridTwilioForgotPw"; }
         }
         
         string IMigrationMetadata.Source

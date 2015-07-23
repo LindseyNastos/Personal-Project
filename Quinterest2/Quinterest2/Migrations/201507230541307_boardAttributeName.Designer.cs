@@ -7,13 +7,13 @@ namespace Quinterest2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class controllerAdded : IMigrationMetadata
+    public sealed partial class boardAttributeName : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(controllerAdded));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(boardAttributeName));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507210320083_controllerAdded"; }
+            get { return "201507230541307_boardAttributeName"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,6 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Quinterest2.Models
 {
@@ -10,7 +13,26 @@ namespace Quinterest2.Models
     public class ApplicationUser : IdentityUser
     {
 
-        public Profile Profile { get; set; }
+        public string DisplayName { get; set; }
+
+
+        public string ImageUrl { get; set; }
+
+
+        public int NumBoards { get; set; }
+
+
+        public int NumPins { get; set; }
+
+
+        public ICollection<Board> Boards { get; set; }
+
+        public ApplicationUser()
+        {
+            this.Boards = new List<Board>();
+        }
+
+     
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -31,7 +53,7 @@ namespace Quinterest2.Models
         }
 
 
-        public IDbSet<Profile> Profiles { get; set; }
+       
         public IDbSet<Board> Boards { get; set; }
         public IDbSet<Pin> Pins { get; set; }
         public IDbSet<Category> Categories { get; set; }

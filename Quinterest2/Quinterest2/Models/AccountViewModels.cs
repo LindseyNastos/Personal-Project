@@ -64,6 +64,16 @@ namespace Quinterest2.Models
 
     public class RegisterViewModel
     {
+
+
+        [MaxLength(100, ErrorMessage = "*limit: 100 characters")]
+        [Required]
+        [Display(Name = "Display Name")]
+        public string DisplayName { get; set; }
+
+        [Display(Name = "Image URL")]
+        public string ImageUrl { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

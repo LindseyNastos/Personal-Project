@@ -15,17 +15,23 @@ namespace Quinterest2.Models
         [Display(Name = "Board Name")]
         public string BoardName { get; set; }
 
-
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
 
-        public Profile Profile { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
 
+        [Display(Name = "Pins")]
         public int NumPinsOnBoard { get; set; }
 
 
         public List<Pin> Pins { get; set; }
+
+        public Board()
+        {
+            this.Pins = new List<Pin>();
+        }
         
         
         //Maybe add later?

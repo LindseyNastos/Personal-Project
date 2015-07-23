@@ -7,13 +7,13 @@ namespace Quinterest2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class deleteAction : IMigrationMetadata
+    public sealed partial class boardDatatype : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(deleteAction));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(boardDatatype));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507220129020_deleteAction"; }
+            get { return "201507230555520_boardDatatype"; }
         }
         
         string IMigrationMetadata.Source

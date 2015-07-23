@@ -24,6 +24,9 @@ namespace Quinterest2.Models
         public string Website { get; set; }
 
 
+        public int BoardId { get; set; }
+
+
         public Board Board { get; set; }
 
 

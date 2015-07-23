@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Quinterest2.Models.Pin>
+﻿@model IEnumerable<Quinterest2.Models.Board>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.BoardName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShortDescription)
+            @Html.DisplayNameFor(model => model.NumPinsOnBoard)
         </th>
         <th></th>
     </tr>
@@ -26,16 +26,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.BoardName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
+            @Html.DisplayFor(modelItem => item.NumPinsOnBoard)
         </td>
         <td>
-            @Html.ActionLink("Pin It", "PinIt", new { id = item.Id }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })

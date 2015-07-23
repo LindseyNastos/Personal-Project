@@ -18,6 +18,25 @@ namespace Quinterest2.Controllers
             _service = service;
         }
 
+        //GET: Pins/PinIt
+        public ActionResult PinIt(int id)
+        {
+            return View();
+        }
+
+        //POST: Pins/PinIt
+        [HttpPost]
+        public ActionResult PinIt(int id, Pin pin)
+        {
+            _service.PinToBoard(id, pin);
+            return RedirectToAction("Index");
+        }
+
+
+        //Joshua's:
+        //var whatever = User.Identity.GetUserId(something in here)
+
+
         // GET: Pins
         public ActionResult Index()
         {

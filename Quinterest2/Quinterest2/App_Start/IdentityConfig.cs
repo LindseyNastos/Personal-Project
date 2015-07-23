@@ -11,6 +11,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Quinterest2.Models;
+using Twilio;
+using SendGrid;
+using System.Net;
 
 namespace Quinterest2
 {
@@ -18,7 +21,17 @@ namespace Quinterest2
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            //var myMessage = new SendGridMessage();
+            //myMessage.AddTo(message.Destination);
+            //myMessage.From = new System.Net.Mail.MailAddress("LindseyNastos@gmail.com", "Account Activation");
+            //myMessage.Subject = message.Subject;
+            //myMessage.Text = message.Body;
+            //myMessage.Html = message.Body;
+
+            //var credentials = new NetworkCredential("LindseyNastos", "supersecret123");
+
+            //var transportWeb = new Web(credentials);
+            //return transportWeb.DeliverAsync(myMessage);
             return Task.FromResult(0);
         }
     }
@@ -27,7 +40,8 @@ namespace Quinterest2
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your SMS service here to send a text message.
+            var Twilio = new TwilioRestClient("AC872eda3ddcc8820601c969c3ead050c0", "5988ac6777f1961a0827f66be1eb8426");
+            Twilio.SendMessage("4257619991", message.Destination, message.Body);
             return Task.FromResult(0);
         }
     }
@@ -54,7 +68,7 @@ namespace Quinterest2
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = false,
                 RequireUppercase = false,

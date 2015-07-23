@@ -7,13 +7,13 @@ namespace Quinterest2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class twitter : IMigrationMetadata
+    public sealed partial class stephenHelped : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(twitter));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(stephenHelped));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507220048062_twitter"; }
+            get { return "201507231743465_stephenHelped"; }
         }
         
         string IMigrationMetadata.Source

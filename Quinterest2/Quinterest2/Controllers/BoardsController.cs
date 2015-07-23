@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Quinterest2.Models;
+using Quinterest2.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,16 +10,23 @@ namespace Quinterest2.Controllers
 {
     public class BoardsController : Controller
     {
+        private IBoardServices _service;
+
+        public BoardsController(IBoardServices service)
+        {
+            _service = service;
+        }
+
         // GET: Boards
         public ActionResult Index()
         {
-            return View();
+            return View(_service.List());
         }
 
         // GET: Boards/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(_service.Find(id));
         }
 
         // GET: Boards/Create
@@ -28,62 +37,57 @@ namespace Quinterest2.Controllers
 
         // POST: Boards/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Board board)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                _service.Create(board);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Boards/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var original = _service.Find(id.Value);
+            return View(original);
         }
 
         // POST: Boards/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Board board)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                _service.Edit(board);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Boards/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var original = _service.Find(id.Value);
+            return View(original);
         }
 
         // POST: Boards/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        public ActionResult DeleteReally(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _service.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
