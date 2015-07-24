@@ -243,7 +243,6 @@
     <Compile Include="Views\Pins\CreateVM.cs" />
     <Compile Include="Views\Pins\DetailsVM.cs" />
     <Compile Include="Views\Pins\EditVM.cs" />
-    <Compile Include="Views\Pins\PinItVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -309,11 +308,11 @@
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\ApplicationUserView.cshtml" />
     <Content Include="Views\Account\MustConfirm.cshtml" />
-    <Content Include="Views\Boards\Index.cshtml" />
     <Content Include="Views\Boards\Create.cshtml" />
     <Content Include="Views\Boards\Edit.cshtml" />
     <Content Include="Views\Boards\Delete.cshtml" />
-    <Content Include="Views\Pins\PinIt.cshtml" />
+    <Content Include="Views\Pins\Details.cshtml" />
+    <Content Include="Views\Boards\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

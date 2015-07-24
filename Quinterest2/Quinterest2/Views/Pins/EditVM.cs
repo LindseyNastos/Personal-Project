@@ -7,9 +7,9 @@ using System.Web.Mvc;
 
 namespace Quinterest2.Views.Pins
 {
-    public class PinItVM
+    public class EditVM
     {
         public Pin Pin { get; set; }
-        public SelectList Boards { get; set; }
+        public SelectList Categories { get; set; }
     }
 }

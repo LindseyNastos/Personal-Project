@@ -8,6 +8,7 @@ namespace Quinterest2.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Security.Claims;
+    using System.Collections.Generic;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Quinterest2.Models.ApplicationDbContext>
     {
@@ -129,7 +130,24 @@ namespace Quinterest2.Migrations
                 {
                     DisplayName = "Lindsey",
                     UserName = "Lindsey@gmail.com",
-                    Email = "Lindsey@gmail.com"
+                    Email = "Lindsey@gmail.com",
+                    Boards = new List<Board> { 
+                        new Board {
+                            BoardName="If I Had Way Too Much Time On My Hands", 
+                            Description="Stuff I would love to do, but will never have time for, unless I'm procrastinating on my CoderCamps homework...", 
+                            NumPinsOnBoard=167, 
+                            Pins = new List<Pin> {
+                                new Pin {
+                                    Title="Painting Glassware",
+                                    ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/e9/5f/b2/e95fb2616c2de686c783e318b1606c01.jpg",
+                                    CategoryId=categories[6].Id },
+                                new Pin { 
+                                    Title="Deck Decor",
+                                    ImageUrl="https://www.pinterest.com/pin/443323157046323144/",
+                                    CategoryId=categories[15].Id }
+                            }
+                            }
+                        }
                 };
                 userManager.Create(user, "Secret123!");
 

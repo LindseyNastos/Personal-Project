@@ -1,43 +1,37 @@
-﻿@model IEnumerable<Quinterest2.Models.Board>
+﻿@model Quinterest2.Models.Board
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Pins</h2>
+<p>
+    @Model.BoardName
+    <br />
+    @Model.NumPinsOnBoard <text> Pins</text>
+    <br />
+    @Model.Description
+</p>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BoardName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumPinsOnBoard)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
+@foreach (var pin in Model.Pins) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.BoardName)
+            @pin.Title
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            <img src="@pin.ImageUrl" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumPinsOnBoard)
+            @pin.ShortDescription
         </td>
         <td>
-            @Html.ActionLink("View", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=pin.Id }) |
+            @Html.ActionLink("Details", "Details", "Pins", new { id=pin.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=pin.Id })
         </td>
     </tr>
 }

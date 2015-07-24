@@ -1,0 +1,81 @@
+﻿@model Quinterest2.Views.Pins.DetailsVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Html.DisplayNameFor(model => model.Pins.Title)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pins.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pins.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pins.Website)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pins.Website)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pins.CategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pins.CategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pins.ShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pins.ShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pins.LongDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pins.LongDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pins.User.DisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pins.User.DisplayName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <h3>Pin It!</h3>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pins.BoardId, "BoardId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Pins.BoardId, Model.Boards, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Pins.BoardId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    @Html.ActionLink("Pin It", "PinIt", "Pins")
+</p>
+<p>
+    @*should only be able to edit if user viewing == user who pinned*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

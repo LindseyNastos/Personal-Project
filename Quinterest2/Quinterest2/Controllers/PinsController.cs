@@ -56,10 +56,10 @@ namespace Quinterest2.Controllers
         }
 
         // POST: Pins/Details
-        public ActionResult Details(int id)
-        { 
+        //public ActionResult Details(int id)
+        //{ 
             
-        }
+        //}
 
 
         // GET: Pins/Create
@@ -77,14 +77,14 @@ namespace Quinterest2.Controllers
         [HttpPost]
         public ActionResult Create(Pin pin)
         {
-            if (ModelState.IsValid)
-            {
-                _service.Create(pin);
-                if (pin.BoardId == pin.Board.ReferenceId)
-                {
-                    pin.User = this.User.Identity.Name.ToString();
-                }
-                return RedirectToAction("Index");
+            //if (ModelState.IsValid)
+            //{
+            //    _service.Create(pin);
+            //    if (pin.BoardId == pin.Board.ReferenceId)
+            //    {
+            //        pin.User = this.User.Identity.Name.ToString();
+            //    }
+            //    return RedirectToAction("Index");
             }
             return View();
         }
