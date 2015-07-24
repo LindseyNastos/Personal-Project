@@ -22,12 +22,12 @@ namespace Quinterest2.Services
             return _repo.Query<Pin>().Include(p => p.Category).Include(p => p.Board).ToList();
         }
 
-        //tried using auction logic to "add pin to board" like we "added bid to item" but its not working
         //int id is board id
         public void PinToBoard(int id, Pin pin)
         {
             pin.BoardId = id;
             _repo.Add(pin);
+            //_repo.Board.NumPinsOnBoard = _repo.Query<Board>().Where(n => n.BoardId == id).Select(n => n).Count() + 1;
             _repo.SaveChanges();
         }
 
@@ -46,6 +46,11 @@ namespace Quinterest2.Services
         public IList<Category> CategoryList()
         {
             return _repo.Query<Category>().ToList();
+        }
+
+        public IList<Board> BoardList()
+        {
+            return _repo.Query<Board>().ToList();
         }
 
         public void Edit(Pin pin)

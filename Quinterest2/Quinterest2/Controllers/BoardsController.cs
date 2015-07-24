@@ -26,8 +26,11 @@ namespace Quinterest2.Controllers
         // GET: Boards/Details/5
         public ActionResult Details(int id)
         {
+            
             return View(_service.Find(id));
         }
+
+       
 
         // GET: Boards/Create
         public ActionResult Create()
@@ -41,8 +44,9 @@ namespace Quinterest2.Controllers
         {
             if (ModelState.IsValid)
             {
+                board.User = this.User.Identity.Name.ToString();
                 _service.Create(board);
-                return RedirectToAction("Index");
+                return RedirectToAction("ApplicationUserView", "ApplicationUsers");
             }
             return View();
         }

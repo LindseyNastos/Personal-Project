@@ -40,6 +40,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Pin.BoardId, "BoardId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Pin.BoardId, Model.Boards, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Pin.BoardId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Pin.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Pin.CategoryId, Model.Categories, new { @class = "form-control" } )

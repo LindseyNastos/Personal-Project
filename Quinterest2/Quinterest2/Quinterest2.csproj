@@ -212,6 +212,18 @@
     <Compile Include="Migrations\201507231743465_stephenHelped.Designer.cs">
       <DependentUpon>201507231743465_stephenHelped.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507232248342_addedBoardListToVM.cs" />
+    <Compile Include="Migrations\201507232248342_addedBoardListToVM.Designer.cs">
+      <DependentUpon>201507232248342_addedBoardListToVM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507240451428_BoardReferenceId.cs" />
+    <Compile Include="Migrations\201507240451428_BoardReferenceId.Designer.cs">
+      <DependentUpon>201507240451428_BoardReferenceId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507240524586_pinUser.cs" />
+    <Compile Include="Migrations\201507240524586_pinUser.Designer.cs">
+      <DependentUpon>201507240524586_pinUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
@@ -229,6 +241,7 @@
     <Compile Include="Services\ApplicationUserServices.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Pins\CreateVM.cs" />
+    <Compile Include="Views\Pins\DetailsVM.cs" />
     <Compile Include="Views\Pins\EditVM.cs" />
     <Compile Include="Views\Pins\PinItVM.cs" />
   </ItemGroup>
@@ -300,6 +313,7 @@
     <Content Include="Views\Boards\Create.cshtml" />
     <Content Include="Views\Boards\Edit.cshtml" />
     <Content Include="Views\Boards\Delete.cshtml" />
+    <Content Include="Views\Pins\PinIt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,6 +339,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507231743465_stephenHelped.resx">
       <DependentUpon>201507231743465_stephenHelped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507232248342_addedBoardListToVM.resx">
+      <DependentUpon>201507232248342_addedBoardListToVM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507240451428_BoardReferenceId.resx">
+      <DependentUpon>201507240451428_BoardReferenceId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507240524586_pinUser.resx">
+      <DependentUpon>201507240524586_pinUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

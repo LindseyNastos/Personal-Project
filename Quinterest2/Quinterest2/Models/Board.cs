@@ -15,18 +15,24 @@ namespace Quinterest2.Models
         [Display(Name = "Board Name")]
         public string BoardName { get; set; }
 
+
+        public int ReferenceId { get; set; }
+
+
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public string User { get; set; }
+
 
 
         [Display(Name = "Pins")]
         public int NumPinsOnBoard { get; set; }
 
 
-        public List<Pin> Pins { get; set; }
+        public ICollection<Pin> Pins { get; set; }
+
 
         public Board()
         {

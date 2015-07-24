@@ -21,7 +21,11 @@ namespace Quinterest2.Controllers
         //GET: Pins/PinIt
         public ActionResult PinIt(int id)
         {
-            return View();
+            var vm = new PinItVM
+            {
+                Boards = new SelectList(_service.BoardList(), "Id", "BoardName")
+            };
+            return View(vm);
         }
 
         //POST: Pins/PinIt
@@ -33,28 +37,38 @@ namespace Quinterest2.Controllers
         }
 
 
-        //Joshua's:
-        //var whatever = User.Identity.GetUserId(something in here)
-
-
         // GET: Pins
         public ActionResult Index()
         {
             return View(_service.List());
         }
 
+
         // GET: Pins/Details/5
         public ActionResult Details(int id)
         {
-            return View(_service.Find(id));
+            var vm = new DetailsVM
+            {
+                Boards = new SelectList(_service.BoardList(), "Id", "BoardName"),
+                Pins = _service.Find(id)
+            };
+            return View(vm);
         }
+
+        // POST: Pins/Details
+        public ActionResult Details(int id)
+        { 
+            
+        }
+
 
         // GET: Pins/Create
         public ActionResult Create()
         {
             var vm = new CreateVM
             {
-                Categories = new SelectList(_service.CategoryList(), "Id", "Name")
+                Categories = new SelectList(_service.CategoryList(), "Id", "Name"),
+                Boards = new SelectList(_service.BoardList(), "Id", "BoardName")
             };
             return View(vm);
         }
@@ -66,6 +80,10 @@ namespace Quinterest2.Controllers
             if (ModelState.IsValid)
             {
                 _service.Create(pin);
+                if (pin.BoardId == pin.Board.ReferenceId)
+                {
+                    pin.User = this.User.Identity.Name.ToString();
+                }
                 return RedirectToAction("Index");
             }
             return View();

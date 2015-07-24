@@ -47,6 +47,8 @@ namespace Quinterest2.Models
         [DataType(DataType.MultilineText)]
         public string LongDescription { get; set; }
 
+        public string User { get; set; }
+
 
         //Maybe add later?
         //public string UserWhoPinned { get; set; }
