@@ -23,7 +23,10 @@ namespace Quinterest2.Models
         public string Description { get; set; }
 
 
-        public string User { get; set; }
+        public ApplicationUser User { get; set; }
+
+
+        public string UserId { get; set; }
 
 
 

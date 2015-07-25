@@ -224,6 +224,14 @@
     <Compile Include="Migrations\201507240524586_pinUser.Designer.cs">
       <DependentUpon>201507240524586_pinUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507241913487_neww.cs" />
+    <Compile Include="Migrations\201507241913487_neww.Designer.cs">
+      <DependentUpon>201507241913487_neww.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507250536220_anotherMig.cs" />
+    <Compile Include="Migrations\201507250536220_anotherMig.Designer.cs">
+      <DependentUpon>201507250536220_anotherMig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
@@ -347,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507240524586_pinUser.resx">
       <DependentUpon>201507240524586_pinUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241913487_neww.resx">
+      <DependentUpon>201507241913487_neww.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507250536220_anotherMig.resx">
+      <DependentUpon>201507250536220_anotherMig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

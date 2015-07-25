@@ -4,18 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Pins</h2>
+<h2>@Model.BoardName <text> Board</text></h2>
 <p>
-    @Model.BoardName
-    <br />
     @Model.NumPinsOnBoard <text> Pins</text>
     <br />
     @Model.Description
 </p>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Pin", "Create", "Pins") |
+    @Html.ActionLink("Edit Board", "Edit", new { id = @Model.Id }) |
+    @Html.ActionLink("Delete Board", "Delete", new { id = @Model.Id })
 </p>
+
 <table class="table">
+
+
 
 @foreach (var pin in Model.Pins) {
     <tr>
@@ -23,15 +26,13 @@
             @pin.Title
         </td>
         <td>
-            <img src="@pin.ImageUrl" />
+            <img class="pinImages" src="@pin.ImageUrl" />
         </td>
         <td>
             @pin.ShortDescription
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=pin.Id }) |
-            @Html.ActionLink("Details", "Details", "Pins", new { id=pin.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=pin.Id })
+            @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)
         </td>
     </tr>
 }

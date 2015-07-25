@@ -11,5 +11,6 @@ namespace Quinterest2.Views.Pins
     {
         public Pin Pins { get; set; }
         public SelectList Boards { get; set; }
+        
     }
 }

@@ -133,9 +133,9 @@ namespace Quinterest2.Migrations
                     Email = "Lindsey@gmail.com",
                     Boards = new List<Board> { 
                         new Board {
-                            BoardName="If I Had Way Too Much Time On My Hands", 
-                            Description="Stuff I would love to do, but will never have time for, unless I'm procrastinating on my CoderCamps homework...", 
-                            NumPinsOnBoard=167, 
+                            BoardName="Cool Stuff", 
+                            Description="Awesome stuff that I wanted to pin.", 
+                            NumPinsOnBoard=2, 
                             Pins = new List<Pin> {
                                 new Pin {
                                     Title="Painting Glassware",
@@ -143,19 +143,17 @@ namespace Quinterest2.Migrations
                                     CategoryId=categories[6].Id },
                                 new Pin { 
                                     Title="Deck Decor",
-                                    ImageUrl="https://www.pinterest.com/pin/443323157046323144/",
+                                    ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/06/87/90/06879025510e57447329b0919af357b4.jpg",
                                     CategoryId=categories[15].Id }
                             }
-                            }
                         }
+                    }
                 };
                 userManager.Create(user, "Secret123!");
 
                 // add claims
                 userManager.AddClaim(user.Id, new Claim("CanDeleteFlaggedPins", "true"));
             }
-
-
         }
     }
 }

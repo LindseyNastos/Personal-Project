@@ -2,6 +2,7 @@
 using Quinterest2.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web;
 
@@ -15,31 +16,27 @@ namespace Quinterest2.Services
         {
             _repo = repo;
         }
-
       
         public IList<Pin> List()
         {
             return _repo.Query<Pin>().Include(p => p.Category).Include(p => p.Board).ToList();
         }
 
-        //int id is board id
-        public void PinToBoard(int id, Pin pin)
-        {
-            pin.BoardId = id;
-            _repo.Add(pin);
-            //_repo.Board.NumPinsOnBoard = _repo.Query<Board>().Where(n => n.BoardId == id).Select(n => n).Count() + 1;
-            _repo.SaveChanges();
-        }
-
-
         public Pin Find(int id)
         {
-            return _repo.Find<Pin>(id);
+            return _repo.Query<Pin>().Include(p => p.Board).Where(p => p.Id == id).FirstOrDefault();
         }
 
-        public void Create(Pin pin)
+        public Board FindBoard(int id)
+        {
+            return _repo.Query<Board>().Where(p => p.Id == id).FirstOrDefault();
+        }
+
+        public void Create(Pin pin, string userId)
         {
             _repo.Add<Pin>(pin);
+            var allPins = _repo.Query<Pin>().Where(p => p.UserId == userId).Count() + 1;
+            pin.User.NumPins = allPins;
             _repo.SaveChanges();
         }
 
@@ -48,9 +45,29 @@ namespace Quinterest2.Services
             return _repo.Query<Category>().ToList();
         }
 
-        public IList<Board> BoardList()
+        public IList<Board> BoardList(string userId)
         {
-            return _repo.Query<Board>().ToList();
+            return _repo.Query<Board>().Where(b => b.UserId == userId).ToList();
+        }
+
+        public void PinIt(Pin pin, ApplicationUser user, Board board)
+        {
+
+            var original = new Pin
+            {
+                Title = pin.Title,
+                Category = pin.Category,
+                ImageUrl = pin.ImageUrl,
+                Website = pin.Website,
+                ShortDescription = pin.ShortDescription,
+                LongDescription = pin.LongDescription,
+                Board = pin.Board,
+                BoardId = pin.BoardId,
+                User = user
+            };
+
+            _repo.Add<Pin>(original);
+            _repo.SaveChanges();
         }
 
         public void Edit(Pin pin)

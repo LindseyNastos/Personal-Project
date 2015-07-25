@@ -4,42 +4,37 @@
     ViewBag.Title = "ProfileView";
 }
 
-<h2>ProfileView</h2>
+<h2>@Model.DisplayName</h2>
 
 
 <p>
-   @Model.DisplayName
-   <img src="@Model.ImageUrl" />
-   @Model.NumBoards
-   @Model.NumPins
+   <img class="pinImages" src="@Model.ImageUrl" />
+    <hr />
+   @Model.NumBoards <text> Boards</text> | 
+   @Model.NumPins <text> Pins</text>
 </p>
-
+<p>
+    @Html.ActionLink("Edit Profile", "Edit") |
+    @Html.ActionLink("Create Board", "Create", "Boards") |
+    @Html.ActionLink("Create Pin", "Create", "Pins")
+</p>
 <hr />
-
-<p>
-    @Html.ActionLink("Create Board", "Create", "Boards")
-</p>
-
 <table class="table">
    
-
-@foreach (var item in Model.Boards)
+@foreach (var board in Model.Boards)
 {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.BoardName)
+            @board.BoardName
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @board.Description
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumPinsOnBoard)
+            @board.NumPinsOnBoard
         </td>
-       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("View", "Index", "Boards", new { id=board.Id }, null)
         </td>
     </tr>
 }

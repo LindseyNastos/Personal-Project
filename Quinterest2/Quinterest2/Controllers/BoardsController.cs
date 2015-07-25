@@ -2,6 +2,7 @@
 using Quinterest2.Services;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,19 +19,16 @@ namespace Quinterest2.Controllers
         }
 
         // GET: Boards
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View(_service.List());
+            return View(_service.Find(id));
         }
 
         // GET: Boards/Details/5
         public ActionResult Details(int id)
         {
-            
             return View(_service.Find(id));
         }
-
-       
 
         // GET: Boards/Create
         public ActionResult Create()
@@ -44,22 +42,19 @@ namespace Quinterest2.Controllers
         {
             if (ModelState.IsValid)
             {
-                board.User = this.User.Identity.Name.ToString();
-                _service.Create(board);
+                var userId = User.Identity.GetUserId();
+                board.UserId = userId;
+                _service.Create(board, userId);
                 return RedirectToAction("ApplicationUserView", "ApplicationUsers");
             }
             return View();
         }
 
         // GET: Boards/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
-            var original = _service.Find(id.Value);
-            return View(original);
+            var model = _service.Find(id);
+            return View(model);
         }
 
         // POST: Boards/Edit/5
@@ -69,19 +64,15 @@ namespace Quinterest2.Controllers
             if (ModelState.IsValid)
             {
                 _service.Edit(board);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = board.Id });
             }
             return View();
         }
 
         // GET: Boards/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
-            var original = _service.Find(id.Value);
+            var original = _service.Find(id);
             return View(original);
         }
 
@@ -90,8 +81,9 @@ namespace Quinterest2.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteReally(int id)
         {
-            _service.Delete(id);
-            return RedirectToAction("Index");
+            var userId = User.Identity.GetUserId();
+            _service.Delete(id, userId);
+            return RedirectToAction("ApplicationUserView", "ApplicationUsers");
         }
     }
 }
