@@ -23,6 +23,34 @@ textarea {
     max-width: 280px;
 }
 
-.pinImages {
-    height:150px;
+/*.pinImages {
+    max-width:150px;
+}*/
+
+.expandedPinImage {
+    max-width: 500px;
+    min-height:400px;
+    padding: 10px;
+    border: 2px solid #2c3e50;
+    position: relative;
+    top: 25px;
+
+}
+
+.smallPinDiv {
+    height:300px;
+    background-color:rgba(149, 165, 166, 0.15);
+    padding:5px;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+}
+
+.smallPinImage {
+    max-height:175px;
+    max-width:100%;
+}
+
+.profileImage {
+    max-width:175px;
+    max-height:175px;
 }

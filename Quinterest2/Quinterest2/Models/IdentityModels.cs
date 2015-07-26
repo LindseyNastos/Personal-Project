@@ -27,12 +27,14 @@ namespace Quinterest2.Models
 
         public ICollection<Board> Boards { get; set; }
 
+        public ICollection<Pin> Pins { get; set; }
+
+
         public ApplicationUser()
         {
             this.Boards = new List<Board>();
+            this.Pins = new List<Pin>();
         }
-
-     
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

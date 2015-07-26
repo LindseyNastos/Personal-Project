@@ -3,14 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace Quinterest2.Views.Pins
 {
     public class DetailsVM
     {
-        public Pin Pins { get; set; }
-        public SelectList Boards { get; set; }
-        
+        public Pin Pin { get; set; }
+
+        public ApplicationUser CurrentUser { get; set; }
+
+        public string PinnerDisplayName { get; set; }
+
     }
 }

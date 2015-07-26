@@ -3,58 +3,53 @@
 @{
     ViewBag.Title = "Details";
 }
+<div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-7">
 
-    <h2>@Model.Pins.Title</h2>
-    <div>
-        <dl class="dl-horizontal">
+            <img class="expandedPinImage" src="@Html.DisplayFor(model => model.Pin.ImageUrl)" />
 
-            <dd>
-                <img src="@Html.DisplayFor(model => model.Pins.ImageUrl)" />
-            </dd>
+        </div>
+        <div class="col-sm-5">
 
-            <dd>
-                @Html.DisplayFor(model => model.Pins.Website)
-            </dd>
+            <hr style="border-color:white" />
+            <h2>@Model.Pin.Title</h2>
 
-            <dd>
-                <em>@Html.DisplayFor(model => model.Pins.ShortDescription)</em>
-            </dd>
+            <hr style="border-color:white" />
+            <a href="model.Pin.Website">@Html.DisplayFor(model => model.Pin.Website)</a>
+            <br />
+            <hr style="border-color:white" />
+
+            <em>@Html.DisplayFor(model => model.Pin.ShortDescription)</em>
+            <br />
+            <hr style="border-color:white" />
+            @Html.DisplayFor(model => model.Pin.LongDescription)
             <hr />
+            <strong><text>Pinned by </text>@Html.DisplayFor(model => model.PinnerDisplayName)</strong>
 
-            <dd>
-                @Html.DisplayFor(model => model.Pins.LongDescription)
-            </dd>
-
-            <dd>
-                <text>Pinned by </text>@Html.DisplayFor(model => model.Pins.User.DisplayName)
-            </dd>
-
-        </dl>
+        </div>
     </div>
 
-    <p>
-        <h4>Pin It!</h4>
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.Pins.BoardId, "Board", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Pins.BoardId, Model.Boards, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Pins.BoardId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <br />
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Pin It" class="btn btn-default" />
-            </div>
-        </div>
-    </p>
-}
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+    </div>
+    <div class="col-sm-5">
+        @if (Model.CurrentUser.DisplayName == Model.PinnerDisplayName)
+        {
+            <p>
+                @Html.ActionLink("Edit Pin", "Edit", new { id = Model.Pin.Id }) <text> | </text>
+                @Html.ActionLink("Delete Pin", "Delete", new { id = Model.Pin.Id }) <text> | </text>
+                @Html.ActionLink("Back To All Pins", "Index")
+            </p>
+        }
+        else
+        {
+            <p>
+                @Html.ActionLink("Pin It!", "PinItView", new { id = Model.Pin.Id }) |
+                @Html.ActionLink("Back To All Pins", "Index")
+            </p>
+        }
+    </div>
+</div>

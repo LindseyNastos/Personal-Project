@@ -36,18 +36,16 @@ namespace Quinterest2.Models
         public Category Category { get; set; }
 
 
-        [MaxLength(150, ErrorMessage = "*limit: 150 characters")]
+        [MaxLength(150, ErrorMessage = "*limit: 30 characters")]
         [Display(Name = "Short Description")]
         [DataType(DataType.MultilineText)]
         public string ShortDescription { get; set; }
 
 
-        [MaxLength(1000, ErrorMessage = "*limit: 1000 characters")]
+        [MaxLength(1000, ErrorMessage = "*limit: 5000 characters")]
         [Display(Name = "Long Description")]
         [DataType(DataType.MultilineText)]
         public string LongDescription { get; set; }
-
-        public ApplicationUser User { get; set; }
 
         public string UserId { get; set; }
 

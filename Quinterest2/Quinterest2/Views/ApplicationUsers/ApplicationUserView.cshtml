@@ -6,37 +6,39 @@
 
 <h2>@Model.DisplayName</h2>
 
-
-<p>
-   <img class="pinImages" src="@Model.ImageUrl" />
-    <hr />
-   @Model.NumBoards <text> Boards</text> | 
-   @Model.NumPins <text> Pins</text>
-</p>
-<p>
-    @Html.ActionLink("Edit Profile", "Edit") |
-    @Html.ActionLink("Create Board", "Create", "Boards") |
-    @Html.ActionLink("Create Pin", "Create", "Pins")
-</p>
+<div class="row">
+    <div class="col-sm-2">
+        <img class="profileImage" src="@Model.ImageUrl" />
+    </div>
+    <div class="col-sm-10">
+        <hr style="border-color:white" />
+        <hr style="border-color:white" />
+        <hr style="border-color:white" />
+        <hr style="border-color:white" />
+        <hr style="border-color:white" />
+        @Model.NumBoards <text> Boards</text> |
+        @Model.NumPins <text> Pins</text>
+        </p>
+        <p>
+            @Html.ActionLink("Edit Profile", "Edit") |
+            @Html.ActionLink("Create Board", "Create", "Boards") |
+            @Html.ActionLink("Create Pin", "Create", "Pins")
+        </p>
+    </div>
+</div>
 <hr />
-<table class="table">
-   
-@foreach (var board in Model.Boards)
-{
-    <tr>
-        <td>
-            @board.BoardName
-        </td>
-        <td>
-            @board.Description
-        </td>
-        <td>
-            @board.NumPinsOnBoard
-        </td>
-        <td>
-            @Html.ActionLink("View", "Index", "Boards", new { id=board.Id }, null)
-        </td>
-    </tr>
-}
+    @foreach (var board in Model.Boards)
+    {
+        <div class="col-sm-3 smallPinDiv">
 
-</table>
+            <h4>@Html.DisplayFor(modelItem => board.BoardName)</h4>
+            <img class="smallPinImage" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
+            <br />
+            <hr />
+            @Html.DisplayFor(modelItem => board.Description)
+            <br />
+            @Html.DisplayFor(modelItem => board.NumPinsOnBoard) <text> Pins</text> |
+            @Html.ActionLink("View", "Index", "Boards", new { id = board.Id }, null)
+
+        </div>
+    }

@@ -30,41 +30,67 @@ namespace Quinterest2.Controllers
         // GET: Pins/Details/5
         public ActionResult Details(int id)
         {
-
-            var user = this.User.Identity.GetUserId();
+            //gets current user's id
+            var userId = this.User.Identity.GetUserId();
+            //gets pin's user's id
+            var pinUserId = _service.FindPinUserId(id);
+ 
             var vm = new DetailsVM
             {
-                Pins = _service.Find(id),
+                //holds pin's user's display name
+                PinnerDisplayName = _service.FindUserName(pinUserId),
+                //holds selected pin
+                Pin = _service.Find(id),
+                //holds current user's id
+                CurrentUser = _service.FindUser(userId)
+            };
+           
+
+            return View(vm);
+        }
+
+      
+
+        // Get: Pins/PinItView
+        public ActionResult PinItView(int id)
+        {
+            var user = this.User.Identity.GetUserId();
+            var vm = new PinItViewVM
+            {
+                Categories = new SelectList(_service.CategoryList(), "Id", "Name"),
                 Boards = new SelectList(_service.BoardList(user), "Id", "BoardName"),
+                Pin = _service.Find(id)
             };
 
             return View(vm);
         }
 
-        // POST: Pins/Details
+        // POST: Pins/PinItView
         [HttpPost]
-        public ActionResult Details(Pin pin, ApplicationUser user)
+        public ActionResult PinItView(Pin pin)
         {
-            if (ModelState.IsValid)
-            {
-                
-                var board = pin.Board;
-                _service.PinIt(pin, user, board);
-                return RedirectToAction("Index");
-            }
-            return View();
+            var userId = this.User.Identity.GetUserId();
+            var boardId = pin.BoardId;
+            _service.PinIt(pin, userId, boardId);
+            return RedirectToAction("Details", new { id = pin.Id });
         }
-
 
         // GET: Pins/Create
         public ActionResult Create()
         {
-            var user = this.User.Identity.GetUserId();
+            var userId = this.User.Identity.GetUserId();
             var vm = new CreateVM
             {
                 Categories = new SelectList(_service.CategoryList(), "Id", "Name"),
-                Boards = new SelectList(_service.BoardList(user), "Id", "BoardName")
+                Boards = new SelectList(_service.BoardList(userId), "Id", "BoardName")
             };
+
+            var user = _service.FindUser(userId);
+            if (user.NumBoards == 0)
+            { 
+                return RedirectToAction("Create", "Boards");
+            }
+
             return View(vm);
         }
 
@@ -76,27 +102,23 @@ namespace Quinterest2.Controllers
             {
                 var userId = this.User.Identity.GetUserId();
                 pin.UserId = userId;
-                _service.Create(pin, userId);
-                var id = pin.BoardId;
-                return RedirectToAction("Index", "Boards", new { id });
+                var boardId = pin.BoardId;
+                _service.Create(pin, userId, boardId);
+                return RedirectToAction("Index", "Boards", new { id = boardId });
             }
             return View();
         }
 
          //GET: Pins/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
-
+            var user = this.User.Identity.GetUserId();
             var vm = new EditVM
             {
                 Categories = new SelectList(_service.CategoryList(), "Id", "Name"),
-                Pin = _service.Find(id.Value)
+                Pin = _service.Find(id),
+                Boards = new SelectList(_service.BoardList(user), "Id", "BoardName")
             };
-
             return View(vm);
         }
 
@@ -129,9 +151,10 @@ namespace Quinterest2.Controllers
         public ActionResult DeleteReally(int id)
         {
             
-            var board = _service.Find(id).BoardId;
-            _service.Delete(id);
-            return RedirectToAction("Index", "Boards", new { id = board });
+            var boardId = _service.Find(id).BoardId;
+            var userId = this.User.Identity.GetUserId();
+            _service.Delete(id, userId, boardId);
+            return RedirectToAction("Index", "Boards", new { id = boardId });
         }
     }
 }

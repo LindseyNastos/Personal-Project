@@ -7,13 +7,13 @@ namespace Quinterest2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class BoardReferenceId : IMigrationMetadata
+    public sealed partial class fixDbAgain : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(BoardReferenceId));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixDbAgain));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507240451428_BoardReferenceId"; }
+            get { return "201507262054161_fixDbAgain"; }
         }
         
         string IMigrationMetadata.Source

@@ -15,11 +15,12 @@ namespace Quinterest2.Models
         [Display(Name = "Board Name")]
         public string BoardName { get; set; }
 
-
-        public int ReferenceId { get; set; }
+        [Required(ErrorMessage="*required")]
+        public string ImageUrl { get; set; }
 
 
         [DataType(DataType.MultilineText)]
+        [MaxLength(30, ErrorMessage = "*limit: 30 characters")]
         public string Description { get; set; }
 
 

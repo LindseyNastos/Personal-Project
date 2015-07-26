@@ -13,28 +13,23 @@
 <p>
     @Html.ActionLink("Create New Pin", "Create", "Pins") |
     @Html.ActionLink("Edit Board", "Edit", new { id = @Model.Id }) |
-    @Html.ActionLink("Delete Board", "Delete", new { id = @Model.Id })
+    @Html.ActionLink("Delete Board", "Delete", new { id = @Model.Id }) |
+    @Html.ActionLink("Back to Profile", "ApplicationUserView", "ApplicationUsers")
 </p>
 
-<table class="table">
+@foreach (var pin in Model.Pins)
+{
+    <div class="col-sm-3 smallPinDiv">
 
+        <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
+        <br />
 
+        <img class="smallPinImage" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
+        <br />
+        @Html.DisplayFor(modelItem => pin.ShortDescription)
+        <br />
+        @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)
 
-@foreach (var pin in Model.Pins) {
-    <tr>
-        <td>
-            @pin.Title
-        </td>
-        <td>
-            <img class="pinImages" src="@pin.ImageUrl" />
-        </td>
-        <td>
-            @pin.ShortDescription
-        </td>
-        <td>
-            @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)
-        </td>
-    </tr>
+    </div>
 }
 
-</table>

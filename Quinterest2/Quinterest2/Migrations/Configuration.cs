@@ -59,63 +59,6 @@ namespace Quinterest2.Migrations
 
             context.Categories.AddOrUpdate(c => c.Name, categories);
 
-            //var boards = new Board[]
-            //{
-            //    new Board {
-            //        BoardName="My Dream Home", 
-            //        Description="Someday when I'm a rich web developer and swimming in cash, I'll have a house with all the stuff on this board :P", 
-            //        NumPinsOnBoard=46,
-            //    },
-            //    new Board {
-            //        BoardName="Fast Cars",
-            //        Description="Nuff said.", 
-            //        NumPinsOnBoard=11
-            //    },
-            //    new Board {
-            //        BoardName="If I Had Way Too Much Time On My Hands", 
-            //        Description="Stuff I would love to do, but will never have time for, unless I'm procrastinating on my CoderCamps homework...", 
-            //        NumPinsOnBoard=167
-            //    },
-            //    new Board {
-            //        BoardName="Celebrity Crushes", 
-            //        Description="No one else can see this board!", 
-            //        NumPinsOnBoard=22
-            //    },
-            //};
-            //context.Boards.AddOrUpdate(b => b.BoardName, boards);
-
-
-
-            //var pins = new Pin[]
-            //{
-            //    new Pin {
-            //        Title="Deck Decor",
-            //        ImageUrl="https://www.pinterest.com/pin/443323157046323144/",
-            //        CategoryId=categories[15].Id,
-            //        Board=boards[0]
-            //    },
-            //    new Pin {
-            //        Title="Trivoli, Lazio, Italy",
-            //        ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/b5/b0/68/b5b0686921244cdd7106668228392045.jpg",
-            //        CategoryId=categories[27].Id,
-            //        Board=boards[2]
-            //    },
-            //    new Pin {
-            //        Title="Painting Glassware",
-            //        ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/e9/5f/b2/e95fb2616c2de686c783e318b1606c01.jpg",
-            //        CategoryId=categories[6].Id,
-            //        Board=boards[1]
-            //    }
-            //};
-
-            //context.Pins.AddOrUpdate(p => p.Title, pins);
-
-            
-
-
-           
-
-
 
 
             var userStore = new UserStore<ApplicationUser>(context);
@@ -131,23 +74,26 @@ namespace Quinterest2.Migrations
                     DisplayName = "Lindsey",
                     UserName = "Lindsey@gmail.com",
                     Email = "Lindsey@gmail.com",
-                    Boards = new List<Board> { 
-                        new Board {
-                            BoardName="Cool Stuff", 
-                            Description="Awesome stuff that I wanted to pin.", 
-                            NumPinsOnBoard=2, 
-                            Pins = new List<Pin> {
-                                new Pin {
-                                    Title="Painting Glassware",
-                                    ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/e9/5f/b2/e95fb2616c2de686c783e318b1606c01.jpg",
-                                    CategoryId=categories[6].Id },
-                                new Pin { 
-                                    Title="Deck Decor",
-                                    ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/06/87/90/06879025510e57447329b0919af357b4.jpg",
-                                    CategoryId=categories[15].Id }
-                            }
-                        }
-                    }
+                    //NumBoards = 1,
+                    //NumPins = 2,
+                    //Boards = new List<Board> { 
+                    //    new Board {
+                    //        BoardName="Cool Stuff", 
+                    //        ImageUrl="https://s-media-cache-ak0.pinimg.com/236x/3c/0a/ac/3c0aac353c75db51a3d10d208e0e67bc.jpg",
+                    //        Description="Awesome stuff that I wanted to pin.",  
+                    //        NumPinsOnBoard = 2,
+                    //        Pins = new List<Pin> {
+                    //            new Pin {
+                    //                Title="Painting Glassware",
+                    //                ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/e9/5f/b2/e95fb2616c2de686c783e318b1606c01.jpg",
+                    //                CategoryId=categories[6].Id },
+                    //            new Pin { 
+                    //                Title="Deck Decor",
+                    //                ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/06/87/90/06879025510e57447329b0919af357b4.jpg",
+                    //                CategoryId=categories[15].Id }
+                    //        }
+                    //    }
+                    //}
                 };
                 userManager.Create(user, "Secret123!");
 

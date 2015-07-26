@@ -192,45 +192,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507221718326_new.cs" />
-    <Compile Include="Migrations\201507221718326_new.Designer.cs">
-      <DependentUpon>201507221718326_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507221930179_SendGridTwilioForgotPw.cs" />
-    <Compile Include="Migrations\201507221930179_SendGridTwilioForgotPw.Designer.cs">
-      <DependentUpon>201507221930179_SendGridTwilioForgotPw.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507230541307_boardAttributeName.cs" />
-    <Compile Include="Migrations\201507230541307_boardAttributeName.Designer.cs">
-      <DependentUpon>201507230541307_boardAttributeName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507230555520_boardDatatype.cs" />
-    <Compile Include="Migrations\201507230555520_boardDatatype.Designer.cs">
-      <DependentUpon>201507230555520_boardDatatype.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507231743465_stephenHelped.cs" />
-    <Compile Include="Migrations\201507231743465_stephenHelped.Designer.cs">
-      <DependentUpon>201507231743465_stephenHelped.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507232248342_addedBoardListToVM.cs" />
-    <Compile Include="Migrations\201507232248342_addedBoardListToVM.Designer.cs">
-      <DependentUpon>201507232248342_addedBoardListToVM.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507240451428_BoardReferenceId.cs" />
-    <Compile Include="Migrations\201507240451428_BoardReferenceId.Designer.cs">
-      <DependentUpon>201507240451428_BoardReferenceId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507240524586_pinUser.cs" />
-    <Compile Include="Migrations\201507240524586_pinUser.Designer.cs">
-      <DependentUpon>201507240524586_pinUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241913487_neww.cs" />
-    <Compile Include="Migrations\201507241913487_neww.Designer.cs">
-      <DependentUpon>201507241913487_neww.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507250536220_anotherMig.cs" />
-    <Compile Include="Migrations\201507250536220_anotherMig.Designer.cs">
-      <DependentUpon>201507250536220_anotherMig.cs</DependentUpon>
+    <Compile Include="Migrations\201507262054161_fixDbAgain.cs" />
+    <Compile Include="Migrations\201507262054161_fixDbAgain.Designer.cs">
+      <DependentUpon>201507262054161_fixDbAgain.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -251,6 +215,7 @@
     <Compile Include="Views\Pins\CreateVM.cs" />
     <Compile Include="Views\Pins\DetailsVM.cs" />
     <Compile Include="Views\Pins\EditVM.cs" />
+    <Compile Include="Views\Pins\PinItViewVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -321,6 +286,7 @@
     <Content Include="Views\Boards\Delete.cshtml" />
     <Content Include="Views\Pins\Details.cshtml" />
     <Content Include="Views\Boards\Index.cshtml" />
+    <Content Include="Views\Pins\PinItView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,35 +298,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507221718326_new.resx">
-      <DependentUpon>201507221718326_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507221930179_SendGridTwilioForgotPw.resx">
-      <DependentUpon>201507221930179_SendGridTwilioForgotPw.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507230541307_boardAttributeName.resx">
-      <DependentUpon>201507230541307_boardAttributeName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507230555520_boardDatatype.resx">
-      <DependentUpon>201507230555520_boardDatatype.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507231743465_stephenHelped.resx">
-      <DependentUpon>201507231743465_stephenHelped.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507232248342_addedBoardListToVM.resx">
-      <DependentUpon>201507232248342_addedBoardListToVM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507240451428_BoardReferenceId.resx">
-      <DependentUpon>201507240451428_BoardReferenceId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507240524586_pinUser.resx">
-      <DependentUpon>201507240524586_pinUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241913487_neww.resx">
-      <DependentUpon>201507241913487_neww.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507250536220_anotherMig.resx">
-      <DependentUpon>201507250536220_anotherMig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507262054161_fixDbAgain.resx">
+      <DependentUpon>201507262054161_fixDbAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

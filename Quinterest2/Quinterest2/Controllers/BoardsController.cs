@@ -33,6 +33,7 @@ namespace Quinterest2.Controllers
         // GET: Boards/Create
         public ActionResult Create()
         {
+           
             return View();
         }
 
@@ -42,7 +43,7 @@ namespace Quinterest2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userId = User.Identity.GetUserId();
+                var userId = this.User.Identity.GetUserId();
                 board.UserId = userId;
                 _service.Create(board, userId);
                 return RedirectToAction("ApplicationUserView", "ApplicationUsers");
@@ -81,7 +82,7 @@ namespace Quinterest2.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteReally(int id)
         {
-            var userId = User.Identity.GetUserId();
+            var userId = this.User.Identity.GetUserId();
             _service.Delete(id, userId);
             return RedirectToAction("ApplicationUserView", "ApplicationUsers");
         }

@@ -5,12 +5,15 @@ namespace Quinterest2.Services
     {
         System.Collections.Generic.IList<Quinterest2.Models.Board> BoardList(string userId);
         System.Collections.Generic.IList<Quinterest2.Models.Category> CategoryList();
-        void Create(Quinterest2.Models.Pin pin, string userId);
-        void Delete(int id);
+        void Create(Quinterest2.Models.Pin pin, string userId, int boardId);
+        void Delete(int id, string userId, int boardId);
         void Edit(Quinterest2.Models.Pin pin);
         Quinterest2.Models.Pin Find(int id);
         Quinterest2.Models.Board FindBoard(int id);
+        string FindPinUserId(int pinId);
+        Quinterest2.Models.ApplicationUser FindUser(string userId);
+        string FindUserName(string userId);
         System.Collections.Generic.IList<Quinterest2.Models.Pin> List();
-        void PinIt(Quinterest2.Models.Pin pin, Quinterest2.Models.ApplicationUser user, Quinterest2.Models.Board board);
+        void PinIt(Quinterest2.Models.Pin pin, string userId, int boardId);
     }
 }
