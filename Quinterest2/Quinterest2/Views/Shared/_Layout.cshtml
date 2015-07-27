@@ -22,35 +22,36 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Pins")</li>
+                    
 
-                    @if (User.Identity.IsAuthenticated) 
-                        { 
-                            <li>@Html.ActionLink("Profile", "ApplicationUserView", "ApplicationUsers")</li>
+                            @if (User.Identity.IsAuthenticated)
+                        {
+                                <li>@Html.ActionLink("Profile", "ApplicationUserView", "ApplicationUsers")</li>
                         }
-                        
-                    @*@if (PermissionHelper.UserIsAdmin()) 
-                        { 
-                            <li>@Html.ActionLink("Admin", "AdminView", "ApplicationUsers")</li>
-                        }*@
-                    
-                    
-                    
 
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Quinterest</p>
-        </footer>
-    </div>
+                        @*@if (PermissionHelper.UserIsAdmin())
+                            {
+                                <li>@Html.ActionLink("Admin", "AdminView", "ApplicationUsers")</li>
+                            }*@
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+
+
+
+                    </ul>
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>
+                </div>
+                            <div class="container body-content">
+                                @RenderBody()
+                                <hr />
+                                <footer>
+                                    <p>&copy; @DateTime.Now.Year - Quinterest</p>
+                                </footer>
+                            </div>
+
+                            @Scripts.Render("~/bundles/jquery")
+                            @Scripts.Render("~/bundles/bootstrap")
+                            @RenderSection("scripts", required: false)
+                        </body>
+                    </html>

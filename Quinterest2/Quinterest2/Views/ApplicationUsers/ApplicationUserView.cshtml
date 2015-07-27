@@ -4,41 +4,46 @@
     ViewBag.Title = "ProfileView";
 }
 
-<h2>@Model.DisplayName</h2>
+
+
 
 <div class="row">
-    <div class="col-sm-2">
-        <img class="profileImage" src="@Model.ImageUrl" />
-    </div>
-    <div class="col-sm-10">
-        <hr style="border-color:white" />
-        <hr style="border-color:white" />
-        <hr style="border-color:white" />
-        <hr style="border-color:white" />
-        <hr style="border-color:white" />
-        @Model.NumBoards <text> Boards</text> |
-        @Model.NumPins <text> Pins</text>
-        </p>
-        <p>
+    <div class="col-sm-12">
+
+        <h2 class="displayName">@Model.DisplayName</h2>
+        <img class="profileImage center-block" src="@Model.ImageUrl" />
+            <p class="boardsPins center-block">
+                @Model.NumBoards <text> Boards</text> |
+                @Model.NumPins <text> Pins</text>
+            </p>
+        <p class="profileButtons">
             @Html.ActionLink("Edit Profile", "Edit") |
             @Html.ActionLink("Create Board", "Create", "Boards") |
             @Html.ActionLink("Create Pin", "Create", "Pins")
         </p>
-    </div>
-</div>
-<hr />
-    @foreach (var board in Model.Boards)
-    {
-        <div class="col-sm-3 smallPinDiv">
-
-            <h4>@Html.DisplayFor(modelItem => board.BoardName)</h4>
-            <img class="smallPinImage" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
-            <br />
-            <hr />
-            @Html.DisplayFor(modelItem => board.Description)
-            <br />
-            @Html.DisplayFor(modelItem => board.NumPinsOnBoard) <text> Pins</text> |
-            @Html.ActionLink("View", "Index", "Boards", new { id = board.Id }, null)
-
         </div>
-    }
+
+</div>
+
+<br />
+
+
+
+
+
+<hr />
+@foreach (var board in Model.Boards)
+{
+    <div class="col-sm-3 smallPinDiv">
+
+        <h4>@Html.DisplayFor(modelItem => board.BoardName)</h4>
+        <img class="smallPinImage" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
+        <br />
+        <hr />
+        @Html.DisplayFor(modelItem => board.Description)
+        <br />
+        @Html.DisplayFor(modelItem => board.NumPinsOnBoard) <text> Pins</text> |
+        @Html.ActionLink("View", "Index", "Boards", new { id = board.Id }, null)
+
+    </div>
+}

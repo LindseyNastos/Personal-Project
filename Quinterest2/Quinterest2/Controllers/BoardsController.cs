@@ -64,7 +64,8 @@ namespace Quinterest2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Edit(board);
+                var userId = this.User.Identity.GetUserId();
+                _service.Edit(board, userId);
                 return RedirectToAction("Index", new { id = board.Id });
             }
             return View();

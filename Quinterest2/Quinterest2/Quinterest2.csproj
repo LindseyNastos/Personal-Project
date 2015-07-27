@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201507262356291_newAdmin.Designer.cs">
       <DependentUpon>201507262356291_newAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507270530107_shortBoardName.cs" />
+    <Compile Include="Migrations\201507270530107_shortBoardName.Designer.cs">
+      <DependentUpon>201507270530107_shortBoardName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
@@ -316,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507262356291_newAdmin.resx">
       <DependentUpon>201507262356291_newAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507270530107_shortBoardName.resx">
+      <DependentUpon>201507270530107_shortBoardName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

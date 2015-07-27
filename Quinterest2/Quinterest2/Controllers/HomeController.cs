@@ -9,9 +9,9 @@ namespace Quinterest2.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
-            
             return View();
         }
 
@@ -28,5 +28,6 @@ namespace Quinterest2.Controllers
 
             return View();
         }
+
     }
 }

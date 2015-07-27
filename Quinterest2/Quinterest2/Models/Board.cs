@@ -13,6 +13,7 @@ namespace Quinterest2.Models
 
         [Required(ErrorMessage="*required")]
         [Display(Name = "Board Name")]
+        [MaxLength(20, ErrorMessage="*limit: 20 characters")]
         public string BoardName { get; set; }
 
         [Required(ErrorMessage="*required")]
