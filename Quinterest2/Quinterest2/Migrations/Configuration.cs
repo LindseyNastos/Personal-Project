@@ -98,7 +98,7 @@ namespace Quinterest2.Migrations
                 userManager.Create(user, "Secret123!");
 
                 // add claims
-                userManager.AddClaim(user.Id, new Claim("CanDeleteFlaggedPins", "true"));
+                userManager.AddClaim(user.Id, new Claim("IsAdmin", "true"));
             }
         }
     }

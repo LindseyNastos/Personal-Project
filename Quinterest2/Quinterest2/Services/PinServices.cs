@@ -6,9 +6,9 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web;
 
-namespace Quinterest2.Services
+namespace Quinterest2.PermissionHelper
 {
-    public class PinServices : Quinterest2.Services.IPinServices
+    public class PinServices : Quinterest2.PermissionHelper.IPinServices
     {
         private IGenericRepository _repo;
 

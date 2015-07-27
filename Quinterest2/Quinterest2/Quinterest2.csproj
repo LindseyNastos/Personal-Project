@@ -196,6 +196,14 @@
     <Compile Include="Migrations\201507262054161_fixDbAgain.Designer.cs">
       <DependentUpon>201507262054161_fixDbAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507262318170_admin.cs" />
+    <Compile Include="Migrations\201507262318170_admin.Designer.cs">
+      <DependentUpon>201507262318170_admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507262356291_newAdmin.cs" />
+    <Compile Include="Migrations\201507262356291_newAdmin.Designer.cs">
+      <DependentUpon>201507262356291_newAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
@@ -204,6 +212,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pin.cs" />
+    <Compile Include="PermissionHelper\PermissionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BoardServices.cs" />
     <Compile Include="Services\IApplicationUserServices.cs" />
@@ -287,6 +296,7 @@
     <Content Include="Views\Pins\Details.cshtml" />
     <Content Include="Views\Boards\Index.cshtml" />
     <Content Include="Views\Pins\PinItView.cshtml" />
+    <Content Include="Views\ApplicationUsers\AdminView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +310,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201507262054161_fixDbAgain.resx">
       <DependentUpon>201507262054161_fixDbAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507262318170_admin.resx">
+      <DependentUpon>201507262318170_admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507262356291_newAdmin.resx">
+      <DependentUpon>201507262356291_newAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

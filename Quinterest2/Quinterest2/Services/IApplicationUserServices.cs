@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Quinterest2.Services
+namespace Quinterest2.PermissionHelper
 {
     public interface IApplicationUserServices
     {

@@ -11,6 +11,7 @@ namespace Quinterest2.Controllers
     {
         public ActionResult Index()
         {
+            
             return View();
         }
 
