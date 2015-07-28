@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Quinterest2.PermissionHelper
+namespace Quinterest2.Services
 {
     public interface IPinServices
     {
@@ -14,6 +14,7 @@ namespace Quinterest2.PermissionHelper
         Quinterest2.Models.ApplicationUser FindUser(string userId);
         string FindUserName(string userId);
         System.Collections.Generic.IList<Quinterest2.Models.Pin> List();
+        Quinterest2.Views.Pins.IndexVM Pages(int pageIndex);
         void PinIt(Quinterest2.Models.Pin pin, string userId, int boardId);
     }
 }

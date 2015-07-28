@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Quinterest2.Models.Pin>
+﻿@model Quinterest2.Views.Pins.IndexVM
 
 @{
     ViewBag.Title = "Index";
@@ -10,7 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var pin in Model)
+@foreach (var pin in Model.Pins)
 {
     <div class="col-sm-3 smallPinDiv">
 
@@ -25,3 +25,24 @@
 
     </div>
 }
+
+
+<nav>
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        @for (int i = 0; i < this.Model.PinCount / 10; i++)
+        {
+            <li><a href="/Pins/Index?pageIndex=@i">@(i + 1)</a></li>
+        }
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

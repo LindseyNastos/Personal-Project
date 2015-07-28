@@ -1,5 +1,5 @@
 ﻿using Quinterest2.Models;
-using Quinterest2.PermissionHelper;
+using Quinterest2.Services;
 using Quinterest2.Views.Pins;
 using System;
 using Microsoft.AspNet.Identity;
@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Quinterest2.Services;
 
 namespace Quinterest2.Controllers
 {
@@ -21,9 +22,10 @@ namespace Quinterest2.Controllers
 
 
         // GET: Pins
-        public ActionResult Index()
+        public ActionResult Index(int pageIndex = 0)
         {
-            return View(_service.List());
+            return View(_service.Pages(pageIndex));
+            //return View(_service.List());
         }
 
 

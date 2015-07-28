@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web;
+using Quinterest2.Views.Pins;
 
-namespace Quinterest2.PermissionHelper
+namespace Quinterest2.Services
 {
-    public class PinServices : Quinterest2.PermissionHelper.IPinServices
+    public class PinServices : Quinterest2.Services.IPinServices
     {
         private IGenericRepository _repo;
 
@@ -20,6 +21,18 @@ namespace Quinterest2.PermissionHelper
         public IList<Pin> List()
         {
             return _repo.Query<Pin>().Include(p => p.Category).Include(p => p.Board).ToList();
+        }
+
+        public IndexVM Pages(int pageIndex)
+        {
+            const int ITEMS_PER_PAGE = 20;
+            var pages = ((from p in _repo.Query<Pin>() select p).OrderBy(p => p.Id).Skip(pageIndex * ITEMS_PER_PAGE).Take(ITEMS_PER_PAGE).ToList());
+            var numContacts = (from p in _repo.Query<Pin>() select p).Count();
+            return new IndexVM
+            {
+                Pins = pages,
+                PinCount = numContacts
+            };
         }
 
         public Pin Find(int id)
@@ -105,6 +118,13 @@ namespace Quinterest2.PermissionHelper
             original.Website = pin.Website;
             original.ShortDescription = pin.ShortDescription;
             original.LongDescription = pin.LongDescription;
+
+            var oldBoard = _repo.Query<Board>().Where(b => b.Id == original.BoardId).Include(b => b.Pins).FirstOrDefault();
+            oldBoard.NumPinsOnBoard = _repo.Query<Pin>().Where(p => p.BoardId == original.BoardId).Count() - 1;
+
+            var newBoard = _repo.Query<Board>().Where(b => b.Id == pin.BoardId).Include(b => b.Pins).FirstOrDefault();
+            newBoard.NumPinsOnBoard = _repo.Query<Pin>().Where(p => p.BoardId == pin.BoardId).Count() + 1;
+
             _repo.SaveChanges();
         }
 

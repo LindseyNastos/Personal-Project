@@ -4,14 +4,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 
-namespace Quinterest2.PermissionHelper
+namespace Quinterest2.PermissionsHelper
 {
-    public class PermissionHelper
+    public static class PermissionsHelper
     {
         public static bool UserIsAdmin()
         {
-
-            var user = HttpContext.Current.User.Identity as ClaimsPrincipal;
+            var user = HttpContext.Current.User as ClaimsPrincipal;
 
             return user.HasClaim("IsAdmin", "true");
         }

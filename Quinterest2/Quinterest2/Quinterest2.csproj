@@ -216,7 +216,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pin.cs" />
-    <Compile Include="PermissionHelper\PermissionHelper.cs" />
+    <Compile Include="PermissionsHelper\PermissionsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BoardServices.cs" />
     <Compile Include="Services\IApplicationUserServices.cs" />
@@ -228,6 +228,7 @@
     <Compile Include="Views\Pins\CreateVM.cs" />
     <Compile Include="Views\Pins\DetailsVM.cs" />
     <Compile Include="Views\Pins\EditVM.cs" />
+    <Compile Include="Views\Pins\IndexVM.cs" />
     <Compile Include="Views\Pins\PinItViewVM.cs" />
   </ItemGroup>
   <ItemGroup>

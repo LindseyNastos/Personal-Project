@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Quinterest2.PermissionHelper
+namespace Quinterest2.Services
 {
     public interface IBoardServices
     {
