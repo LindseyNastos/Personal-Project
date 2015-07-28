@@ -23,6 +23,17 @@ namespace Quinterest2.Services
             return _repo.Query<Pin>().Include(p => p.Category).Include(p => p.Board).ToList();
         }
 
+        public IList<Pin> SearchResults(string everything)
+        {
+            var categories =  _repo.Query<Pin>().Where(p => p.Category.Name.Contains(everything)).ToList();
+            var shortDesc = _repo.Query<Pin>().Where(p => p.ShortDescription.Contains(everything)).ToList();
+            var longDesc = _repo.Query<Pin>().Where(p => p.LongDescription.Contains(everything)).ToList();
+            var title = _repo.Query<Pin>().Where(p => p.Title.Contains(everything)).ToList();
+            var website = _repo.Query<Pin>().Where(p => p.Website.Contains(everything)).ToList();
+
+
+
+        }
         public IndexVM Pages(int pageIndex)
         {
             const int ITEMS_PER_PAGE = 20;
@@ -61,6 +72,8 @@ namespace Quinterest2.Services
             var pin = this.Find(pinId);
             return pin.UserId;
         }
+
+
 
         public void Create(Pin pin, string userId, int boardId)
         {

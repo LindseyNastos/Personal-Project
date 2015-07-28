@@ -230,6 +230,7 @@
     <Compile Include="Views\Pins\EditVM.cs" />
     <Compile Include="Views\Pins\IndexVM.cs" />
     <Compile Include="Views\Pins\PinItViewVM.cs" />
+    <Compile Include="Views\Pins\SearchVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Boards\Index.cshtml" />
     <Content Include="Views\Pins\PinItView.cshtml" />
     <Content Include="Views\ApplicationUsers\AdminView.cshtml" />
+    <Content Include="Views\Pins\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

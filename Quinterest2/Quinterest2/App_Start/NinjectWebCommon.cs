@@ -12,7 +12,7 @@ namespace Quinterest2.App_Start
     using Ninject.Web.Common;
     using CoderCamps;
     using Quinterest2.Services;
-    using Quinterest2.Services;
+
 
     public static class NinjectWebCommon 
     {

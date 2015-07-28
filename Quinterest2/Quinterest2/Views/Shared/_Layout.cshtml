@@ -9,7 +9,7 @@
     <link href="~/Content/theme.min.css" rel="stylesheet" />
 </head>
 <body>
-   
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -30,89 +30,47 @@
                         <li>@Html.ActionLink("Profile", "ApplicationUserView", "ApplicationUsers")</li>
                     }
 
-                    @*@if (PermissionsHelper.UserIsAdmin())
-                {
-                    <li>@Html.ActionLink("Admin", "AdminView", "ApplicationUsers")</li>
-                }*@
+                    @if (PermissionsHelper.UserIsAdmin())
+                    {
+                        <li>@Html.ActionLink("Admin", "AdminView", "ApplicationUsers")</li>
+                    }
 
 
 
 
+                    @*<li class="navMoveDown">
 
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </li>
+                    <li class="navMoveDown">
+                        @Html.TextBox("SearchString", null, new { @class = "form-control" })
+                    </li>*@
+    
 
-
-
-
-
-
-
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" rel="home" href="<?= base_url();?>" title="Buy Sell Rent Everyting">Classified</a>
-            </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <div class="col-sm-6 col-md-6">
-                    <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
-                        <div class="btn-group pull-left" style="margin-right:10px;">
-                            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Mumbai <span class="caret"></span></a>
-                            <div class="dropdown-menu multi">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <ul class="dropdown-menu"><li><a href="#"><strong>Mumbai</strong></a></li></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="2 BHK Flat, Pune Real Estate, Pest Control..." id="query" name="query" value="">
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <li class="navMoveDown">
+                        @using (Html.BeginForm("Search", "Pins"))
+                        {
+                            @Html.TextBox("everything")
+                            <input type="submit" value="Search" />
+                        }
+                    </li>
 
 
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
-                    </div>
-                </div>
-                            <div class="container body-content">
-                                @RenderBody()
-                                <hr />
-                                <footer>
-                                    <p>&copy; @DateTime.Now.Year - Quinterest</p>
-                                </footer>
-                            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Quinterest</p>
+        </footer>
+    </div>
 
-                            @Scripts.Render("~/bundles/jquery")
-                            @Scripts.Render("~/bundles/bootstrap")
-                            @RenderSection("scripts", required: false)
-                        </body>
-                    </html>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
