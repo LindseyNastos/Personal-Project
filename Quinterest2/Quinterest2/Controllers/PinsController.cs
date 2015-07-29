@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Quinterest2.Views.Shared;
 
 namespace Quinterest2.Controllers
 {
@@ -22,6 +23,25 @@ namespace Quinterest2.Controllers
         public ActionResult Search(string everything)
         {
             return View(_service.SearchResults(everything));
+        }
+
+        [ChildActionOnly]
+        //[ActionName("_CategoryListPartial")]
+        public ActionResult CategorySearch()
+        {
+            var vm = new CategoryPartialVM
+            {
+                Categories = new SelectList(_service.CategoryList(), "Id", "Name")
+            };
+
+            return PartialView("_CategoryListPartial", vm);
+        }
+
+        [HttpPost]
+        public ActionResult CategorySearchResults(CategoryPartialVM vm)
+        {
+            var results = _service.PinsByCategory(vm.Pin.CategoryId);
+            return View(results);
         }
 
 

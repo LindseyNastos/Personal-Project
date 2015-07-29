@@ -231,6 +231,7 @@
     <Compile Include="Views\Pins\IndexVM.cs" />
     <Compile Include="Views\Pins\PinItViewVM.cs" />
     <Compile Include="Views\Pins\SearchVM.cs" />
+    <Compile Include="Views\Shared\CategoryPartialVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -304,6 +305,8 @@
     <Content Include="Views\Pins\PinItView.cshtml" />
     <Content Include="Views\ApplicationUsers\AdminView.cshtml" />
     <Content Include="Views\Pins\Search.cshtml" />
+    <Content Include="Views\Shared\_CategoryListPartial.cshtml" />
+    <Content Include="Views\Pins\CategorySearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
