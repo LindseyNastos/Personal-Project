@@ -8,7 +8,7 @@ namespace Quinterest2.Views.Pins
 {
     public class IndexVM
     {
-        public List<Pin> Pins { get; set; }
+        public IList<Pin> Pins { get; set; }
 
         public int PinCount { get; set; }
 

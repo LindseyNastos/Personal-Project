@@ -23,20 +23,44 @@ namespace Quinterest2.Services
             return _repo.Query<Pin>().Include(p => p.Category).Include(p => p.Board).ToList();
         }
 
-        public IList<Pin> SearchResults(string everything)
+        
+
+        public IndexVM SearchResults(string everything, int pageIndex)
         {
-            return _repo.Query<Pin>().Where(p => p.Category.Name.Contains(everything) || p.ShortDescription.Contains(everything) || p.LongDescription.Contains(everything) || p.Title.Contains(everything) || p.Website.Contains(everything) || p.Board.BoardName.Contains(everything)).ToList();
+            const int ITEMS_PER_PAGE = 20;
+            var pages = _repo.Query<Pin>().Where(p => p.Category.Name.Contains(everything) || p.ShortDescription.Contains(everything) || p.LongDescription.Contains(everything) || p.Title.Contains(everything) || p.Website.Contains(everything) || p.Board.BoardName.Contains(everything)).OrderBy(p => p.Id).Skip(pageIndex * ITEMS_PER_PAGE).Take(ITEMS_PER_PAGE).ToList();
+            var numPins = _repo.Query<Pin>().Where(p => p.Category.Name.Contains(everything) || p.ShortDescription.Contains(everything) || p.LongDescription.Contains(everything) || p.Title.Contains(everything) || p.Website.Contains(everything) || p.Board.BoardName.Contains(everything)).Count();
+            return new IndexVM
+            {
+                Pins = pages,
+                PinCount = numPins
+            };
         }
+
+        public IndexVM CategoryPages(int pageIndex, int id)
+        {
+            const int ITEMS_PER_PAGE = 20;
+      
+            var pages = _repo.Query<Pin>().Where(p => p.CategoryId == id).OrderBy(p => p.Id).Skip(pageIndex * ITEMS_PER_PAGE).Take(ITEMS_PER_PAGE).ToList();
+            var numPins = _repo.Query<Pin>().Where(p => p.CategoryId == id).Count();
+            return new IndexVM
+            {
+                Pins = pages,
+                PinCount = numPins
+            };
+        }
+
 
         public IndexVM Pages(int pageIndex)
         {
             const int ITEMS_PER_PAGE = 20;
-            var pages = ((from p in _repo.Query<Pin>() select p).OrderBy(p => p.Id).Skip(pageIndex * ITEMS_PER_PAGE).Take(ITEMS_PER_PAGE).ToList());
-            var numContacts = (from p in _repo.Query<Pin>() select p).Count();
+            
+            var pages = _repo.Query<Pin>().OrderBy(p => p.Id).Skip(pageIndex * ITEMS_PER_PAGE).Take(ITEMS_PER_PAGE).ToList();
+            var numPins = _repo.Query<Pin>().Count();
             return new IndexVM
             {
                 Pins = pages,
-                PinCount = numContacts
+                PinCount = numPins
             };
         }
 
@@ -45,14 +69,27 @@ namespace Quinterest2.Services
             return _repo.Query<Pin>().Include(p => p.Board).Where(p => p.Id == id).FirstOrDefault();
         }
 
-        public Board FindBoard(int id)
+        public int PinCount(int boardId)
         {
-            return _repo.Query<Board>().Where(p => p.Id == id).FirstOrDefault();
+            return this.FindBoard(boardId).Pins.Count();
+        }
+
+
+        //public int TotalPins(string userId)
+        //{
+        //    return _repo.Query<ApplicationUser>().Include(u => u.Pins).Where(u => u.Id == userId).FirstOrDefault().Pins.Count();
+        //}
+
+        
+
+        public Board FindBoard(int boardId)
+        {
+            return _repo.Query<Board>().Where(b => b.Id == boardId).Include(b => b.Pins).FirstOrDefault();
         }
 
         public ApplicationUser FindUser(string userId)
         {
-            return _repo.Query<ApplicationUser>().Where(u => u.Id == userId).FirstOrDefault();
+            return _repo.Query<ApplicationUser>().Where(u => u.Id == userId).Include(u => u.Pins).FirstOrDefault();
         }
 
         public string FindUserName(string userId)
@@ -69,14 +106,14 @@ namespace Quinterest2.Services
 
 
 
-        public void Create(Pin pin, string userId, int boardId)
+        public void Create(Pin pin, string userId)
         {
-            var originalUser = _repo.Query<ApplicationUser>().Where(u => u.Id == userId).Include(u => u.Pins).FirstOrDefault();
+            var originalUser = this.FindUser(userId);
             pin.UserId = userId;
             originalUser.Pins.Add(pin);
-            originalUser.NumPins = _repo.Query<Pin>().Where(p => p.UserId == userId).Count() + 1;
-            var currentBoard = _repo.Query<Board>().Where(b => b.Id == boardId).Include(b => b.Pins).FirstOrDefault();
-            currentBoard.NumPinsOnBoard = _repo.Query<Pin>().Where(p => p.BoardId == boardId).Count() + 1;
+            pin.Board = this.FindBoard(pin.BoardId);
+            var board = pin.Board;
+            board.NumPinsOnBoard = this.PinCount(pin.BoardId) + 1;
             _repo.SaveChanges();
         }
 
@@ -111,11 +148,9 @@ namespace Quinterest2.Services
                 UserId = userId
             };
 
-            var originalUser = _repo.Query<ApplicationUser>().Where(u => u.Id == userId).Include(u => u.Pins).FirstOrDefault();
+            var originalUser = this.FindUser(userId);
             originalUser.Pins.Add(newPin);
-            originalUser.NumPins = _repo.Query<Pin>().Where(p => p.UserId == userId).Count() + 1;
-            var currentBoard = _repo.Query<Board>().Where(b => b.Id == boardId).Include(b => b.Pins).FirstOrDefault();
-            currentBoard.NumPinsOnBoard = _repo.Query<Pin>().Where(p => p.BoardId == boardId).Count() + 1;
+            newPin.Board.NumPinsOnBoard = this.PinCount(boardId) + 1;
 
             _repo.SaveChanges();
         }
@@ -131,25 +166,21 @@ namespace Quinterest2.Services
             original.ShortDescription = pin.ShortDescription;
             original.LongDescription = pin.LongDescription;
 
-            var oldBoard = _repo.Query<Board>().Where(b => b.Id == original.BoardId).Include(b => b.Pins).FirstOrDefault();
-            oldBoard.NumPinsOnBoard = _repo.Query<Pin>().Where(p => p.BoardId == original.BoardId).Count() - 1;
-
-            var newBoard = _repo.Query<Board>().Where(b => b.Id == pin.BoardId).Include(b => b.Pins).FirstOrDefault();
-            newBoard.NumPinsOnBoard = _repo.Query<Pin>().Where(p => p.BoardId == pin.BoardId).Count() + 1;
-
+            if (original.BoardId != pin.BoardId)
+            {
+                var originalBoard = _repo.Find<Board>(original.BoardId);
+                originalBoard.NumPinsOnBoard = this.PinCount(originalBoard.Id) + 1;
+                var board = this.FindBoard(pin.BoardId);
+                board.NumPinsOnBoard = this.PinCount(pin.BoardId) + 1;
+            }
             _repo.SaveChanges();
         }
 
-        public void Delete(int id, string userId, int boardId)
+        public void Delete(int id)
         {
-
-            var originalUser = _repo.Query<ApplicationUser>().Where(u => u.Id == userId).Include(u => u.Boards).FirstOrDefault();
-            originalUser.NumBoards = _repo.Query<Pin>().Where(b => b.UserId == userId).Count() - 1;
-
-            var currentBoard = _repo.Query<Board>().Where(b => b.Id == boardId).Include(b => b.Pins).FirstOrDefault();
-            currentBoard.NumPinsOnBoard = _repo.Query<Pin>().Where(p => p.BoardId == boardId).Count() - 1;
-
+            var board = this.Find(id).Board;
             _repo.Delete<Pin>(id);
+            board.NumPinsOnBoard = this.PinCount(board.Id);
             _repo.SaveChanges();
         }
 

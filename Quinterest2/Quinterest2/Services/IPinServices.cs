@@ -5,8 +5,9 @@ namespace Quinterest2.Services
     {
         System.Collections.Generic.IList<Quinterest2.Models.Board> BoardList(string userId);
         System.Collections.Generic.IList<Quinterest2.Models.Category> CategoryList();
-        void Create(Quinterest2.Models.Pin pin, string userId, int boardId);
-        void Delete(int id, string userId, int boardId);
+        Quinterest2.Views.Pins.IndexVM CategoryPages(int pageIndex, int id);
+        void Create(Quinterest2.Models.Pin pin, string userId);
+        void Delete(int id);
         void Edit(Quinterest2.Models.Pin pin);
         Quinterest2.Models.Pin Find(int id);
         Quinterest2.Models.Board FindBoard(int id);
@@ -17,6 +18,6 @@ namespace Quinterest2.Services
         Quinterest2.Views.Pins.IndexVM Pages(int pageIndex);
         void PinIt(Quinterest2.Models.Pin pin, string userId, int boardId);
         System.Collections.Generic.IList<Quinterest2.Models.Pin> PinsByCategory(int id);
-        System.Collections.Generic.IList<Quinterest2.Models.Pin> SearchResults(string everything);
+        Quinterest2.Views.Pins.IndexVM SearchResults(string everything, int pageIndex);
     }
 }

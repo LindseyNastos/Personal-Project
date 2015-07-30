@@ -230,7 +230,6 @@
     <Compile Include="Views\Pins\EditVM.cs" />
     <Compile Include="Views\Pins\IndexVM.cs" />
     <Compile Include="Views\Pins\PinItViewVM.cs" />
-    <Compile Include="Views\Pins\SearchVM.cs" />
     <Compile Include="Views\Shared\CategoryPartialVM.cs" />
   </ItemGroup>
   <ItemGroup>

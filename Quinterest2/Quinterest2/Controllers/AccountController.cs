@@ -456,7 +456,7 @@ namespace Quinterest2.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Pins");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

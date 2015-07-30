@@ -54,8 +54,8 @@ namespace Quinterest2.Controllers
         // GET: Boards/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = _service.Find(id);
-            return View(model);
+            var boards = _service.Find(id);
+            return View(boards);
         }
 
         // POST: Boards/Edit/5

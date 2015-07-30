@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - Quinterest</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="~/Content/theme.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -18,12 +19,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Quinterest", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Pins")</li>
-
+                   
+                    <li>@Html.ActionLink("Pins", "Index", "Pins")</li>
 
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -35,23 +35,22 @@
                         <li>@Html.ActionLink("Admin", "AdminView", "ApplicationUsers")</li>
                     }
 
-
-
-
-                    @*<li class="navMoveDown">
-
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </li>
-                    <li class="navMoveDown">
-                        @Html.TextBox("SearchString", null, new { @class = "form-control" })
-                    </li>*@
+                @*</ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+    
+                <ul>*@
     
 
                     <li class="navMoveDown">
                         @using (Html.BeginForm("Search", "Pins"))
                         {
                             @Html.TextBox("everything")
-                            <input type="submit" value="Search" />
+                            @*<input type="submit" value="Search" />*@
                         }
                     </li>
 
@@ -59,7 +58,6 @@
                         @Html.Action("CategorySearch", "Pins")
                     </li>
                     
-
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

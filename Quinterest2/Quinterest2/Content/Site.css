@@ -71,3 +71,7 @@ textarea {
 .navMoveDown {
     top:17px;
 }
+
+.flag {
+    float: right;
+}

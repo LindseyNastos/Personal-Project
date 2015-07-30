@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Details";
 }
+
+
 <div>
 
     <div class="row">
@@ -47,9 +49,22 @@
         else
         {
             <p>
+
+                <i class="fa fa-thumb-tack"></i>
                 @Html.ActionLink("Pin It!", "PinItView", new { id = Model.Pin.Id }) |
-                @Html.ActionLink("Back To All Pins", "Index")
+                @Html.ActionLink("Back To All Pins", "Index") 
+
+                <div class="flag btn-group collapse">
+                    <a class="btn btn-danger btn-sm"><i class="fa fa-flag-o fa-lg"></i></a>
+                    <a class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="fa fa-caret-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-ban fa-fw"></i> Report</a></li>
+                    </ul>
+                </div>
             </p>
         }
+
     </div>
 </div>

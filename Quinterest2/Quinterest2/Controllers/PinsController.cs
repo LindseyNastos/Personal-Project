@@ -20,13 +20,15 @@ namespace Quinterest2.Controllers
             _service = service;
         }
 
-        public ActionResult Search(string everything)
+        public ActionResult Search(string everything, int pageIndex = 0)
         {
-            return View(_service.SearchResults(everything));
+            return View(_service.SearchResults(everything, pageIndex));
         }
 
+
+
+
         [ChildActionOnly]
-        //[ActionName("_CategoryListPartial")]
         public ActionResult CategorySearch()
         {
             var vm = new CategoryPartialVM
@@ -38,10 +40,9 @@ namespace Quinterest2.Controllers
         }
 
         [HttpPost]
-        public ActionResult CategorySearchResults(CategoryPartialVM vm)
-        {
-            var results = _service.PinsByCategory(vm.Pin.CategoryId);
-            return View(results);
+        public ActionResult CategorySearchResults(CategoryPartialVM vm, int pageIndex = 0)
+        {            
+            return View(_service.CategoryPages(pageIndex, vm.Pin.CategoryId));
         }
 
 
@@ -130,8 +131,8 @@ namespace Quinterest2.Controllers
             {
                 var userId = this.User.Identity.GetUserId();
                 pin.UserId = userId;
+                _service.Create(pin, userId);
                 var boardId = pin.BoardId;
-                _service.Create(pin, userId, boardId);
                 return RedirectToAction("Index", "Boards", new { id = boardId });
             }
             return View();
@@ -178,10 +179,9 @@ namespace Quinterest2.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteReally(int id)
         {
-            
             var boardId = _service.Find(id).BoardId;
             var userId = this.User.Identity.GetUserId();
-            _service.Delete(id, userId, boardId);
+            _service.Delete(id);
             return RedirectToAction("Index", "Boards", new { id = boardId });
         }
     }
