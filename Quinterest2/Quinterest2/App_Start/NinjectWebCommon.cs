@@ -71,6 +71,8 @@ namespace Quinterest2.App_Start
             kernel.Bind<IApplicationUserServices>().To<ApplicationUserServices>();
 
             kernel.Bind<IBoardServices>().To<BoardServices>();
+
+            kernel.Bind<ICommentServices>().To<CommentServices>();
         }        
     }
 }

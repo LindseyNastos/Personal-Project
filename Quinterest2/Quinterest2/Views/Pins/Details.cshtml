@@ -52,7 +52,7 @@
 
                 <i class="fa fa-thumb-tack"></i>
                 @Html.ActionLink("Pin It!", "PinItView", new { id = Model.Pin.Id }) |
-                @Html.ActionLink("Back To All Pins", "Index") 
+                @Html.ActionLink("Back To All Pins", "Index")
 
                 <div class="flag btn-group collapse">
                     <a class="btn btn-danger btn-sm"><i class="fa fa-flag-o fa-lg"></i></a>
@@ -65,6 +65,58 @@
                 </div>
             </p>
         }
+   
 
     </div>
+
 </div>
+<hr />
+<p><strong>Leave a comment:</strong></p>
+@using (Html.BeginForm("Create", "Comments"))
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Comment.Words, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Comment.Words, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.Hidden("PinId", Model.Pin.Id)
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Date/Time
+        </th>
+        <th>
+            Comment
+        </th>
+        <th>
+            User
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Comments)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Words)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.DisplayName)
+            </td>
+        </tr>
+    }
+
+</table>

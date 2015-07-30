@@ -49,10 +49,12 @@ namespace Quinterest2.Models
 
         public string UserId { get; set; }
 
+        public ICollection<Comment> Comments { get; set; }
+
+
+
 
         //Maybe add later?
-        //public string UserWhoPinned { get; set; }
-        //public List<Comment> Comments { get; set; }
         //public List<Pin> RelatedPins { get; set; }
     }
 }

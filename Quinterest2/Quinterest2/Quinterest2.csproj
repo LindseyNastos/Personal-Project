@@ -185,6 +185,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoardsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PinsController.cs" />
@@ -208,10 +209,15 @@
     <Compile Include="Migrations\201507270530107_shortBoardName.Designer.cs">
       <DependentUpon>201507270530107_shortBoardName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507300515436_comments.cs" />
+    <Compile Include="Migrations\201507300515436_comments.Designer.cs">
+      <DependentUpon>201507300515436_comments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -219,8 +225,10 @@
     <Compile Include="PermissionsHelper\PermissionsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BoardServices.cs" />
+    <Compile Include="Services\CommentServices.cs" />
     <Compile Include="Services\IApplicationUserServices.cs" />
     <Compile Include="Services\IBoardServices.cs" />
+    <Compile Include="Services\ICommentServices.cs" />
     <Compile Include="Services\IPinServices.cs" />
     <Compile Include="Services\PinServices.cs" />
     <Compile Include="Services\ApplicationUserServices.cs" />
@@ -328,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507270530107_shortBoardName.resx">
       <DependentUpon>201507270530107_shortBoardName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507300515436_comments.resx">
+      <DependentUpon>201507300515436_comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

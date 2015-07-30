@@ -14,5 +14,9 @@ namespace Quinterest2.Views.Pins
 
         public string PinnerDisplayName { get; set; }
 
+        public IList<Comment> Comments { get; set; }
+
+        public Comment Comment { get; set; }
+
     }
 }

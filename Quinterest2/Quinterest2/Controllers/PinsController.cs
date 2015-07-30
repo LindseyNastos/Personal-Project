@@ -72,7 +72,9 @@ namespace Quinterest2.Controllers
                 //holds selected pin
                 Pin = _service.Find(id),
                 //holds current user's id
-                CurrentUser = _service.FindUser(userId)
+                CurrentUser = _service.FindUser(userId),
+                //returns comments associated with selected pin
+                Comments = _service.CommentList(id)
             };
             return View(vm);
             }
@@ -103,6 +105,10 @@ namespace Quinterest2.Controllers
             _service.PinIt(pin, userId, boardId);
             return RedirectToAction("Details", new { id = pin.Id });
         }
+
+      
+
+
 
         // GET: Pins/Create
         public ActionResult Create()

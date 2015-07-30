@@ -23,7 +23,12 @@ namespace Quinterest2.Services
             return _repo.Query<Pin>().Include(p => p.Category).Include(p => p.Board).ToList();
         }
 
-        
+
+        public IList<Comment> CommentList(int pinId)
+        {
+            return _repo.Query<Comment>().Where(c => c.PinId == pinId).ToList();
+        }
+
 
         public IndexVM SearchResults(string everything, int pageIndex)
         {
