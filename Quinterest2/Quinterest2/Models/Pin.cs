@@ -49,6 +49,8 @@ namespace Quinterest2.Models
 
         public string UserId { get; set; }
 
+        public ApplicationUser User { get; set; }
+
         public ICollection<Comment> Comments { get; set; }
 
 

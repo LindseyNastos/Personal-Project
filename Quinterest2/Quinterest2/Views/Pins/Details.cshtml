@@ -72,7 +72,7 @@
 </div>
 <hr />
 <p><strong>Leave a comment:</strong></p>
-@using (Html.BeginForm("Create", "Comments"))
+@using (Html.BeginForm("Create", "Comments", new { id = Model.Pin.Id }))
 {
     <div class="form-group">
         <div class="col-md-10">
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    @Html.Hidden("PinId", Model.Pin.Id)
+
     
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

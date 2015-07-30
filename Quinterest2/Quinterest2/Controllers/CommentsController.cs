@@ -3,6 +3,8 @@ using Quinterest2.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity;
 using System.Web;
 using System.Web.Mvc;
 
@@ -30,12 +32,14 @@ namespace Quinterest2.Controllers
 
         // POST: Comments/Create
         [HttpPost]
-        public ActionResult Create(Comment comment)
+        public ActionResult Create(Comment comment, int id)
         {
             
             if (ModelState.IsValid)
-            { 
-                
+            {
+                var userId = this.User.Identity.GetUserId();
+                _service.Create(comment, id, userId);
+                return RedirectToAction("Details", "Pins", new { id = id });
             }
             return View();
         }

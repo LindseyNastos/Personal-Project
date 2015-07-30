@@ -14,6 +14,8 @@ namespace Quinterest2.Models
 
         public ApplicationUser User { get; set; }
 
+        public string UserId { get; set; }
+
         [Required(ErrorMessage="*required")]
         [MaxLength(500, ErrorMessage="*limit: 500 characters")]
         [DataType(DataType.MultilineText)]

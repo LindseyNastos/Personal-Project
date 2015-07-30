@@ -24,7 +24,7 @@ namespace Quinterest2.Services
 
         public Pin FindPin(int pinId)
         {
-            return _repo.Query<Pin>().Where(p => p.Id == pinId).Include(p => p.Comments).Include(p =>p.UserId).FirstOrDefault();
+            return _repo.Query<Pin>().Where(p => p.Id == pinId).Include(p => p.Comments).Include(p =>p.User).FirstOrDefault();
         }
 
         public ApplicationUser FindUser(string userId)
@@ -32,14 +32,13 @@ namespace Quinterest2.Services
             return _repo.Query<ApplicationUser>().Where(a => a.Id == userId).FirstOrDefault();
         }
 
-        public void Create(Comment comment, int pinId)
+        public void Create(Comment comment, int pinId, string userId)
         {
             var pin = this.FindPin(pinId);
             comment.Pin = pin;
             comment.PinId = pinId;
-            var user = this.FindUser(pin.UserId);
-            comment.User = user;
-            comment.DateTime = new DateTime();
+            comment.UserId = userId;
+            comment.DateTime = DateTime.Now;
             pin.Comments.Add(comment);
             _repo.SaveChanges();
         }
