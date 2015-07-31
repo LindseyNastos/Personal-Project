@@ -60,16 +60,16 @@
                         <span class="fa fa-caret-down"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a id="report" href="#"><i class="fa fa-ban fa-fw"></i>Report</a></li>
+                        <li id ="report"><a href="#"><i class="fa fa-ban fa-fw"></i>Report</a></li>
                     </ul>
                 </div>
                 
             </p>
-    <div class="flag" id="reportConfirm" style="display:none">
-        <p>You have flagged this pin. The administrator has been notified.</p>
-    </div>
+  
         }
-   
+        <div class="flag" id="reportConfirm" style="display:none">
+            <p>You have flagged this pin. The administrator has been notified.</p>
+        </div>
 
     </div>
 
@@ -109,11 +109,3 @@
         </tr>
     }
 </table>
-
-<script>
-
-    $("#report").on("click", function (e) {
-        e.preventDefault();
-        $("#reportConfirm").fadeIn("fast");
-    });
-</script>
