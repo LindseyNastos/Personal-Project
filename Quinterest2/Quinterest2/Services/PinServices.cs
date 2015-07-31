@@ -26,6 +26,16 @@ namespace Quinterest2.Services
                 .ToList();
         }
 
+        public int UpdatePinCount(int boardId)
+        {
+            var count = _repo.Query<Pin>()
+                .Where(p => p.BoardId == boardId)
+                .Count();
+            var board = _repo.Find<Board>(boardId);
+            board.NumPinsOnBoard = count;
+            _repo.SaveChanges();
+            return count;
+        }
 
         public IList<Comment> CommentList(int pinId)
         {
@@ -215,7 +225,9 @@ namespace Quinterest2.Services
 
         public void Edit(Pin pin)
         {
+            
             var original = this.Find(pin.Id);
+            var originalBoardId = original.BoardId;
             original.Title = pin.Title;
             original.BoardId = pin.BoardId;
             original.CategoryId = pin.CategoryId;
@@ -224,14 +236,13 @@ namespace Quinterest2.Services
             original.ShortDescription = pin.ShortDescription;
             original.LongDescription = pin.LongDescription;
 
-            if (original.BoardId != pin.BoardId)
-            {
-                var originalBoard = _repo.Find<Board>(original.BoardId);
-                //originalBoard.NumPinsOnBoard = this.PinCount(originalBoard.Id) + 1;
-                var board = this.FindBoard(pin.BoardId);
-                //board.NumPinsOnBoard = this.PinCount(pin.BoardId) + 1;
-            }
             _repo.SaveChanges();
+
+            if (originalBoardId != pin.BoardId)
+            {
+                this.UpdatePinCount(originalBoardId);
+                this.UpdatePinCount(pin.BoardId);
+            }
         }
 
         public void Delete(int id)

@@ -21,5 +21,6 @@ namespace Quinterest2.Services
         void PinIt(Quinterest2.Models.Pin pin, string userId, int boardId);
         System.Collections.Generic.IList<Quinterest2.Models.Pin> PinsByCategory(int id);
         Quinterest2.Views.Pins.IndexVM SearchResults(string everything, int pageIndex);
+        int UpdatePinCount(int boardId);
     }
 }

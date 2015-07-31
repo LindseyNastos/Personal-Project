@@ -9,5 +9,6 @@ namespace Quinterest2.Services
         void Edit(Quinterest2.Models.Board board, string userId);
         Quinterest2.Models.Board Find(int boardId);
         int TotalPins(string userId);
+        int UpdatePinCount(int boardId);
     }
 }
