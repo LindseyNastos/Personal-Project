@@ -74,7 +74,8 @@ namespace Quinterest2.Controllers
                 //holds current user's id
                 CurrentUser = _service.FindUser(userId),
                 //returns comments associated with selected pin
-                Comments = _service.CommentList(id)
+                Comments = _service.CommentList(id),
+
             };
             return View(vm);
             }

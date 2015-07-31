@@ -18,5 +18,6 @@ namespace Quinterest2.Views.Pins
 
         public Comment Comment { get; set; }
 
+
     }
 }

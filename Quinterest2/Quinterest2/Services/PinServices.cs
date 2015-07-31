@@ -26,7 +26,7 @@ namespace Quinterest2.Services
 
         public IList<Comment> CommentList(int pinId)
         {
-            return _repo.Query<Comment>().Where(c => c.PinId == pinId).ToList();
+            return _repo.Query<Comment>().Include(c => c.User).Where(c => c.PinId == pinId).ToList();
         }
 
 

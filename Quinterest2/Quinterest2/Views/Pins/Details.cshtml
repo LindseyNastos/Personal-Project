@@ -60,10 +60,14 @@
                         <span class="fa fa-caret-down"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-ban fa-fw"></i> Report</a></li>
+                        <li><a id="report" href="#"><i class="fa fa-ban fa-fw"></i>Report</a></li>
                     </ul>
                 </div>
+                
             </p>
+    <div class="flag" id="reportConfirm" style="display:none">
+        <p>You have flagged this pin. The administrator has been notified.</p>
+    </div>
         }
    
 
@@ -90,33 +94,26 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            Date/Time
-        </th>
-        <th>
-            Comment
-        </th>
-        <th>
-            User
-        </th>
-        <th></th>
-    </tr>
+<table class="commentTable">
 
-    @foreach (var item in Model.Comments)
+    @foreach (var comment in Model.Comments)
     {
-        <tr>
+        <tr class="commentTableRow">
             <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Words)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.DisplayName)
+                <img class="commentImage" src="@Html.DisplayFor(modelItem => comment.User.ImageUrl)" />
+                <strong>@Html.DisplayFor(modelItem => comment.User.DisplayName)</strong>
+                <span style="color:lightgray"> @Html.DisplayFor(modelItem => comment.DateTime)</span>
+                <br />
+                @Html.DisplayFor(modelItem => comment.Words)
             </td>
         </tr>
     }
-
 </table>
+
+<script>
+
+    $("#report").on("click", function (e) {
+        e.preventDefault();
+        $("#reportConfirm").fadeIn("fast");
+    });
+</script>
