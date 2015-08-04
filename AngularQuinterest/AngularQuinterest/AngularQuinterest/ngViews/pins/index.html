@@ -1,0 +1,16 @@
+﻿<h1>All Pins</h1>
+<a href="/pinCreate">Create Pin</a>
+ | 
+<a href="/profile">Profile</a>
+<hr />
+
+<div ng-cloak>
+    <div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
+        <a href="/pinDetails/{{pin.id}}">
+            <h4>{{pin.title}}</h4>
+            <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />
+            <br />
+            {{pin.shortDescription}}
+        </a>
+    </div>
+</div>

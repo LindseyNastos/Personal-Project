@@ -1,0 +1,54 @@
+﻿<h1>Create A Pin</h1>
+
+<div class="row">
+    <div class="col-sm-8 crudForms">
+        <form ng-cloak name="createPin" ng-submit="main.createPin()" novalidate>
+
+            <label>Title</label>
+                <input name="title" ng-model="main.title" required/>
+                <span ng-show="createPin.title.$dirty&&createPin.title.$error.required" class="error">
+                    *required
+                </span>
+            <br />
+
+            <label>Image Url</label>
+                <input name="image" ng-model="main.imageUrl" required/>
+                <span ng-show="createPin.image.$dirty&&createPin.image.$error.required" class="error">
+                    *required
+                </span>
+            <br />
+
+            <label>Website</label>
+                <input ng-model="main.website" />
+            <br />
+
+            <label>Board</label>
+                <input name="board" type="number" ng-model="main.boardId" />
+                <span ng-show="createPin.board.$dirty&&createPin.$error.number" class="error">
+                    *must be a number (for now)
+                </span>
+            <br />
+
+            <label>Short Description</label>
+                <input ng-model="main.shortDescription" />
+            <br />
+
+            <label>Long Description</label>
+                <input ng-model="main.longDescription" />
+            <br />
+
+            <input type="submit" value="Create" ng-disabled="createPin.$invalid"/>
+
+        </form>
+    </div>
+
+    <div class="col-sm-3 smallPinDiv">
+        <h4>{{main.title}}</h4>
+        <img class="smallPinImage" ng-src="{{main.imageUrl}}" />
+        <br />
+        {{main.shortDescription}}
+    </div>
+
+    <div class="col-sm-1">
+    </div>
+</div>
