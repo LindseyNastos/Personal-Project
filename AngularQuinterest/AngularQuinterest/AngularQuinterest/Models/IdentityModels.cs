@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
 
 namespace AngularQuinterest.Models
 {
@@ -23,8 +24,16 @@ namespace AngularQuinterest.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
-        
+
+
+        public IDbSet<Board> Boards { get; set; }
+        public IDbSet<Pin> Pins { get; set; }
+        public IDbSet<Category> Categories { get; set; }
+        public IDbSet<Comment> Comments { get; set; }
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

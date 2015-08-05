@@ -17,11 +17,11 @@
 
 <div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
     <a href="/pinDetails/{{pin.id}}">
-        <h4>{{main.pins.title}}</h4>
+        <h4>{{pin.title}}</h4>
         <br />
-        <img class="smallPinImage" ng-src="{{main.pins.imageUrl}}" />
+        <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />
         <br />
-        {{main.pins.shortDescription}}
+        {{pin.shortDescription}}
         <br />
     </a>
 </div>

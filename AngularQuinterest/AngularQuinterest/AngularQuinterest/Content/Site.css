@@ -43,3 +43,31 @@ textarea {
     position:relative;
     top: 25px;
 }
+
+.boardListImage {
+    height:40px;
+    width:40px;
+    margin-right:10px;
+    border-radius:4px;
+}
+
+.modalLeftSide {
+    background-color:rgba(149, 165, 166, 0.15);
+}
+
+.modalList {
+    list-style:none;
+}
+
+.createBoard {
+    border:1px solid firebrick;
+    border-radius:4px;
+}
+
+/*.modalExit {
+    float:right;
+}*/
+
+.modalBoardList:hover {
+    background:rgba(149, 165, 166, 0.15);
+}

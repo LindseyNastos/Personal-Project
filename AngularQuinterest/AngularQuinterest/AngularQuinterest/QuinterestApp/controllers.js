@@ -59,16 +59,54 @@
     ];
 
 
+
+
     angular.module('QuinterestApp').controller('PinIndexController', function () {
         this.pins = pins;
+        
     });
 
 
-    angular.module('QuinterestApp').controller('PinDetailsController', function ($routeParams) {
+    angular.module('QuinterestApp').controller('PinDetailsController', function ($routeParams, $modal) {
+
         this.pin = pins.filter(function (item) {
             return item.id == $routeParams.id;
-        })
-    })[0];
+        })[0];
+
+        this.board = boards;
+        this.showModal = function (id) {
+            $modal.open({
+                templateUrl: '/ngViews/modals/pinItModal.html',
+                controller: 'PinItController',
+                controllerAs: 'modal',
+                resolve: {
+                    id: function () {
+                        return id;
+                    }
+                }
+            });
+        };
+    });
+
+
+    angular.module('QuinterestApp').controller('PinItController', function (id, $modalInstance) {
+
+        this.boards = boards;
+
+        this.pin = pins.filter(function (item) {
+            return item.id == id;
+        })[0];
+
+        this.pinIt = function () {
+            //put some logic here to save the pin to the selected board
+            $modalInstance.close();
+        };
+
+        this.exit = function () {
+            $modalInstance.close();
+        };
+    });
+
 
     angular.module('QuinterestApp').controller('PinCreateController', function () {
         //change this!!! --> only temporary
@@ -90,8 +128,8 @@
 
         this.board = boards.filter(function (item) {
             return item.id == $routeParams.id;
-        })
-    })[0];
+        })[0];
+    });
 
     angular.module('QuinterestApp').controller('BoardCreateController', function () {
         //change this!!! --> only temporary

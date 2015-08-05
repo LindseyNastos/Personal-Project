@@ -35,12 +35,12 @@
             </a>
         </li>
 
-        @for (int i = 0; i < this.Model.PinCount / 10; i++)
+        @for (int i = 0; i < (this.Model.PinCount / 20) + 1; i++)
         {
             <li><a href="/Pins/Index?pageIndex=@i">@(i + 1)</a></li>
         }
         <li>
-            <a href="#" aria-label="Next">
+            <a href="/Pins/Index?pageIndex=+1" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>
