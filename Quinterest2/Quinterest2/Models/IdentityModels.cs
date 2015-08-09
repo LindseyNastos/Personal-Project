@@ -15,15 +15,11 @@ namespace Quinterest2.Models
 
         public string DisplayName { get; set; }
 
-
         public string ImageUrl { get; set; }
-
 
         public int NumBoards { get; set; }
 
-
         public int NumPins { get; set; }
-
 
         public ICollection<Board> Boards { get; set; }
 
@@ -38,6 +34,8 @@ namespace Quinterest2.Models
             this.Pins = new List<Pin>();
             this.Comments = new List<Comment>();
         }
+
+        
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -63,6 +61,7 @@ namespace Quinterest2.Models
         public IDbSet<Pin> Pins { get; set; }
         public IDbSet<Category> Categories { get; set; }
         public IDbSet<Comment> Comments { get; set; }
+        public IDbSet<Flag> Flags { get; set; }
 
 
         public static ApplicationDbContext Create()

@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('QuinterestApp', ['ngRoute', 'ui.bootstrap']).config(function ($routeProvider, $locationProvider) {
+    angular.module('QuinterestApp', ['ngRoute', 'ngResource', 'ui.bootstrap']).config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: '/ngViews/pins/index.html',

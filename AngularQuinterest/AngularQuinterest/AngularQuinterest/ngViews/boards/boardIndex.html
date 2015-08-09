@@ -1,17 +1,17 @@
 ﻿<h1>Profile</h1>
-<a href="/boardCreate">Create Board</a>
+<a class="localLink" href="/boardCreate">Create Board</a>
  | 
-<a href="/pinCreate">Create Pin</a>
+<a class="localLink" href="/pinCreate">Create Pin</a>
 <br />
 <h4>Your Boards</h4>
 <hr />
 
 
 <div ng-repeat="board in main.boards" class="col-sm-3 smallPinDiv">
-    <a href="/boardDetails/{{board.id}}">
+    <a class="noDecoHover" href="/boardDetails/{{board.id}}">
         <h4>{{board.boardName}}</h4>
         <img class="smallPinImage" ng-src="{{board.imageUrl}}" />
         <br />
-        {{board.description}}
+        <p>{{board.description}}</p>
     </a>
 </div>

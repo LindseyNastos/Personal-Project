@@ -1,16 +1,59 @@
 ﻿<h1>All Pins</h1>
-<a href="/pinCreate">Create Pin</a>
- | 
-<a href="/profile">Profile</a>
+<p>
+    <a class="localLink" href="/pinCreate">Create Pin</a>
+    |
+    <a class="localLink" href="/profile">Profile</a>
+</p>
 <hr />
 
 <div ng-cloak>
     <div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
-        <a href="/pinDetails/{{pin.id}}">
+        <div>
             <h4>{{pin.title}}</h4>
             <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />
             <br />
-            {{pin.shortDescription}}
-        </a>
+            <p>{{pin.shortDescription}}</p>
+            <a href="/pinDetails/{{pin.id}}">Details</a>
+            <button ng-click="main.pinItModal(pin.id)" class="btn btn-default">Pin It</button>
+        </div>
     </div>
 </div>
+
+
+<!--<div class="section" id="cars">
+    <div class="row">
+        <div class="col-md-4" ng-repeat=" tesla in main.teslas">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{tesla.title}}
+                </div>
+                <div class="panel-body">
+                    <img class="img-responsive" ng-src="{{tesla.picture}}" />
+                    <p>Price: {{tesla.price}}</p>
+                    <p>Range: {{tesla.range}}</p>
+                    <p>Charging Time: {{tesla.chargeTime}}</p>
+                    <p>Brief Description: {{tesla.briefDescription}}</p>
+                    <p>Full Description: {{tesla.fullDescription}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="royce in main.rolls">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{royce.title}}
+                </div>
+                <div class="panel-body">
+                    <img class="img-responsive" ng-src="{{royce.picture}}" />
+                    <p>Price: {{royce.price}}</p>
+                    <p>Gas Mileage: {{royce.gasMileage}}</p>
+                    <p>Brief Description: {{royce.briefDescription}}</p>
+                    <p>Full Description: {{royce.fullDescription}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+

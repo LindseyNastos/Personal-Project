@@ -225,11 +225,28 @@
     <Compile Include="Migrations\201507301940169_comDispName.Designer.cs">
       <DependentUpon>201507301940169_comDispName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508092209109_addedFlags.cs" />
+    <Compile Include="Migrations\201508092209109_addedFlags.Designer.cs">
+      <DependentUpon>201508092209109_addedFlags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508092228072_flagAdjusted.cs" />
+    <Compile Include="Migrations\201508092228072_flagAdjusted.Designer.cs">
+      <DependentUpon>201508092228072_flagAdjusted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508092234304_numFlags.cs" />
+    <Compile Include="Migrations\201508092234304_numFlags.Designer.cs">
+      <DependentUpon>201508092234304_numFlags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508092236236_noFlagCtor.cs" />
+    <Compile Include="Migrations\201508092236236_noFlagCtor.Designer.cs">
+      <DependentUpon>201508092236236_noFlagCtor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Flag.cs" />
     <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -361,6 +378,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507301940169_comDispName.resx">
       <DependentUpon>201507301940169_comDispName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508092209109_addedFlags.resx">
+      <DependentUpon>201508092209109_addedFlags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508092228072_flagAdjusted.resx">
+      <DependentUpon>201508092228072_flagAdjusted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508092234304_numFlags.resx">
+      <DependentUpon>201508092234304_numFlags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508092236236_noFlagCtor.resx">
+      <DependentUpon>201508092236236_noFlagCtor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

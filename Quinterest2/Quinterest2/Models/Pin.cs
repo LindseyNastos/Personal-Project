@@ -53,6 +53,9 @@ namespace Quinterest2.Models
 
         public ICollection<Comment> Comments { get; set; }
 
+        public ICollection<Flag> Flags { get; set; }
+
+        public int NumFlags { get; set; }
 
 
 

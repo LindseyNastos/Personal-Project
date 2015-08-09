@@ -21,12 +21,25 @@ textarea {
     max-width:100%;
 }
 
+.mediumPinImage {
+    max-height:225px;
+    max-width:100%;
+}
+
 .smallPinDiv {
     height:275px;
-    background-color:rgba(149, 165, 166, 0.15);
+    background-color:white;
     padding:5px;
-    border: 2px solid #2c3e50;
+    border: 2px solid #222;
     border-radius: 10px;
+}
+
+.smallPinDiv h4 {
+    color:#2c3e50;
+}
+
+.smallPinDiv p {
+    color:#2c3e50;    
 }
 
 .expandedPinImage {
@@ -60,14 +73,40 @@ textarea {
 }
 
 .createBoard {
-    border:1px solid firebrick;
+    border:2px solid firebrick;
     border-radius:4px;
+
 }
 
-/*.modalExit {
+.modalExit {
     float:right;
-}*/
+}
 
 .modalBoardList:hover {
     background:rgba(149, 165, 166, 0.15);
+}
+
+.pinItButtons {
+    float:right;
+}
+
+.noDecoHover:hover {
+    text-decoration:none;
+}
+
+/*body {
+    background-image: url('autumn.jpg');
+}*/
+
+h1, .localLink, h4 {
+    color:#222222;
+}
+
+.white {
+    color:#E1E1E1;
+}
+
+.loginForm {
+    top:12px;
+    position:relative;
 }

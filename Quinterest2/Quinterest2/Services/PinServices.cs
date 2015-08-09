@@ -37,6 +37,17 @@ namespace Quinterest2.Services
             return count;
         }
 
+        public int UpdateFlagCount(int pinId)
+        {
+            var count = _repo.Query<Flag>()
+                .Where(f => f.PinId == pinId)
+                .Count();
+            var pin = _repo.Find<Pin>(pinId);
+            pin.NumFlags = count;
+            _repo.SaveChanges();
+            return count;
+        }
+
         public IList<Comment> CommentList(int pinId)
         {
             return _repo.Query<Comment>()
@@ -245,6 +256,24 @@ namespace Quinterest2.Services
             _repo.Delete<Pin>(id);
             _repo.SaveChanges();
             this.UpdatePinCount(board.Id);
+        }
+
+        public void FlagThis(int pinId, string userId)
+        {
+            var flag = new Flag
+            {
+                DateTime = DateTime.Now,
+                UserId = userId,
+                User = this.FindUser(userId),
+                PinId = pinId,
+                Pin = this.Find(pinId)
+            };
+
+            _repo.Add(flag);
+            _repo.SaveChanges();
+
+            this.UpdateFlagCount(pinId);
+
         }
 
     }

@@ -15,12 +15,14 @@ namespace Quinterest2.Services
         string FindPinUserId(int pinId);
         Quinterest2.Models.ApplicationUser FindUser(string userId);
         string FindUserName(string userId);
+        void FlagThis(int pinId, string userId);
         System.Collections.Generic.IList<Quinterest2.Models.Pin> List();
         Quinterest2.Views.Pins.IndexVM Pages(int pageIndex);
         int PinCount(int boardId);
         void PinIt(Quinterest2.Models.Pin pin, string userId, int boardId);
         System.Collections.Generic.IList<Quinterest2.Models.Pin> PinsByCategory(int id);
         Quinterest2.Views.Pins.IndexVM SearchResults(string everything, int pageIndex);
+        int UpdateFlagCount(int pinId);
         int UpdatePinCount(int boardId);
     }
 }

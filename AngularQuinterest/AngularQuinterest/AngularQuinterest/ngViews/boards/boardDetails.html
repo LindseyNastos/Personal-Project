@@ -1,5 +1,5 @@
-﻿<h2>{{main.board.boardName}} Board</h2>
-<p>
+﻿<h1>{{main.board.boardName}} Board</h1>
+<p class="localLink">
     {{main.board.numPins}} Pins
     <br />
     {{main.board.description}}
@@ -11,12 +11,10 @@
     @Html.ActionLink("Back to Profile", "ApplicationUserView", "ApplicationUsers")
 </p>-->
 <p>
-    <a href="/profile">Back to Profile</a>
+    <a class="localLink" href="/profile">Back to Profile</a>
 </p>
-
-
 <div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
-    <a href="/pinDetails/{{pin.id}}">
+    <a class="noDecoHover" href="/pinDetails/{{pin.id}}">
         <h4>{{pin.title}}</h4>
         <br />
         <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />

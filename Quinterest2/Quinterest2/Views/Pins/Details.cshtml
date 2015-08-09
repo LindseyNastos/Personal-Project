@@ -42,8 +42,11 @@
         @if (Model.CurrentUser.DisplayName == Model.PinnerDisplayName)
         {
             <p>
+                <i class="fa fa-pencil"></i>
                 @Html.ActionLink("Edit Pin", "Edit", new { id = Model.Pin.Id }) <text> | </text>
+                <i class="fa fa-trash-o"></i>
                 @Html.ActionLink("Delete Pin", "Delete", new { id = Model.Pin.Id }) <text> | </text>
+                <i class="fa fa-chevron-left"></i>
                 @Html.ActionLink("Back To All Pins", "Index")
             </p>
         }
@@ -53,6 +56,7 @@
 
                 <i class="fa fa-thumb-tack"></i>
                 @Html.ActionLink("Pin It!", "PinItView", new { id = Model.Pin.Id }) |
+                <i class="fa fa-chevron-left"></i>
                 @Html.ActionLink("Back To All Pins", "Index")
 
                 <div class="flag btn-group collapse">
@@ -61,7 +65,7 @@
                         <span class="fa fa-caret-down"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li id ="report"><a href="#"><i class="fa fa-ban fa-fw"></i>Report</a></li>
+                        <li id ="report">@Html.ActionLink("Report", "AddFlag", new { id = Model.Pin.Id })</li>
                     </ul>
                 </div>
                 
@@ -76,7 +80,7 @@
 
 </div>
 <hr />
-<p><strong>Leave a comment:</strong></p>
+<p><strong><i class="fa fa-comment"></i>Leave a comment:</strong></p>
 @using (Html.BeginForm("Create", "Comments", new { id = Model.Pin.Id }))
 {
     <div class="form-group">

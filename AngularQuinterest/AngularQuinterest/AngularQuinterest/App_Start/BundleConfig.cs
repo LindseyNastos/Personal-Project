@@ -23,19 +23,6 @@ namespace AngularQuinterest
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-
-            //bundles.Add(new StyleBundle("/Scripts/js").Include(
-            //          "~/Scripts/angular.min.js",
-            //          "~Scripts/angular-route.min.js"
-            //          ));
-
-            //bundles.Add(new StyleBundle("/QuinterestApp/js").Include(
-            //          "/QuinterestApp/app.js",
-            //          "/QuinterestApp/controllers.js"
-            //          ));
-
-      
-
         }
     }
 }

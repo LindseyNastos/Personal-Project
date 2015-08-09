@@ -191,5 +191,15 @@ namespace Quinterest2.Controllers
             _service.Delete(id);
             return RedirectToAction("Index", "Boards", new { id = boardId });
         }
+
+        // GET: Pins/AddFlag/5
+        public ActionResult AddFlag(int pinId)
+        {
+            var userId = this.User.Identity.GetUserId();
+            _service.FlagThis(pinId, userId);
+            return View();
+            
+        }
+
     }
 }
