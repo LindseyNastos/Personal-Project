@@ -65,7 +65,7 @@
                         <span class="fa fa-caret-down"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li id ="report">@Html.ActionLink("Report", "AddFlag", new { id = Model.Pin.Id })</li>
+                        <li><a id="report" data-id="@Model.Pin.Id" href="#">Report</a></li>
                     </ul>
                 </div>
                 
@@ -75,7 +75,7 @@
         <div class="flag" id="reportConfirm" style="display:none">
             <p>You have flagged this pin. The administrator has been notified.</p>
         </div>
-
+        @Html.ActionLink("Report", "AddFlag", new { id = Model.Pin.Id})
     </div>
 
 </div>
@@ -114,3 +114,4 @@
         </tr>
     }
 </table>
+

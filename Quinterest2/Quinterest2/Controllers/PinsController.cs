@@ -192,12 +192,13 @@ namespace Quinterest2.Controllers
             return RedirectToAction("Index", "Boards", new { id = boardId });
         }
 
-        // GET: Pins/AddFlag/5
-        public ActionResult AddFlag(int pinId)
+        // Post: Pins/AddFlag/5
+        [HttpPost]
+        public ActionResult AddFlag(int id)
         {
             var userId = this.User.Identity.GetUserId();
-            _service.FlagThis(pinId, userId);
-            return View();
+            _service.FlagThis(id, userId);
+            return new EmptyResult();
             
         }
 

@@ -110,3 +110,7 @@ h1, .localLink, h4 {
     top:12px;
     position:relative;
 }
+
+.nav, .pagination, .carousel, .panel-title a { 
+    cursor: pointer; 
+}

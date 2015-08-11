@@ -22,8 +22,10 @@
             {{main.pin.longDescription}}
             <hr />
             <strong><text>Pinned by </text>UserName Goes Here</strong>
-            <br />
-            <button ng-click="main.pinItModal(main.pin.id)" class="btn btn-default">Pin it</button>
+            <hr />
+            <button ng-click="main.showPinItModal(main.pin.id)">Pin it</button>
+            <button ng-click="main.showEditModal(main.pin.id)">Edit</button>
+            <button ng-click="main.showRemoveModal(main.pin.id)">Delete</button>
         </div>
     </div>
 

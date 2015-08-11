@@ -1,34 +1,24 @@
 ﻿(function () {
     angular.module('QuinterestApp', ['ngRoute', 'ngResource', 'ui.bootstrap']).config(function ($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/', {
+            .when('/', { //LIST OF PINS
                 templateUrl: '/ngViews/pins/index.html',
                 controller: 'PinIndexController',
                 controllerAs: 'main'
             })
-            .when('/pinDetails/:id', {
+            .when('/pinDetails/:id', { //PIN EXPANDED
                 templateUrl: '/ngViews/pins/pinDetails.html',
                 controller: 'PinDetailsController',
                 controllerAs: 'main'
             })
-            .when('/pinCreate', {
-                templateUrl: '/ngViews/pins/pinCreate.html',
-                controller: 'PinCreateController',
-                controllerAs: 'main'
-            })
-            .when('/profile', {
+            .when('/profile', { //LIST OF BOARDS - PROFILE
                 templateUrl: '/ngViews/boards/boardIndex.html',
                 controller: 'BoardIndexController',
                 controllerAs: 'main'
             })
-            .when('/boardDetails/:id', {
+            .when('/boardDetails/:id', { //BOARD EXPANDED - LIST OF PINS
                 templateUrl: '/ngViews/boards/boardDetails.html',
                 controller: 'BoardDetailsController',
-                controllerAs: 'main'
-            })
-            .when('/boardCreate', {
-                templateUrl: '/ngViews/boards/boardCreate.html',
-                controller: 'BoardCreateController',
                 controllerAs: 'main'
             })
             .otherwise({
