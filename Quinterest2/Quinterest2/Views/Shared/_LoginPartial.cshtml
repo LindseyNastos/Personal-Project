@@ -3,14 +3,40 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+
+        @*<div class="btn-group collapse navMoveDown">
+                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i></a>
+                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu nav navbar-nav navbar-right">
+                    <li class="dropDownColor"><a class="dropDownColor" href="#"><i class="fa fa-bell"></i> Notifications</a></li>
+                    <li><i class="fa fa-pencil fa-fw"></i> @Html.ActionLink("Account Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    <li><a class="dropDownColor" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-ban fa-fw"></i> Log Off</a></li>
+                </ul>
+            </div>*@
+
+
+
+
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+
+            @if (PermissionsHelper.UserIsAdmin())
+            {
+                <li>
+                    @Html.ActionLink("Admin", "AdminView", "ApplicationUsers")
+
+                </li>
+            }
+
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else

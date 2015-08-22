@@ -4,33 +4,41 @@
     ViewBag.Title = "Index";
 }
 
-<h2>All Pins</h2>
+<h2>Quinterest</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button><i class="fa fa-plus"></i> @Html.ActionLink("Create Pin", "Create")</button>
 </p>
 
+
+
+<div class="section">
+    <div class="row">
 @foreach (var pin in Model.Pins)
 {
-    <div class="col-sm-3 smallPinDiv">
+        <div class="col-md-3">
+            <div class="panel pins panel-default">
 
-        <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
-        <br />
-
-        <img class="smallPinImage" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
-        <br />
-        @Html.DisplayFor(modelItem => pin.ShortDescription)
-        <br />
-        @Html.ActionLink("View", "Details", new { id = pin.Id })
-
-    </div>
+                <div class="panel-body">
+                    <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
+                    <img class="smallPinImage img-responsive" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
+                    <hr />
+                    <p>@Html.DisplayFor(modelItem => pin.ShortDescription)</p>
+                    <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", new { id = pin.Id }, null)</button>
+                </div>
+            </div>
+        </div>
 }
+    </div>
+</div>
+
+
 
 
 <nav>
     <ul class="pagination">
         <li>
-            <a href="#" aria-label="Previous">
+            <a href="/Pins/Index?pageIndex=Model.Previous" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>

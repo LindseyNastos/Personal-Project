@@ -11,25 +11,31 @@
     @Model.Description
 </p>
 <p>
-    @Html.ActionLink("Create New Pin", "Create", "Pins") |
-    @Html.ActionLink("Edit Board", "Edit", new { id = @Model.Id }) |
-    @Html.ActionLink("Delete Board", "Delete", new { id = @Model.Id }) |
-    @Html.ActionLink("Back to Profile", "ApplicationUserView", "ApplicationUsers")
+    <button><i class="fa fa-plus"></i> @Html.ActionLink("Create New Pin", "Create", "Pins")</button> 
+    <button><i class="fa fa-pencil"></i> @Html.ActionLink("Edit Board", "Edit", new { id = @Model.Id })</button> 
+    <button><i class="fa fa-trash-o"></i> @Html.ActionLink("Delete Board", "Delete", new { id = @Model.Id })</button> 
+    <button><i class="fa fa-chevron-left"></i> @Html.ActionLink("Back to Profile", "ApplicationUserView", "ApplicationUsers")</button>
 </p>
 
-@foreach (var pin in Model.Pins)
-{
-    <div class="col-sm-3 smallPinDiv">
+<div class="section">
+    <div class="row">
+        @foreach (var pin in Model.Pins)
+        {
+            <div class="col-md-3">
+                <div class="panel pins panel-default">
 
-        <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
-        <br />
-
-        <img class="smallPinImage" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
-        <br />
-        @Html.DisplayFor(modelItem => pin.ShortDescription)
-        <br />
-        @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)
-
+                    <div class="panel-body">
+                        <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
+                        <img class="smallPinImage img-responsive" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
+                        <hr />
+                        <p>@Html.DisplayFor(modelItem => pin.ShortDescription)</p>
+                        <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)</button>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-}
+</div>
+
+
 

@@ -1,8 +1,45 @@
-﻿
+﻿@model Quinterest2.Views.ApplicationUsers.AdminViewVM
+
 @{
-    ViewBag.Title = "AdminView";
+    ViewBag.Title = "Admin";
 }
 
-<h2>AdminView</h2>
+<h2>Pins to review:</h2>
 
-<h4>Flagged Pins:</h4>
+<table class="table">
+    <tr>
+        <th>
+            Time Stamp
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Pin
+        </th>
+        <th>
+            Review
+        </th>
+    </tr>
+
+    @foreach (var flag in Model.Flags)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => flag.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => flag.User.DisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => flag.Pin.Title)
+                <img style="max-height:100px; max-width:100px" src="@Html.DisplayFor(modelItem => flag.Pin.ImageUrl)" />
+            </td>
+            <td>
+                <button><i class="fa fa-search-plus"></i> @Html.ActionLink("Details", "Details", "Pins", new { id = flag.PinId }, null)</button>
+                <button><i class="fa fa-trash-o"></i> @Html.ActionLink("Delete", "Delete", "Pins", new { id = flag.PinId }, null)</button>
+            </td>
+        </tr>
+    }
+
+</table>

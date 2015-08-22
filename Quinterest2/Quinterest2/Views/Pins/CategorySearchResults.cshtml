@@ -7,12 +7,30 @@
 <h2>Category Search Results</h2>
 
 <p>
-    @Html.ActionLink("Back To Pins", "Index", "Pins")
+    <button><i class="fa fa-chevron-left"></i> @Html.ActionLink("Back To Pins", "Index", "Pins")</button>
 </p>
 
+<div class="section">
+    <div class="row">
+        @foreach (var pin in Model.Pins)
+        {
+            <div class="col-md-3">
+                <div class="panel pins panel-default">
 
+                    <div class="panel-body">
+                        <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
+                        <img class="smallPinImage img-responsive" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
+                        <hr />
+                        <p>@Html.DisplayFor(modelItem => pin.ShortDescription)</p>
+                        <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
-@foreach (var pin in Model.Pins)
+@*@foreach (var pin in Model.Pins)
 {
     <div class="col-sm-3 smallPinDiv">
 
@@ -26,7 +44,7 @@
         @Html.ActionLink("View", "Details", new { id = pin.Id })
 
     </div>
-}
+}*@
 
 
 <nav>

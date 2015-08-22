@@ -71,7 +71,7 @@ namespace Quinterest2.Controllers
                 PinnerDisplayName = _service.FindUserName(pinUserId),
                 //holds selected pin
                 Pin = _service.Find(id),
-                //holds current user's id
+                //holds current user
                 CurrentUser = _service.FindUser(userId),
                 //returns comments associated with selected pin
                 Comments = _service.CommentList(id),
@@ -112,6 +112,7 @@ namespace Quinterest2.Controllers
 
 
         // GET: Pins/Create
+        [Authorize]
         public ActionResult Create()
         {
             var userId = this.User.Identity.GetUserId();
@@ -171,13 +172,16 @@ namespace Quinterest2.Controllers
         }
 
         // GET: Pins/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
-            var original = _service.FindBoard(id.Value);
+            //if (id == null)
+            //{
+            //    return RedirectToAction("Index");
+            //}
+            //var original = _service.FindBoard(id.Value);
+            //return View(original);
+
+            var original = _service.Find(id);
             return View(original);
         }
 

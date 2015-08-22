@@ -262,6 +262,7 @@
     <Compile Include="Services\PinServices.cs" />
     <Compile Include="Services\ApplicationUserServices.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\ApplicationUsers\AdminViewVM.cs" />
     <Compile Include="Views\Pins\CreateVM.cs" />
     <Compile Include="Views\Pins\DetailsVM.cs" />
     <Compile Include="Views\Pins\EditVM.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="Views\Shared\CategoryPartialVM.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bokeh1.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\theme.min.css" />
@@ -326,7 +328,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Pins\Index.cshtml" />
     <Content Include="Views\Pins\Create.cshtml" />
     <Content Include="Views\Pins\Edit.cshtml" />
@@ -340,10 +341,11 @@
     <Content Include="Views\Pins\Details.cshtml" />
     <Content Include="Views\Boards\Index.cshtml" />
     <Content Include="Views\Pins\PinItView.cshtml" />
-    <Content Include="Views\ApplicationUsers\AdminView.cshtml" />
     <Content Include="Views\Pins\Search.cshtml" />
     <Content Include="Views\Shared\_CategoryListPartial.cshtml" />
     <Content Include="Views\Pins\CategorySearchResults.cshtml" />
+    <Content Include="Views\ApplicationUsers\AdminView.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

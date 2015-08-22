@@ -33,7 +33,6 @@ namespace Quinterest2.Controllers
         // GET: Boards/Create
         public ActionResult Create()
         {
-           
             return View();
         }
 

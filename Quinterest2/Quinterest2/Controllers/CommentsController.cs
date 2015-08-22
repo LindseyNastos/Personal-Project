@@ -69,23 +69,16 @@ namespace Quinterest2.Controllers
         // GET: Comments/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var original = _service.FindComment(id);
+            return View(original);
         }
 
         // POST: Comments/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteReally(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _service.Delete(id);
+            return View();
         }
     }
 }

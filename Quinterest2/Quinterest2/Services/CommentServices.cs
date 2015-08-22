@@ -25,6 +25,11 @@ namespace Quinterest2.Services
                 .ToList();
         }
 
+        public Comment FindComment(int commentId)
+        {
+            return _repo.Find<Comment>(commentId);
+        }
+
         public Pin FindPin(int pinId)
         {
             return _repo.Query<Pin>()
@@ -51,6 +56,11 @@ namespace Quinterest2.Services
             _repo.SaveChanges();
         }
 
+        public void Delete(int id)
+        {
+            _repo.Delete<Comment>(id);
+            _repo.SaveChanges();
+        }
 
     }
 }

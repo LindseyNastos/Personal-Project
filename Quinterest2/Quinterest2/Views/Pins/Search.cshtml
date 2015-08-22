@@ -7,45 +7,29 @@
 <h2>Search Results</h2>
 
 <p>
-    @Html.ActionLink("Back To Pins", "Index", "Pins")
+    <button><i class="fa fa-chevron-left"></i> @Html.ActionLink("Back To Pins", "Index", "Pins")</button>
 </p>
 
 
-@foreach (var pin in Model.Pins)
-{
-    <div class="col-sm-3 smallPinDiv">
 
-        <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
-        <br />
+<div class="section">
+    <div class="row">
+        @foreach (var pin in Model.Pins)
+        {
+            <div class="col-md-3">
+                <div class="panel pins panel-default">
 
-        <img class="smallPinImage" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
-        <br />
-        @Html.DisplayFor(modelItem => pin.ShortDescription)
-        <br />
-        @Html.ActionLink("View", "Details", new { id = pin.Id })
-
+                    <div class="panel-body">
+                        <h4>@Html.DisplayFor(modelItem => pin.Title)</h4>
+                        <img class="smallPinImage img-responsive" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
+                        <hr />
+                        <p>@Html.DisplayFor(modelItem => pin.ShortDescription)</p>
+                        <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)</button>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-}
+</div>
 
 
-
-
-@*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.ActionLink("View", "Details", new { id=item.Id }) |
-        </td>
-    </tr>
-}*@

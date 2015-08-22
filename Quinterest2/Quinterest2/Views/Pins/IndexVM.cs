@@ -12,5 +12,7 @@ namespace Quinterest2.Views.Pins
 
         public int PinCount { get; set; }
 
+        public int Previous { get; set; }
+
     }
 }

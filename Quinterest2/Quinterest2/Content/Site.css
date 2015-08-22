@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('bokeh1.jpg');
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -46,7 +47,7 @@ textarea {
 }
 
 .smallPinImage {
-    max-height:150px;
+    max-height:175px;
     max-width:100%;
 }
 
@@ -69,7 +70,9 @@ textarea {
 }
 
 .navMoveDown {
-    top:17px;
+    top:10px;
+    position:relative;
+    margin-left:5px;
 }
 
 .flag {
@@ -82,16 +85,48 @@ textarea {
 }
 
 .commentTableRow {
-    border:20px solid white;
+    border:20px solid transparent;
 }
 
 .commentImage {
-    max-height:35px;
-    max-width:35px;
+    max-height:45px;
+    max-width:45px;
 }
 
 
 .navbar-input-group input {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+}
+
+.dropDownColor {
+    color:#2c3e50;
+}
+
+.pinItImage {
+    max-width: 100%;
+    min-height:400px;
+    padding: 10px;
+    border: 2px solid #2c3e50;
+}
+
+.pins {
+    height:360px;
+}
+
+.deleteWidth {
+    height:360px;
+    width:300px;
+}
+
+.mainBoardImages {
+    max-height:165px;
+}
+
+.boards {
+    height:350px;
+}
+
+.dropdown-menu {
+    min-width:90px;
 }

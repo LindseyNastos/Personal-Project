@@ -5,35 +5,27 @@
 }
 
 <h2>Delete This Pin</h2>
-
+<hr />
 <h3>Are you sure you want to delete this?</h3>
-<div>
+<div class="panel deleteWidth panel-default">
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <div class="panel-body">
+        <h4>@Html.DisplayFor(model => model.Title)</h4>
+        <img class="smallPinImage img-responsive" src="@Html.DisplayFor(model => model.ImageUrl)" />
+        <hr />
+        <p>@Html.DisplayFor(model => model.ShortDescription)</p>
+    </div>
+</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+            <button>@Html.ActionLink("Back to List", "Index")</button>
         </div>
     }
-</div>
+
+

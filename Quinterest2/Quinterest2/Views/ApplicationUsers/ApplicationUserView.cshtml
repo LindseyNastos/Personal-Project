@@ -1,7 +1,7 @@
 ﻿@model Quinterest2.Models.ApplicationUser
 
 @{
-    ViewBag.Title = "ProfileView";
+    ViewBag.Title = "Profile";
 }
 
 
@@ -17,24 +17,48 @@
                 @Model.NumPins <text> Pins</text>
             </p>
         <p class="profileButtons">
-            @Html.ActionLink("Edit Profile", "Edit") |
-            @Html.ActionLink("Create Board", "Create", "Boards") |
-            @Html.ActionLink("Create Pin", "Create", "Pins")
+            <button><i class="fa fa-pencil"></i> @Html.ActionLink("Edit Profile", "Edit")</button>
+            <button><i class="fa fa-plus"></i> @Html.ActionLink("Create Board", "Create", "Boards")</button>
+            <button><i class="fa fa-plus"></i> @Html.ActionLink("Create Pin", "Create", "Pins")</button>
         </p>
         </div>
 
 </div>
 
 <br />
-
-
-
-
-
 <hr />
+
+<div class="section pins">
+    <div class="row">
 @foreach (var board in Model.Boards)
 {
-    <div class="col-sm-3 smallPinDiv">
+        <div class="col-sm-3">
+ 
+                <div class="panel boards panel-default">
+                    <div class="panel-heading">
+                        @Html.DisplayFor(modelItem => board.BoardName)
+                    </div>
+                    <div class="panel-body">
+                        <img class="img-responsive mainBoardImages" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
+                        <hr />
+                        <p>@Html.DisplayFor(modelItem => board.Description)</p>
+                        <br />
+                        @Html.DisplayFor(modelItem => board.NumPinsOnBoard) <text> Pins</text> |
+                        <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Index", "Boards", new { id = board.Id }, null)</button>
+                    </div>
+                </div>
+
+        </div>
+}
+    </div>
+</div>
+
+
+
+
+
+
+    @*<div class="col-sm-3 smallPinDiv">
 
         <h4>@Html.DisplayFor(modelItem => board.BoardName)</h4>
         <img class="smallPinImage" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
@@ -46,4 +70,4 @@
         @Html.ActionLink("View", "Index", "Boards", new { id = board.Id }, null)
 
     </div>
-}
+}*@

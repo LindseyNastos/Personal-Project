@@ -20,10 +20,24 @@ namespace Quinterest2.Services
 
         public IList<Pin> List()
         {
-            return _repo.Query<Pin>()
+            var pins = _repo.Query<Pin>()
                 .Include(p => p.Category)
                 .Include(p => p.Board)
                 .ToList();
+
+            //var rnd = new System.Random();
+            //var pinNumbers = Enumerable.Range(0, pins.Count()).OrderBy(f => rnd.Next());
+
+            //var randomPins = new List<Pin>();
+
+            //foreach (var number in pinNumbers)
+            //{
+            //    randomPins.Add(pins[number]);
+            //}
+
+            //return randomPins;
+
+            return pins;
         }
 
         public int UpdatePinCount(int boardId)
@@ -114,6 +128,12 @@ namespace Quinterest2.Services
         public IndexVM Pages(int pageIndex)
         {
             const int ITEMS_PER_PAGE = 20;
+
+
+            //var rnd = new System.Random();
+            //var pinNumbers = Enumerable.Range(0, pins.Count()).OrderBy(f => rnd.Next());
+
+
             
             var pages = _repo.Query<Pin>()
                 .OrderBy(p => p.Id)
@@ -123,10 +143,18 @@ namespace Quinterest2.Services
 
             var numPins = _repo.Query<Pin>().Count();
 
+            var previous = 0;
+
+            if (pageIndex > 0)
+            {
+                previous = pageIndex - 1;
+            }
+
             return new IndexVM
             {
                 Pins = pages,
-                PinCount = numPins
+                PinCount = numPins,
+                Previous = previous
             };
         }
 
