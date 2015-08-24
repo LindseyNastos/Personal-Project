@@ -21,18 +21,24 @@ namespace Quinterest2
     {
         public Task SendAsync(IdentityMessage message)
         {
-            //var myMessage = new SendGridMessage();
-            //myMessage.AddTo(message.Destination);
-            //myMessage.From = new System.Net.Mail.MailAddress("LindseyNastos@gmail.com", "Account Activation");
-            //myMessage.Subject = message.Subject;
-            //myMessage.Text = message.Body;
-            //myMessage.Html = message.Body;
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new System.Net.Mail.MailAddress("LindseyNastos@gmail.com", "Account Activation");
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
 
-            //var credentials = new NetworkCredential("LindseyNastos", "supersecret123");
+            var credentials = new NetworkCredential("LindseyNastos", "supersecret123");
+            var transportWeb = new Web(credentials);
 
-            //var transportWeb = new Web(credentials);
-            //return transportWeb.DeliverAsync(myMessage);
-            return Task.FromResult(0);
+            if (transportWeb != null)
+            {
+                return transportWeb.DeliverAsync(myMessage);
+            }
+            else
+            {
+                return Task.FromResult(0);
+            }
         }
     }
 
@@ -41,7 +47,7 @@ namespace Quinterest2
         public Task SendAsync(IdentityMessage message)
         {
             var Twilio = new TwilioRestClient("AC872eda3ddcc8820601c969c3ead050c0", "5988ac6777f1961a0827f66be1eb8426");
-            Twilio.SendMessage("4257619991", message.Destination, message.Body);
+            Twilio.SendMessage("(425) 354-3062", message.Destination, message.Body);
             return Task.FromResult(0);
         }
     }
