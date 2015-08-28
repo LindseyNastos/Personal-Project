@@ -14,5 +14,7 @@ namespace Quinterest2.Views.Pins
 
         public int Previous { get; set; }
 
+        public ApplicationUser CurrentUser { get; set; }
+
     }
 }

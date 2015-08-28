@@ -22,7 +22,8 @@ namespace Quinterest2.Controllers
 
         public ActionResult Search(string everything, int pageIndex = 0)
         {
-            return View(_service.SearchResults(everything, pageIndex));
+            var userId = this.User.Identity.GetUserId();
+            return View(_service.SearchResults(userId, everything, pageIndex));
         }
 
 

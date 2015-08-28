@@ -71,7 +71,7 @@ namespace Quinterest2.Services
         }
 
 
-        public IndexVM SearchResults(string everything, int pageIndex)
+        public IndexVM SearchResults(string userId, string everything, int pageIndex)
         {
             const int ITEMS_PER_PAGE = 20;
 
@@ -95,10 +95,13 @@ namespace Quinterest2.Services
                     p.Board.BoardName.Contains(everything))
                     .Count();
 
+            var user = this.FindUser(userId);
+
             return new IndexVM
             {
                 Pins = pages,
-                PinCount = numPins
+                PinCount = numPins,
+                CurrentUser = user
             };
         }
 

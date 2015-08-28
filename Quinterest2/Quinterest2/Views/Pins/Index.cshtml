@@ -25,7 +25,10 @@
                         <hr />
                         <p>@Html.DisplayFor(modelItem => pin.ShortDescription)</p>
                         <div class="pinDivButtons">
+                        @if (User.Identity.IsAuthenticated && Model.CurrentUser.Id == pin.UserId)
+                        {
                             <button class="pinItDivButton btn-danger"><i class="fa fa-thumb-tack"></i>@Html.ActionLink("Pin It!", "PinItView", new { id = pin.Id }, new {@class = "pinItDivButton"})</button>
+                        }
                             <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", new { id = pin.Id }, null)</button>
                         </div>
                     </div>
