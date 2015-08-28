@@ -79,12 +79,12 @@ namespace Quinterest2.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    //var user = UserManager.FindByName(model.Email);
+                    var user = UserManager.FindByName(model.Email);
 
-                    //if (!user.EmailConfirmed)
-                    //{
-                    //    return View("MustConfirm");
-                    //}
+                    if (!user.EmailConfirmed)
+                    {
+                        return View("MustConfirm");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -161,7 +161,7 @@ namespace Quinterest2.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

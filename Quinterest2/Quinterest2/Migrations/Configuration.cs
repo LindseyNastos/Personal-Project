@@ -9,6 +9,7 @@ namespace Quinterest2.Migrations
     using System.Linq;
     using System.Security.Claims;
     using System.Collections.Generic;
+    using System.Configuration;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Quinterest2.Models.ApplicationDbContext>
     {
@@ -19,9 +20,6 @@ namespace Quinterest2.Migrations
 
         protected override void Seed(Quinterest2.Models.ApplicationDbContext context)
         {
-
-
-
             var categories = new Category[]
             {
                 new Category {Name="Animals and Pets"},
@@ -54,48 +52,27 @@ namespace Quinterest2.Migrations
                 new Category {Name="Travel"},
                 new Category {Name="Weddings"},
                 new Category {Name="Women's Fashion"}
-
             };
-
             context.Categories.AddOrUpdate(c => c.Name, categories);
-
-
 
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new ApplicationUserManager(userStore);
-           
+
+            var adminEmail = ConfigurationManager.AppSettings["adminEmail"];
+            var adminPassword = ConfigurationManager.AppSettings["adminPassword"];
+
             // Ensure Lindsey
-            var user = userManager.FindByName("Lindsey@gmail.com");
+            var user = userManager.FindByName(adminEmail);
             if (user == null)
             {
                 // create user
                 user = new ApplicationUser
                 {
                     DisplayName = "Lindsey",
-                    UserName = "Lindsey@gmail.com",
-                    Email = "Lindsey@gmail.com",
-                    //NumBoards = 1,
-                    //NumPins = 2,
-                    //Boards = new List<Board> { 
-                    //    new Board {
-                    //        BoardName="Cool Stuff", 
-                    //        ImageUrl="https://s-media-cache-ak0.pinimg.com/236x/3c/0a/ac/3c0aac353c75db51a3d10d208e0e67bc.jpg",
-                    //        Description="Awesome stuff that I wanted to pin.",  
-                    //        NumPinsOnBoard = 2,
-                    //        Pins = new List<Pin> {
-                    //            new Pin {
-                    //                Title="Painting Glassware",
-                    //                ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/e9/5f/b2/e95fb2616c2de686c783e318b1606c01.jpg",
-                    //                CategoryId=categories[6].Id },
-                    //            new Pin { 
-                    //                Title="Deck Decor",
-                    //                ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/06/87/90/06879025510e57447329b0919af357b4.jpg",
-                    //                CategoryId=categories[15].Id }
-                    //        }
-                    //    }
-                    //}
+                    UserName = adminEmail,
+                    Email = adminEmail,
                 };
-                userManager.Create(user, "Secret123!");
+                userManager.Create(user, adminPassword);
 
                 // add claims
                 userManager.AddClaim(user.Id, new Claim("IsAdmin", "true"));

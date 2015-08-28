@@ -174,13 +174,6 @@ namespace Quinterest2.Controllers
         // GET: Pins/Delete/5
         public ActionResult Delete(int id)
         {
-            //if (id == null)
-            //{
-            //    return RedirectToAction("Index");
-            //}
-            //var original = _service.FindBoard(id.Value);
-            //return View(original);
-
             var original = _service.Find(id);
             return View(original);
         }
@@ -205,6 +198,5 @@ namespace Quinterest2.Controllers
             return new EmptyResult();
             
         }
-
     }
 }

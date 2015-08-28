@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Quinterest2.Models;
+using System.Configuration;
 
 namespace Quinterest2
 {
@@ -50,9 +51,12 @@ namespace Quinterest2
             //    clientId: "",
             //    clientSecret: "");
 
+            var key = ConfigurationManager.AppSettings["twilioConsumerKey"];
+            var secret = ConfigurationManager.AppSettings["twilioConsumerSecret"];
+
             app.UseTwitterAuthentication(
-               consumerKey: "YyfMzbfy2IbeE2oAVq4eng5s4",
-               consumerSecret: "myutZNa2rXHTCv3CKoZKca76w04jssFyod925g1gXgEq4VfRNB");
+               consumerKey: key,
+               consumerSecret: secret);
 
             //app.UseFacebookAuthentication(
             //   appId: "",

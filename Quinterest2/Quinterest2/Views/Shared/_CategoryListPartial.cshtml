@@ -1,0 +1,7 @@
+﻿@model Quinterest2.Views.Shared.CategoryPartialVM
+
+
+@using (Html.BeginForm("CategorySearchResults", "Pins"))
+{
+    @Html.DropDownListFor(model => model.Pin.CategoryId, Model.Categories, "Search by Category", new { @class = "form-control", onchange = "submit()" } )
+}

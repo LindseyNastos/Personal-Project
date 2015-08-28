@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image: url('bokeh1.jpg');
+    background: url('bokeh1.jpg') no-repeat fixed 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,10 +23,6 @@ select,
 textarea {
     max-width: 280px;
 }
-
-/*.pinImages {
-    max-width:150px;
-}*/
 
 .expandedPinImage {
     max-width: 500px;
@@ -93,7 +89,6 @@ textarea {
     max-width:45px;
 }
 
-
 .navbar-input-group input {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -129,4 +124,41 @@ textarea {
 
 .dropdown-menu {
     min-width:90px;
+}
+
+.pinDivButtons {
+    position: absolute;
+    bottom: 40px;
+}
+
+a {
+    color: #333;
+}
+
+a:hover, a:active, a:visited {
+    text-decoration:none;  
+    color:#333;
+}
+
+.pinItDivButton {
+    color:white;
+}
+
+.navbar-inverse {
+    background-color: #917394;
+    border-color: #917394;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.panel-default > .panel-heading {
+    color: #333333;
+    background-color: #D3CBD4;
+    border-color: #C7B7C7;
 }

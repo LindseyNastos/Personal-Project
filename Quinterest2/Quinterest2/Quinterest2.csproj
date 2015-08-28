@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201508092236236_noFlagCtor.Designer.cs">
       <DependentUpon>201508092236236_noFlagCtor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508281612174__adminChange.cs" />
+    <Compile Include="Migrations\201508281612174__adminChange.Designer.cs">
+      <DependentUpon>201508281612174__adminChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Board.cs" />
@@ -251,7 +255,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pin.cs" />
-    <Compile Include="PermissionsHelper\PermissionsHelper.cs" />
+    <Compile Include="Helpers\PermissionsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BoardServices.cs" />
     <Compile Include="Services\CommentServices.cs" />
@@ -392,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508092236236_noFlagCtor.resx">
       <DependentUpon>201508092236236_noFlagCtor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508281612174__adminChange.resx">
+      <DependentUpon>201508281612174__adminChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
