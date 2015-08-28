@@ -42,15 +42,17 @@ namespace Quinterest2.Controllers
 
         [HttpPost]
         public ActionResult CategorySearchResults(CategoryPartialVM vm, int pageIndex = 0)
-        {            
-            return View(_service.CategoryPages(pageIndex, vm.Pin.CategoryId));
+        {
+            var userId = this.User.Identity.GetUserId();
+            return View(_service.CategoryPages(userId, pageIndex, vm.Pin.CategoryId));
         }
 
 
         // GET: Pins
         public ActionResult Index(int pageIndex = 0)
         {
-            return View(_service.Pages(pageIndex));
+            var userId = this.User.Identity.GetUserId();
+            return View(_service.Pages(userId, pageIndex));
         }
 
 

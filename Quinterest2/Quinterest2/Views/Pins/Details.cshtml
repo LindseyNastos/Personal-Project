@@ -42,17 +42,17 @@
         @if (Model.CurrentUser.Id == Model.Pin.UserId)
         {
             <p>
-                <button><i class="fa fa-pencil"></i> @Html.ActionLink("Edit Pin", "Edit", new { id = Model.Pin.Id })</button>
-                <button><i class="fa fa-trash-o"></i> @Html.ActionLink("Delete Pin", "Delete", new { id = Model.Pin.Id })</button>
-                <button><i class="fa fa-chevron-left"></i> @Html.ActionLink("Back To All Pins", "Index")</button>
+                <button class="btn btn-sm btn-default"><i class="fa fa-pencil"></i> @Html.ActionLink("Edit Pin", "Edit", new { id = Model.Pin.Id })</button>
+                <button class="btn btn-sm btn-default"><i class="fa fa-trash-o"></i> @Html.ActionLink("Delete Pin", "Delete", new { id = Model.Pin.Id })</button>
+                <button class="btn btn-sm btn-default"><i class="fa fa-chevron-left"></i> @Html.ActionLink("Back To All Pins", "Index")</button>
             </p>
         }
         else
         {
             <p>
 
-                <button><i class="fa fa-thumb-tack"></i> @Html.ActionLink("Pin It!", "PinItView", new { id = Model.Pin.Id })</button>
-                <button><i class="fa fa-chevron-left"></i> @Html.ActionLink("Back To All Pins", "Index")</button>
+                <button class="pinItDivButton btn btn-sm btn-danger"><i class="fa fa-thumb-tack"></i> @Html.ActionLink("Pin It!", "PinItView", new { id = Model.Pin.Id }, new { @class = "pinItDivButton" })</button>
+                <button class="btn btn-sm btn-default"><i class="fa fa-chevron-left"></i> @Html.ActionLink("Back To All Pins", "Index")</button>
 
                 <div class="flag btn-group collapse">
                     <a class="btn btn-danger btn-sm"><i class="fa fa-flag-o fa-lg"></i></a>
@@ -88,7 +88,7 @@
     
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Submit" class="btn btn-default" />
+            <input type="submit" value="Submit" class="btn btn-sm btn-default" />
         </div>
     </div>
 }
@@ -106,7 +106,7 @@
                 @Html.DisplayFor(modelItem => comment.Words)
                 @if (Model.CurrentUser.Id == Model.Pin.UserId || Model.CurrentUser.Id == comment.UserId)
                 {
-                    <button class="deleteComment btn btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button class="deleteComment btn btn-sm btn-default"><i class="fa fa-trash-o"></i></button>
                 }
             </td>
         </tr>

@@ -7,7 +7,7 @@
 <h2>Quinterest</h2>
 
 <p>
-    <button><i class="fa fa-plus"></i> @Html.ActionLink("Create Pin", "Create")</button>
+    <button class="btn btn-sm btn-default"><i class="fa fa-plus"></i> @Html.ActionLink("Create Pin", "Create")</button>
 </p>
 
 
@@ -25,11 +25,11 @@
                         <hr />
                         <p>@Html.DisplayFor(modelItem => pin.ShortDescription)</p>
                         <div class="pinDivButtons">
-                        @if (User.Identity.IsAuthenticated && Model.CurrentUser.Id == pin.UserId)
+                        @if (User.Identity.IsAuthenticated && Model.CurrentUserId != pin.UserId)
                         {
-                            <button class="pinItDivButton btn-danger"><i class="fa fa-thumb-tack"></i>@Html.ActionLink("Pin It!", "PinItView", new { id = pin.Id }, new {@class = "pinItDivButton"})</button>
+                            <button class="pinItDivButton btn btn-sm btn-danger"><i class="fa fa-thumb-tack"></i>@Html.ActionLink("Pin It!", "PinItView", new { id = pin.Id }, new {@class = "pinItDivButton"})</button>
                         }
-                            <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", new { id = pin.Id }, null)</button>
+                            <button class="btn btn-sm btn-default"><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", new { id = pin.Id }, null)</button>
                         </div>
                     </div>
                 </div>

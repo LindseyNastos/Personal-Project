@@ -36,8 +36,8 @@
                 <img style="max-height:100px; max-width:100px" src="@Html.DisplayFor(modelItem => flag.Pin.ImageUrl)" />
             </td>
             <td>
-                <button><i class="fa fa-search-plus"></i> @Html.ActionLink("Details", "Details", "Pins", new { id = flag.PinId }, null)</button>
-                <button><i class="fa fa-trash-o"></i> @Html.ActionLink("Delete", "Delete", "Pins", new { id = flag.PinId }, null)</button>
+                <button class="btn btn-sm btn-default"><i class="fa fa-search-plus"></i> @Html.ActionLink("Details", "Details", "Pins", new { id = flag.PinId }, null)</button>
+                <button class="btn btn-sm btn-default"><i class="fa fa-trash-o"></i> @Html.ActionLink("Delete", "Delete", "Pins", new { id = flag.PinId }, null)</button>
             </td>
         </tr>
     }

@@ -24,7 +24,7 @@
                         <img class="smallPinImage img-responsive" src="@Html.DisplayFor(modelItem => pin.ImageUrl)" />
                         <hr />
                         <p>@Html.DisplayFor(modelItem => pin.ShortDescription)</p>
-                        <button><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)</button>
+                        <button class="btn btn-sm btn-default"><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Details", "Pins", new { id = pin.Id }, null)</button>
                     </div>
                 </div>
             </div>

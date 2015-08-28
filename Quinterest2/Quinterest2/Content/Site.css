@@ -131,16 +131,12 @@ textarea {
     bottom: 40px;
 }
 
-a {
-    color: #333;
-}
-
-a:hover, a:active, a:visited {
+a, a:hover, a:active, a:visited {
     text-decoration:none;  
     color:#333;
 }
 
-.pinItDivButton {
+.pinItDivButton, .pinItDivButton:hover, .pinItDivButton:after, .pinItDivButton:visited {
     color:white;
 }
 
