@@ -35,14 +35,14 @@
                     <div class="panel-heading">
                         @Html.DisplayFor(modelItem => board.BoardName)
                     </div>
-                    <div class="panel-body clearfix">
+                    <div class="panel-body">
                         <img class="img-responsive mainBoardImages" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
                         <hr />
                         <p>@Html.DisplayFor(modelItem => board.Description)</p>
                         <br />
                         <div class="pinDivButtons">
                             <span class="pull-left">@Html.DisplayFor(modelItem => board.NumPinsOnBoard) <text> Pins</text></span>
-                            <button class="pull-right btn btn-sm btn-default"><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Index", "Boards", new { id = board.Id })</button>
+                            <button style="margin-left:130px" class="pull-right btn btn-sm btn-default"><i class="fa fa-search-plus"></i> @Html.ActionLink("View", "Index", "Boards", new { id = board.Id }, null)</button>
                         </div>
                     </div>
                 </div>

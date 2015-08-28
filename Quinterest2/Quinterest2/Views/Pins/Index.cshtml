@@ -43,20 +43,20 @@
 
 <nav>
     <ul class="pagination">
-        <li>
+        @*<li>
             <a href="/Pins/Index?pageIndex=Model.Previous" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
-        </li>
+        </li>*@
 
         @for (int i = 0; i < (this.Model.PinCount / 20) + 1; i++)
         {
             <li><a href="/Pins/Index?pageIndex=@i">@(i + 1)</a></li>
         }
-        <li>
+        @*<li>
             <a href="/Pins/Index?pageIndex=+1" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
-        </li>
+        </li>*@
     </ul>
 </nav>
