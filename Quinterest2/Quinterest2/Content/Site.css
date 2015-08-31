@@ -49,7 +49,9 @@ textarea {
 
 .profileImage {
     max-width:175px;
-    max-height:150px;
+    max-height:125px;
+    margin-top:-5px;
+    border-radius:15px;
 }
 
 .profileButtons {

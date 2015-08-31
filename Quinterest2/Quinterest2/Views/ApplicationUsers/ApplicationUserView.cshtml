@@ -4,13 +4,13 @@
     ViewBag.Title = "Profile";
 }
 
-
-
-
 <div class="row">
     <div class="col-sm-12">
 
         <h2 class="displayName">@Model.DisplayName</h2>
+        @if (Model.ImageUrl == null){
+            <img class="profileImage center-block" src="~/Content/icon-profile.png" />
+        }
         <img class="profileImage center-block" src="@Model.ImageUrl" />
         <p class="boardsPins center-block">
             @Model.NumBoards <text> Boards</text> |

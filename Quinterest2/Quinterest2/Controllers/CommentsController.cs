@@ -75,6 +75,7 @@ namespace Quinterest2.Controllers
 
         // POST: Comments/Delete/5
         [HttpPost]
+        [ActionName("Delete")]
         public ActionResult DeleteReally(int id)
         {
             _service.Delete(id);
