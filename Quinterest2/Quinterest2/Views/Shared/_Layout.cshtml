@@ -23,15 +23,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                   
-                    <li>@Html.ActionLink("Pins", "Index", "Pins")</li>
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Profile", "ApplicationUserView", "ApplicationUsers")</li>
-                    }
+                        <li>@Html.ActionLink("Pins", "Index", "Pins")</li>
 
-                    @if (PermissionsHelper.UserIsAdmin())
+                        <li>@Html.ActionLink("Profile", "ApplicationUserView", "ApplicationUsers")</li>
+                    
+                    if (ClaimsHelper.UserIsAdmin())
                     {
                         <li>@Html.ActionLink("Admin", "AdminView", "ApplicationUsers")</li>
                     }
@@ -39,14 +38,14 @@
                     <li class="navMoveDown input-group">
                         @using (Html.BeginForm("Search", "Pins"))
                         {
-                            @Html.TextBox("everything", null, new { @class = "form-control", @placeholder = "Search" })
+                            @Html.TextBox("everything", null, new { @class = "form-control", @style="width:600px", @placeholder = "Search" })
                         }
                     </li>
 
                     <li class="navMoveDown input-group">
                         @Html.Action("CategorySearch", "Pins")
                     </li>
-                    
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Quinterest2.Models.Notification>
+
+@{
+    ViewBag.Title = "NotificationList";
+}
+
+<h2>NotificationList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Time Stamp
+        </th>
+        <th>
+            Message
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Pin
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.DisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pin.Title)
+            <br />
+            <img style="max-height:100px; max-width:100px" src="@Html.DisplayFor(modelItem => item.Pin.ImageUrl)" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -16,6 +16,7 @@ namespace Quinterest2.Services
         Quinterest2.Models.ApplicationUser FindUser(string userId);
         string FindUserName(string userId);
         void FlagThis(int pinId, string userId);
+        System.Collections.Generic.IList<Quinterest2.Models.Notification> GetNotifications(string userId);
         System.Collections.Generic.IList<Quinterest2.Models.Pin> List();
         Quinterest2.Views.Pins.IndexVM Pages(string userId, int pageIndex);
         int PinCount(int boardId);

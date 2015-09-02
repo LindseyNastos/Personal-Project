@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Quinterest2.PermissionsHelper
 {
-    public static class PermissionsHelper
+    public static class ClaimsHelper
     {
         public static bool UserIsAdmin()
         {

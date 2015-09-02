@@ -59,13 +59,13 @@ namespace Quinterest2.Controllers
         // GET: Pins/Details/5
         public ActionResult Details(int id)
         {
-            if (this.User.Identity.GetUserId() == null){
+            var userId = this.User.Identity.GetUserId();
+
+            if (userId == null){
                 return RedirectToAction("Register", "Account");
             }
 
             else {
-            //gets current user's id
-            var userId = this.User.Identity.GetUserId();
             //gets pin's user's id
             var pinUserId = _service.FindPinUserId(id);
             var vm = new DetailsVM
@@ -200,6 +200,13 @@ namespace Quinterest2.Controllers
             _service.FlagThis(id, userId);
             return new EmptyResult();
             
+        }
+
+        public ActionResult NotificationList()
+        {
+            var userId = this.User.Identity.GetUserId();
+            var notes = _service.GetNotifications(userId);
+            return View(notes);
         }
     }
 }

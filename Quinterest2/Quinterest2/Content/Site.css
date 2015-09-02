@@ -2,6 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background: url('bokeh1.jpg') no-repeat fixed 100%;
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,8 +26,8 @@ textarea {
 }
 
 .expandedPinImage {
-    max-width: 500px;
-    min-height:400px;
+    min-width: 100%;
+    min-height:100%;
     padding: 10px;
     border: 2px solid #2c3e50;
     position: relative;
@@ -159,4 +160,13 @@ a, a:hover, a:active, a:visited {
     color: #333333;
     background-color: #D3CBD4;
     border-color: #C7B7C7;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
+    background-color:#3D1142;
+    color:white;
+}
+
+#accountSettings {
+    margin-top:-5px;
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web;
 using Quinterest2.Views.Pins;
+using Quinterest2.PermissionsHelper;
 
 namespace Quinterest2.Services
 {
@@ -76,22 +77,22 @@ namespace Quinterest2.Services
             const int ITEMS_PER_PAGE = 20;
 
             var pages = _repo.Query<Pin>()
-                .Where(p => p.Category.Name.Contains(everything) || 
-                    p.ShortDescription.Contains(everything) || 
-                    p.LongDescription.Contains(everything) || 
-                    p.Title.Contains(everything) || 
-                    p.Website.Contains(everything) || 
+                .Where(p => p.Category.Name.Contains(everything) ||
+                    p.ShortDescription.Contains(everything) ||
+                    p.LongDescription.Contains(everything) ||
+                    p.Title.Contains(everything) ||
+                    p.Website.Contains(everything) ||
                     p.Board.BoardName.Contains(everything))
                 .OrderBy(p => p.Id).Skip(pageIndex * ITEMS_PER_PAGE)
                 .Take(ITEMS_PER_PAGE)
                 .ToList();
 
             var numPins = _repo.Query<Pin>()
-                .Where(p => p.Category.Name.Contains(everything) || 
-                    p.ShortDescription.Contains(everything) || 
-                    p.LongDescription.Contains(everything) || 
-                    p.Title.Contains(everything) || 
-                    p.Website.Contains(everything) || 
+                .Where(p => p.Category.Name.Contains(everything) ||
+                    p.ShortDescription.Contains(everything) ||
+                    p.LongDescription.Contains(everything) ||
+                    p.Title.Contains(everything) ||
+                    p.Website.Contains(everything) ||
                     p.Board.BoardName.Contains(everything))
                     .Count();
 
@@ -106,7 +107,7 @@ namespace Quinterest2.Services
         public IndexVM CategoryPages(string userId, int pageIndex, int id)
         {
             const int ITEMS_PER_PAGE = 20;
-      
+
             var pages = _repo.Query<Pin>()
                 .Where(p => p.CategoryId == id)
                 .OrderBy(p => p.Id)
@@ -136,7 +137,7 @@ namespace Quinterest2.Services
             //var pinNumbers = Enumerable.Range(0, pins.Count()).OrderBy(f => rnd.Next());
 
 
-            
+
             var pages = _repo.Query<Pin>()
                 .OrderBy(p => p.Id)
                 .Skip(pageIndex * ITEMS_PER_PAGE)
@@ -173,7 +174,7 @@ namespace Quinterest2.Services
         {
             return this.FindBoard(boardId).Pins.Count();
         }
-   
+
 
         public Board FindBoard(int boardId)
         {
@@ -223,7 +224,7 @@ namespace Quinterest2.Services
         }
 
         public IList<Pin> PinsByCategory(int id)
-        { 
+        {
             return _repo.Query<Pin>()
                 .Where(p => p.CategoryId == id)
                 .ToList();
@@ -252,8 +253,21 @@ namespace Quinterest2.Services
                 UserId = userId
             };
 
+            var currentUser = this.FindUser(userId);
+
+            var newNote = new Notification()
+            {
+                DateTime = DateTime.Now,
+                Message = currentUser.DisplayName + " has pinned your pin!",
+                UserId = pin.UserId,
+                User = pin.User,
+                PinId = pin.Id,
+                Pin = pin
+            };
+
             var originalUser = this.FindUser(userId);
             originalUser.Pins.Add(newPin);
+            _repo.Add(newNote);
             _repo.SaveChanges();
 
             this.UpdatePinCount(boardId);
@@ -261,7 +275,7 @@ namespace Quinterest2.Services
 
         public void Edit(Pin pin)
         {
-            
+
             var original = this.Find(pin.Id);
             var originalBoardId = original.BoardId;
             original.Title = pin.Title;
@@ -283,6 +297,23 @@ namespace Quinterest2.Services
 
         public void Delete(int id)
         {
+            if (ClaimsHelper.UserIsAdmin())
+            {
+                var userId = this.FindPinUserId(id);
+
+                var newNote = new Notification()
+                {
+                    DateTime = DateTime.Now,
+                    Message = "Your pin has been removed due to inappropriate content.",
+                    UserId = userId,
+                    User = this.FindUser(userId),
+                    PinId = id,
+                    Pin = this.Find(id)
+                };
+                _repo.Add(newNote);
+                _repo.SaveChanges();
+            }
+
             var board = this.Find(id).Board;
             _repo.Delete<Pin>(id);
             _repo.SaveChanges();
@@ -300,12 +331,32 @@ namespace Quinterest2.Services
                 Pin = this.Find(pinId)
             };
 
+            var newNote = new Notification()
+            {
+                DateTime = DateTime.Now,
+                Message = "Your pin has been flagged for review.",
+                UserId = userId,
+                User = this.FindUser(userId),
+                PinId = pinId,
+                Pin = this.Find(pinId)
+            };
+
             _repo.Add(flag);
+            _repo.Add(newNote);
             _repo.SaveChanges();
 
             this.UpdateFlagCount(pinId);
 
         }
-
+        public IList<Notification> GetNotifications(string userId)
+        {
+            return _repo.Query<Notification>()
+                .Where(n => n.UserId == userId)
+                .Include(n => n.User)
+                .Include(n => n.Pin)
+                .ToList();
+        }
     }
+
+
 }

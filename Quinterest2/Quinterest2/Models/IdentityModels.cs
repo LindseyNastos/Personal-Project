@@ -27,15 +27,16 @@ namespace Quinterest2.Models
 
         public ICollection<Comment> Comments { get; set; }
 
+        public ICollection<Notification> Notifications { get; set; }
+
 
         public ApplicationUser()
         {
             this.Boards = new List<Board>();
             this.Pins = new List<Pin>();
             this.Comments = new List<Comment>();
+            this.Notifications = new List<Notification>();
         }
-
-        
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -55,14 +56,12 @@ namespace Quinterest2.Models
 
         }
 
-
-       
         public IDbSet<Board> Boards { get; set; }
         public IDbSet<Pin> Pins { get; set; }
         public IDbSet<Category> Categories { get; set; }
         public IDbSet<Comment> Comments { get; set; }
         public IDbSet<Flag> Flags { get; set; }
-
+        public IDbSet<Notification> Notifications { get; set; }
 
         public static ApplicationDbContext Create()
         {
