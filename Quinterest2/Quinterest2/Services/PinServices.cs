@@ -195,7 +195,8 @@ namespace Quinterest2.Services
         public string FindUserName(string userId)
         {
             var thisUser = this.FindUser(userId);
-            return thisUser.DisplayName;
+            var name = thisUser.DisplayName;
+            return name;
         }
 
         public string FindPinUserId(int pinId)
@@ -260,15 +261,13 @@ namespace Quinterest2.Services
             {
                 DateTime = DateTime.Now,
                 Message = currentUser.DisplayName + " has pinned your pin!",
-                UserId = pin.UserId,
+                UserId = _repo.Query<Pin>().Where(p => p.Id == pin.Id).FirstOrDefault().UserId,
                 User = pin.User,
                 PinId = pin.Id,
-                Pin = pin
             };
 
-            var originalUser = this.FindUser(userId);
-            originalUser.Pins.Add(newPin);
-            _repo.Add(newNote);
+            _repo.Add<Pin>(newPin);
+            _repo.Add<Notification>(newNote);
             _repo.SaveChanges();
 
             this.UpdatePinCount(boardId);
@@ -276,7 +275,6 @@ namespace Quinterest2.Services
 
         public void Edit(Pin pin)
         {
-
             var original = this.Find(pin.Id);
             var originalBoardId = original.BoardId;
             original.Title = pin.Title;
@@ -307,9 +305,8 @@ namespace Quinterest2.Services
                     DateTime = DateTime.Now,
                     Message = "Your pin has been removed due to inappropriate content.",
                     UserId = userId,
-                    User = this.FindUser(userId)
                 };
-                _repo.Add(newNote);
+                _repo.Add<Notification>(newNote);
                 _repo.SaveChanges();
             }
 
@@ -338,8 +335,7 @@ namespace Quinterest2.Services
                 Message = "Your pin has been flagged for review.",
                 UserId = pinUserId,
                 User = this.FindUser(pinUserId),
-                PinId = pinId,
-                Pin = this.Find(pinId)
+                PinId = pinId
             };
 
             _repo.Add<Flag>(flag);

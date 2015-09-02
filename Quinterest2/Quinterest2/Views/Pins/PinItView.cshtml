@@ -4,7 +4,7 @@
     ViewBag.Title = "PinItView";
 }
 
-<h2>PinItView</h2>
+<h2>Pin It</h2>
 <hr />
 <div class="row">
     <div class="col-sm-6">
@@ -73,6 +73,8 @@
                         @Html.ValidationMessageFor(model => model.Pin.LongDescription, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
+                @Html.HiddenFor(model => model.Pin.Id)
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">

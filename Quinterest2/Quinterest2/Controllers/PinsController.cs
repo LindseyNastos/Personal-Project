@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Quinterest2.Views.Shared;
+using Quinterest2.PermissionsHelper;
 
 namespace Quinterest2.Controllers
 {
@@ -72,8 +73,7 @@ namespace Quinterest2.Controllers
                 PinnerDisplayName = _service.FindUserName(pinUserId),
                 Pin = _service.Find(id),
                 CurrentUser = _service.FindUser(userId),
-                Comments = _service.CommentList(id),
-
+                Comments = _service.CommentList(id)
             };
             return View(vm);
             }
@@ -184,7 +184,14 @@ namespace Quinterest2.Controllers
             var boardId = _service.Find(id).BoardId;
             var userId = this.User.Identity.GetUserId();
             _service.Delete(id);
-            return RedirectToAction("Index", "Boards", new { id = boardId });
+            if (ClaimsHelper.UserIsAdmin())
+            {
+                return RedirectToAction("AdminView", "ApplicationUsers");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Boards", new { id = boardId });
+            }
         }
 
         // Post: Pins/AddFlag/5
