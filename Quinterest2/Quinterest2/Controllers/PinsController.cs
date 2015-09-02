@@ -137,6 +137,7 @@ namespace Quinterest2.Controllers
             {
                 var userId = this.User.Identity.GetUserId();
                 pin.UserId = userId;
+                pin.IsActive = true;
                 _service.Create(pin, userId);
                 var boardId = pin.BoardId;
                 return RedirectToAction("Index", "Boards", new { id = boardId });

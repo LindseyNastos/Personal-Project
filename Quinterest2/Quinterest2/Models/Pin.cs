@@ -57,6 +57,7 @@ namespace Quinterest2.Models
 
         public int NumFlags { get; set; }
 
+        public bool IsActive { get; set; }
 
 
         //Maybe add later?

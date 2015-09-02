@@ -33,6 +33,7 @@ namespace Quinterest2.Services
         public Pin FindPin(int pinId)
         {
             return _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.Id == pinId)
                 .Include(p => p.Comments)
                 .Include(p =>p.User)

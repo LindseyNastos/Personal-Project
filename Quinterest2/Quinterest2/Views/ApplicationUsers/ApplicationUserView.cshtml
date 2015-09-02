@@ -38,6 +38,12 @@
                     <div class="panel-body">
                         <img class="img-responsive mainBoardImages" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
                         <hr />
+                        @foreach (var pin in board.Pins)
+                        {
+                            <img src="@" />
+                        }
+                        
+                        <hr />
                         <p>@Html.DisplayFor(modelItem => board.Description)</p>
                         <br />
                         <div class="pinDivButtons">

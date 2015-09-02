@@ -22,6 +22,7 @@ namespace Quinterest2.Services
         public IList<Pin> List()
         {
             var pins = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Include(p => p.Category)
                 .Include(p => p.Board)
                 .ToList();
@@ -44,6 +45,7 @@ namespace Quinterest2.Services
         public int UpdatePinCount(int boardId)
         {
             var count = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.BoardId == boardId)
                 .Count();
             var board = _repo.Find<Board>(boardId);
@@ -77,6 +79,7 @@ namespace Quinterest2.Services
             const int ITEMS_PER_PAGE = 20;
 
             var pages = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.Category.Name.Contains(everything) ||
                     p.ShortDescription.Contains(everything) ||
                     p.LongDescription.Contains(everything) ||
@@ -88,6 +91,7 @@ namespace Quinterest2.Services
                 .ToList();
 
             var numPins = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.Category.Name.Contains(everything) ||
                     p.ShortDescription.Contains(everything) ||
                     p.LongDescription.Contains(everything) ||
@@ -109,6 +113,7 @@ namespace Quinterest2.Services
             const int ITEMS_PER_PAGE = 20;
 
             var pages = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.CategoryId == id)
                 .OrderBy(p => p.Id)
                 .Skip(pageIndex * ITEMS_PER_PAGE)
@@ -116,6 +121,7 @@ namespace Quinterest2.Services
                 .ToList();
 
             var numPins = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.CategoryId == id)
                 .Count();
 
@@ -139,12 +145,15 @@ namespace Quinterest2.Services
 
 
             var pages = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .OrderBy(p => p.Id)
                 .Skip(pageIndex * ITEMS_PER_PAGE)
                 .Take(ITEMS_PER_PAGE)
                 .ToList();
 
-            var numPins = _repo.Query<Pin>().Count();
+            var numPins = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
+                .Count();
 
             var previous = 0;
 
@@ -165,8 +174,9 @@ namespace Quinterest2.Services
         public Pin Find(int id)
         {
             return _repo.Query<Pin>()
-                .Include(p => p.Board)
+                .Where(p => p.IsActive == true)
                 .Where(p => p.Id == id)
+                .Include(p => p.Board)
                 .FirstOrDefault();
         }
 
@@ -228,6 +238,7 @@ namespace Quinterest2.Services
         public IList<Pin> PinsByCategory(int id)
         {
             return _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.CategoryId == id)
                 .ToList();
         }
@@ -305,13 +316,19 @@ namespace Quinterest2.Services
                     DateTime = DateTime.Now,
                     Message = "Your pin has been removed due to inappropriate content.",
                     UserId = userId,
+                    PinId = id
                 };
                 _repo.Add<Notification>(newNote);
                 _repo.SaveChanges();
             }
 
-            var board = this.Find(id).Board;
-            _repo.Delete<Pin>(id);
+            var pin = this.Find(id);
+            pin.IsActive = false;
+            var board = pin.Board;
+            //_repo.Delete<Pin>(id);
+            var original = this.Find(id);
+            var originalBoardId = original.BoardId;
+
             _repo.SaveChanges();
             this.UpdatePinCount(board.Id);
         }

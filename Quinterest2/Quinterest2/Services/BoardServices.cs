@@ -18,10 +18,9 @@ namespace Quinterest2.Services
 
         public Board Find(int boardId)
         {
-            return _repo.Query<Board>()
-                .Include(b => b.Pins)
-                .Where(b => b.Id == boardId)
-                .FirstOrDefault();
+            var model = _repo.Query<Board>().Where(b => b.Id == boardId).FirstOrDefault();
+            model.Pins = _repo.Query<Pin>().Where(p => p.IsActive == true && p.BoardId == model.Id).ToList();
+            return model;
         }
 
         public int BoardCount(string userId)
@@ -45,6 +44,7 @@ namespace Quinterest2.Services
         public int UpdatePinCount(int boardId)
         {
             var count = _repo.Query<Pin>()
+                .Where(p => p.IsActive == true)
                 .Where(p => p.BoardId == boardId)
                 .Count();
             var board = _repo.Find<Board>(boardId);
