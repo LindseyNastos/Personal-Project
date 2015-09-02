@@ -66,17 +66,12 @@ namespace Quinterest2.Controllers
             }
 
             else {
-            //gets pin's user's id
             var pinUserId = _service.FindPinUserId(id);
             var vm = new DetailsVM
             {
-                //holds pin's user's display name
                 PinnerDisplayName = _service.FindUserName(pinUserId),
-                //holds selected pin
                 Pin = _service.Find(id),
-                //holds current user
                 CurrentUser = _service.FindUser(userId),
-                //returns comments associated with selected pin
                 Comments = _service.CommentList(id),
 
             };

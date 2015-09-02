@@ -201,7 +201,8 @@ namespace Quinterest2.Services
         public string FindPinUserId(int pinId)
         {
             var pin = this.Find(pinId);
-            return pin.UserId;
+            var userId = pin.UserId;
+            return userId;
         }
 
 
@@ -306,9 +307,7 @@ namespace Quinterest2.Services
                     DateTime = DateTime.Now,
                     Message = "Your pin has been removed due to inappropriate content.",
                     UserId = userId,
-                    User = this.FindUser(userId),
-                    PinId = id,
-                    Pin = this.Find(id)
+                    User = this.FindUser(userId)
                 };
                 _repo.Add(newNote);
                 _repo.SaveChanges();
@@ -331,18 +330,20 @@ namespace Quinterest2.Services
                 Pin = this.Find(pinId)
             };
 
+            var pinUserId = this.FindPinUserId(pinId);
+
             var newNote = new Notification()
             {
                 DateTime = DateTime.Now,
                 Message = "Your pin has been flagged for review.",
-                UserId = userId,
-                User = this.FindUser(userId),
+                UserId = pinUserId,
+                User = this.FindUser(pinUserId),
                 PinId = pinId,
                 Pin = this.Find(pinId)
             };
 
-            _repo.Add(flag);
-            _repo.Add(newNote);
+            _repo.Add<Flag>(flag);
+            _repo.Add<Notification>(newNote);
             _repo.SaveChanges();
 
             this.UpdateFlagCount(pinId);
