@@ -21,9 +21,9 @@ namespace Quinterest2.Models
 
         public int NumPins { get; set; }
 
-        public ICollection<Board> Boards { get; set; }
+        public List<Board> Boards { get; set; }
 
-        public ICollection<Pin> Pins { get; set; }
+        public List<Pin> Pins { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 

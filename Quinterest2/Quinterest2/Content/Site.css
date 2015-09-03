@@ -122,7 +122,7 @@ textarea {
 }
 
 .boards {
-    height:350px;
+    height:450px;
 }
 
 .dropdown-menu {
@@ -169,4 +169,12 @@ a, a:hover, a:active, a:visited {
 
 #accountSettings {
     margin-top:-5px;
+}
+
+.tinyPinDiv {
+    height: 72px;
+    width: 72px;
+    margin: 1px;
+    display: inline;
+    border-radius: 4px;
 }

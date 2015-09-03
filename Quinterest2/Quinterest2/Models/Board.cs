@@ -36,7 +36,7 @@ namespace Quinterest2.Models
         public int NumPinsOnBoard { get; set; }
 
 
-        public ICollection<Pin> Pins { get; set; }
+        public List<Pin> Pins { get; set; }
 
 
         public Board()

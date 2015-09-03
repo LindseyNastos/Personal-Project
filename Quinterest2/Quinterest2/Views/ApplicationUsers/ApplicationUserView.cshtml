@@ -8,12 +8,13 @@
     <div class="col-sm-12">
 
         <h2 class="displayName">@Model.DisplayName</h2>
-        @if (Model.ImageUrl == null){
+        @if (Model.ImageUrl == null)
+        {
             <img class="profileImage center-block" src="~/Content/icon-profile.png" />
         }
         <img class="profileImage center-block" src="@Model.ImageUrl" />
         <p class="boardsPins center-block">
-            @Model.NumBoards <text> Boards</text> |
+            @Model.NumBoards <text> Boards</text> &
             @Model.NumPins <text> Pins</text>
         </p>
         <p class="profileButtons">
@@ -38,13 +39,34 @@
                     <div class="panel-body">
                         <img class="img-responsive mainBoardImages" src="@Html.DisplayFor(modelItem => board.ImageUrl)" />
                         <hr />
-                        @foreach (var pin in board.Pins)
+
+                        @if (board.Pins.Count == 0)
                         {
-                            <img src="@" />
+
                         }
-                        
+                        else if (board.Pins.Count == 1)
+                        {
+                            for (var i = 0; i < 1; i++)
+                            {
+                                <img class="tinyPinDiv img-responsive" src="@Html.DisplayFor(modelItem => board.Pins[i].ImageUrl)" />
+                            }
+                        }
+                        else if (board.Pins.Count == 2)
+                        {
+                            for (var i = 0; i < 2; i++)
+                            {
+                                <img class="tinyPinDiv img-responsive" src="@Html.DisplayFor(modelItem => board.Pins[i].ImageUrl)" />
+                            }
+                        }
+                        else
+                        {
+                            for (var i = 0; i < 3; i++)
+                            {
+                                <img class="tinyPinDiv img-responsive" src="@Html.DisplayFor(modelItem => board.Pins[i].ImageUrl)" />
+                            }
+                        }
+
                         <hr />
-                        <p>@Html.DisplayFor(modelItem => board.Description)</p>
                         <br />
                         <div class="pinDivButtons">
                             <span class="pull-left">@Html.DisplayFor(modelItem => board.NumPinsOnBoard) <text> Pins</text></span>

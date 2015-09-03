@@ -27,18 +27,6 @@ namespace Quinterest2.Services
                 .Include(p => p.Board)
                 .ToList();
 
-            //var rnd = new System.Random();
-            //var pinNumbers = Enumerable.Range(0, pins.Count()).OrderBy(f => rnd.Next());
-
-            //var randomPins = new List<Pin>();
-
-            //foreach (var number in pinNumbers)
-            //{
-            //    randomPins.Add(pins[number]);
-            //}
-
-            //return randomPins;
-
             return pins;
         }
 
@@ -72,7 +60,6 @@ namespace Quinterest2.Services
                 .Where(c => c.PinId == pinId)
                 .ToList();
         }
-
 
         public IndexVM SearchResults(string userId, string everything, int pageIndex)
         {
@@ -133,16 +120,9 @@ namespace Quinterest2.Services
             };
         }
 
-
         public IndexVM Pages(string userId, int pageIndex)
         {
             const int ITEMS_PER_PAGE = 20;
-
-
-            //var rnd = new System.Random();
-            //var pinNumbers = Enumerable.Range(0, pins.Count()).OrderBy(f => rnd.Next());
-
-
 
             var pages = _repo.Query<Pin>()
                 .Where(p => p.IsActive == true)
@@ -215,8 +195,6 @@ namespace Quinterest2.Services
             var userId = pin.UserId;
             return userId;
         }
-
-
 
         public void Create(Pin pin, string userId)
         {
@@ -325,7 +303,6 @@ namespace Quinterest2.Services
             var pin = this.Find(id);
             pin.IsActive = false;
             var board = pin.Board;
-            //_repo.Delete<Pin>(id);
             var original = this.Find(id);
             var originalBoardId = original.BoardId;
 
@@ -360,7 +337,6 @@ namespace Quinterest2.Services
             _repo.SaveChanges();
 
             this.UpdateFlagCount(pinId);
-
         }
         public IList<Notification> GetNotifications(string userId)
         {
@@ -371,6 +347,4 @@ namespace Quinterest2.Services
                 .ToList();
         }
     }
-
-
 }

@@ -25,6 +25,14 @@ namespace Quinterest2.Services
                 .FirstOrDefault();
         }
 
+        public List<Board> GetUserBoards(string id)
+        {
+            return _repo.Query<Board>()
+                .Where(b => b.UserId == id)
+                .Include(b => b.Pins)
+                .ToList();
+        }
+
         public int QNumBoards(string userId) 
         {
             var user = this.Find(userId);

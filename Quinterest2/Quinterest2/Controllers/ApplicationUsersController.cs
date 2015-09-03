@@ -18,7 +18,6 @@ namespace Quinterest2.Controllers
         {
             _service = service;
         }
-
         
         //GET: User
         public ActionResult ApplicationUserView()
@@ -26,10 +25,10 @@ namespace Quinterest2.Controllers
             var user = _service.Find(this.User.Identity.GetUserId());
             user.NumBoards = _service.QNumBoards(user.Id);
             user.NumPins = _service.QNumPins(user.Id);
+
             return View(user);
         }
 
-       
         //GET: Users/Edit/5
         public ActionResult Edit()
         {
@@ -42,16 +41,13 @@ namespace Quinterest2.Controllers
         [HttpPost]
         public ActionResult Edit(ApplicationUser user)
         {
-
             if (ModelState.IsValid)
             {
                 _service.Edit(user);
                 return RedirectToAction("ApplicationUserView");
             }
             return View();
-            
         }
-
 
         public ActionResult AdminView()
         {
@@ -61,9 +57,5 @@ namespace Quinterest2.Controllers
             };
             return View(vm);
         }
-
-
-
-        
     }
 }
