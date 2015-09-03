@@ -249,7 +249,8 @@ namespace Quinterest2.Services
                 Website = pin.Website,
                 ShortDescription = pin.ShortDescription,
                 LongDescription = pin.LongDescription,
-                UserId = userId
+                UserId = userId,
+                IsActive = true
             };
 
             var currentUser = this.FindUser(userId);

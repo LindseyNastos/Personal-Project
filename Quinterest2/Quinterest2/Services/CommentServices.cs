@@ -44,7 +44,6 @@ namespace Quinterest2.Services
         {
             return _repo.Query<ApplicationUser>()
                 .Where(a => a.Id == userId)
-                .Include(a => a.DisplayName)
                 .FirstOrDefault();
         }
 
@@ -53,7 +52,21 @@ namespace Quinterest2.Services
             comment.PinId = pinId;
             comment.UserId = userId;
             comment.DateTime = DateTime.Now;
-            _repo.Add(comment);
+
+            var currentUser = this.FindUser(userId);
+            var pin = this.FindPin(pinId);
+
+
+            var newNote = new Notification()
+            {
+                DateTime = DateTime.Now,
+                Message = currentUser.DisplayName + " has left a comment on your pin:  " + comment.Words,
+                UserId = pin.UserId,
+                PinId = pin.Id,
+            };
+
+            _repo.Add<Comment>(comment);
+            _repo.Add<Notification>(newNote);
             _repo.SaveChanges();
         }
 
