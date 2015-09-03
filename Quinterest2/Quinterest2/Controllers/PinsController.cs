@@ -27,9 +27,6 @@ namespace Quinterest2.Controllers
             return View(_service.SearchResults(userId, everything, pageIndex));
         }
 
-
-
-
         [ChildActionOnly]
         public ActionResult CategorySearch()
         {
@@ -48,7 +45,6 @@ namespace Quinterest2.Controllers
             return View(_service.CategoryPages(userId, pageIndex, vm.Pin.CategoryId));
         }
 
-
         // GET: Pins
         public ActionResult Index(int pageIndex = 0)
         {
@@ -56,30 +52,29 @@ namespace Quinterest2.Controllers
             return View(_service.Pages(userId, pageIndex));
         }
 
-
         // GET: Pins/Details/5
         public ActionResult Details(int id)
         {
             var userId = this.User.Identity.GetUserId();
 
-            if (userId == null){
+            if (userId == null) {
                 return RedirectToAction("Register", "Account");
             }
 
             else {
-            var pinUserId = _service.FindPinUserId(id);
-            var vm = new DetailsVM
-            {
-                PinnerDisplayName = _service.FindUserName(pinUserId),
-                Pin = _service.Find(id),
-                CurrentUser = _service.FindUser(userId),
-                Comments = _service.CommentList(id)
-            };
-            return View(vm);
+                var pinUserId = _service.FindPinUserId(id);
+
+                var vm = new DetailsVM
+                {
+                    PinnerDisplayName = _service.FindUserName(pinUserId),
+                    Pin = _service.Find(id),
+                    CurrentUser = _service.FindUser(userId),
+                    Comments = _service.CommentList(id),
+                    RelatedPins = _service.GetRelatedPins(id)
+                };
+                return View(vm);
             }
         }
-
-      
 
         // Get: Pins/PinItView
         public ActionResult PinItView(int id)
@@ -91,7 +86,6 @@ namespace Quinterest2.Controllers
                 Boards = new SelectList(_service.BoardList(user), "Id", "BoardName"),
                 Pin = _service.Find(id)
             };
-
             return View(vm);
         }
 
@@ -104,10 +98,6 @@ namespace Quinterest2.Controllers
             _service.PinIt(pin, userId, boardId);
             return RedirectToAction("Details", new { id = pin.Id });
         }
-
-      
-
-
 
         // GET: Pins/Create
         [Authorize]
@@ -125,7 +115,6 @@ namespace Quinterest2.Controllers
             { 
                 return RedirectToAction("Create", "Boards");
             }
-
             return View(vm);
         }
 
@@ -202,7 +191,6 @@ namespace Quinterest2.Controllers
             var userId = this.User.Identity.GetUserId();
             _service.FlagThis(id, userId);
             return new EmptyResult();
-            
         }
 
         public ActionResult NotificationList()

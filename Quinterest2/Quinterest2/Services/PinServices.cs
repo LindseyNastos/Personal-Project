@@ -61,6 +61,15 @@ namespace Quinterest2.Services
                 .ToList();
         }
 
+        public List<Pin> GetRelatedPins(int pinId)
+        {
+            var pin = this.Find(pinId);
+            var categoryId = pin.CategoryId;
+            return _repo.Query<Pin>()
+                .Where(p => p.CategoryId == categoryId)
+                .ToList();
+        }
+
         public IndexVM SearchResults(string userId, string everything, int pageIndex)
         {
             const int ITEMS_PER_PAGE = 20;
@@ -154,7 +163,6 @@ namespace Quinterest2.Services
         public Pin Find(int id)
         {
             return _repo.Query<Pin>()
-                .Where(p => p.IsActive == true)
                 .Where(p => p.Id == id)
                 .Include(p => p.Board)
                 .FirstOrDefault();
@@ -338,6 +346,7 @@ namespace Quinterest2.Services
 
             this.UpdateFlagCount(pinId);
         }
+
         public IList<Notification> GetNotifications(string userId)
         {
             return _repo.Query<Notification>()
